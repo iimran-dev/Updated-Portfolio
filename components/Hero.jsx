@@ -3,6 +3,41 @@
 import { motion } from "motion/react";
 import { useLenis } from "lenis/react";
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.05,
+    },
+  },
+};
+
+const fadeUpVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: [0.215, 0.61, 0.355, 1],
+    },
+  },
+};
+
+const popScaleVariants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
+
 export function Hero() {
   const lenis = useLenis();
 
@@ -17,48 +52,108 @@ export function Hero() {
 
   return (
     <section id="top" className="w-full bg-[#0a0a0a] text-white pt-6 pb-12 px-4 sm:px-8 overflow-hidden">
-      <div className="max-w-7xl mx-auto flex flex-col gap-6 sm:gap-8">
+      {/* SVG Filter for word stipple effect */}
+      <svg width="0" height="0" className="absolute pointer-events-none">
+        <defs>
+          <filter id="stipple-filter" x="0%" y="0%" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="3" result="noise" />
+            <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 15 -5" result="stipple" />
+            <feComposite in="SourceGraphic" in2="stipple" operator="in" />
+          </filter>
+        </defs>
+      </svg>
 
-        {/* Giant Title & Header Row */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-stretch gap-6 w-full">
-          <div>
-            <h1 className="font-display font-black text-3xl sm:text-5xl md:text-6xl lg:text-[7rem] xl:text-[8.5rem] leading-[0.85] tracking-tight uppercase text-white/95 select-none text-left">
-              UI-UX &amp;<br/>FRONTEND DEVELOPER
-            </h1>
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="max-w-7xl mx-auto flex flex-col gap-6 sm:gap-8"
+      >
+        {/* Eyebrow & Headline Header with Side-by-Side Subtitle */}
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 sm:gap-8 w-full">
+          {/* Left Column: Eyebrow + Main Headline */}
+          <div className="flex flex-col items-start gap-3 sm:gap-4 max-w-3xl flex-1">
+            {/* Eyebrow badge line */}
+            <motion.div
+              variants={fadeUpVariants}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900/90 border border-white/10 font-mono text-xs sm:text-sm font-bold tracking-wider uppercase backdrop-blur-md"
+            >
+              <span className="w-2 h-2 rounded-full bg-[#fde047] animate-pulse" />
+              <span className="text-[#a78bfa]">UI/UX</span>
+              <span className="text-zinc-500">·</span>
+              <span className="text-[#fde047]">FRONTEND DEVELOPER</span>
+            </motion.div>
+
+            {/* Main Headline with High-Level Design Hierarchy */}
+            <motion.h1
+              variants={fadeUpVariants}
+              className="font-display leading-[1.08] tracking-tight text-left select-none"
+            >
+              <span className="block text-zinc-400 font-normal text-2xl sm:text-4xl md:text-5xl lg:text-[3.2rem] xl:text-[3.8rem] mb-1">
+                Ideas deserve better than ordinary websites.
+              </span>
+              <span className="block text-white font-semibold text-3xl sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-[4.6rem]">
+                I turn complex problems into{" "}
+                <motion.span
+                  whileHover={{ scale: 1.06, rotate: -1 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                  className="relative inline-block font-bold text-white filter-[url(#stipple-filter)] cursor-pointer"
+                >
+                  intuitive
+                </motion.span>{" "}
+                experiences.
+              </span>
+            </motion.h1>
           </div>
 
-          <div className="flex flex-col justify-between items-start lg:items-end gap-4 shrink-0 max-w-md">
-            <p className="leading-relaxed text-gray-300 text-left lg:text-right font-body text-xs sm:text-sm md:text-base pt-1 sm:pt-2">
-              I turn ideas into interfaces<br/>combining design, code, and visual storytelling<br/>to build digital experiences that stand out.
-            </p>
-
-            <a
-              href="#contact"
-              onClick={scrollToContact}
-              className="group inline-flex items-center gap-2 font-display font-bold text-white uppercase text-sm sm:text-base tracking-wider border-b-2 border-white pb-1 hover:text-lime-400 hover:border-lime-400 transition-colors"
+          {/* Right Column: Subtitle Description (Right Next to Headline) + Get in Touch Button */}
+          <div className="flex flex-col items-start lg:items-end gap-5 max-w-md shrink-0 self-start lg:self-end">
+            <motion.p
+              variants={fadeUpVariants}
+              className="font-body text-zinc-300 text-xs sm:text-sm md:text-base leading-relaxed text-left lg:text-right"
             >
-              GET IN TOUCH <span className="group-hover:translate-x-1.5 transition-transform">→</span>
-            </a>
+              Through thoughtful design and modern development. Designed with purpose. Built to perform.
+            </motion.p>
+
+            {/* Get in Touch Button */}
+            <motion.div variants={popScaleVariants}>
+              <a
+                href="#contact"
+                onClick={scrollToContact}
+                className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-black font-display font-bold text-xs sm:text-sm uppercase tracking-wider hover:bg-[#ffd600] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 cursor-pointer border-2 border-black"
+              >
+                <span>GET IN TOUCH</span>
+                <span className="w-5 h-5 rounded-full bg-black text-white flex items-center justify-center text-xs group-hover:translate-x-1 transition-transform">
+                  →
+                </span>
+              </a>
+            </motion.div>
           </div>
         </div>
 
-       
-       
+        {/* Main Grid Graphic Container with Modern Architectural Outer Shape & Spaced Out Stickers */}
+        <motion.div
+          variants={fadeUpVariants}
+          className="relative w-full h-[320px] sm:h-[400px] md:h-[480px]"
+        >
+          {/* Outer Ambient Backdrop Glow */}
+          <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 via-purple-500/10 to-amber-500/20 rounded-[2.8rem] sm:rounded-[3.8rem] blur-xl opacity-50 pointer-events-none" />
 
-        {/* Main Grid Graphic Container with Spaced Out Elements & Popped Out Stickers */}
-        <div className="relative w-full h-[320px] sm:h-[400px] md:h-[480px]">
+          {/* White Graphic Box with Modern Architectural Dual-Curve Shape */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white via-[#f9f9fb] to-[#f1f1f5] bg-grid-pattern rounded-[2.2rem] sm:rounded-[3.2rem] lg:rounded-[3.8rem] rounded-tr-[70px] sm:rounded-tr-[120px] lg:rounded-tr-[150px] rounded-bl-[40px] sm:rounded-bl-[70px] lg:rounded-bl-[90px] border-3 border-black text-black overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.45)] transition-all duration-300">
+            {/* Soft Ambient Inner Highlight */}
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.8),transparent_70%)] pointer-events-none" />
 
-          {/* White Graphic Box with Top-Right Arch Curve matching reference */}
-          <div className="absolute inset-0 bg-white bg-grid-pattern rounded-[2rem] sm:rounded-[2.5rem] rounded-tr-[100px] sm:rounded-tr-[160px] md:rounded-tr-[220px] border-4 border-black text-black overflow-hidden shadow-2xl">
             {/* Main Subject Photo (hero-thumb.png) - Dominant centered hero subject */}
             <div className="absolute bottom-0 left-1/2 lg:left-[35%] -translate-x-1/2 h-full z-20 flex items-end pointer-events-none">
               <img
                 src="/hero-thumb.png"
                 alt="Imran - UI-UX & Frontend Developer"
-                className="h-[270px] sm:h-[350px] md:h-[430px] object-contain object-bottom drop-shadow-[0_20px_25px_rgba(0,0,0,0.35)] select-none"
+                className="h-[270px] sm:h-[350px] md:h-[430px] object-contain object-bottom drop-shadow-[0_20px_25px_rgba(0,0,0,0.3)] select-none"
               />
             </div>
           </div>
+
 
           {/* Sticker 1: DESIGN STRATEGY (Top-Left Circular Cyan Badge) */}
           <motion.div
@@ -171,9 +266,9 @@ export function Hero() {
               </span>
             </div>
           </motion.div>
-
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
+

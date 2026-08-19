@@ -1,0 +1,18 @@
+1:"$Sreact.fragment"
+2:I[236,["177","static/chunks/app/layout-ad8237cf83a5c379.js"],"ThemeProvider"]
+3:I[1543,["177","static/chunks/app/layout-ad8237cf83a5c379.js"],"default"]
+4:I[9766,[],""]
+5:I[8924,[],""]
+6:I[4431,[],"OutletBoundary"]
+8:I[5278,[],"AsyncMetadataOutlet"]
+a:I[4431,[],"ViewportBoundary"]
+c:I[4431,[],"MetadataBoundary"]
+d:"$Sreact.suspense"
+f:I[7150,[],""]
+:HL["/_next/static/css/eedca55dbcb2f510.css","style"]
+0:{"P":null,"b":"LseuNo3N37DX4DX0XDkgF","p":"","c":["","_not-found"],"i":false,"f":[[["",{"children":["/_not-found",{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/eedca55dbcb2f510.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":["$","body",null,{"className":"antialiased","children":["$","$L2",null,{"children":["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"min-h-screen bg-[#08080a] text-white flex flex-col items-center justify-center p-4","children":[["$","h2",null,{"className":"text-4xl font-bold font-display","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-zinc-400 mt-2 font-body","children":"The page you are looking for does not exist."}],["$","a",null,{"href":"/","className":"mt-6 px-4 py-2 bg-white text-black font-semibold rounded-lg","children":"Return Home"}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]}]}]]}],{"children":["/_not-found",["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","div",null,{"className":"min-h-screen bg-[#08080a] text-white flex flex-col items-center justify-center p-4","children":[["$","h2",null,{"className":"text-4xl font-bold font-display","children":"404 - Page Not Found"}],["$","p",null,{"className":"text-zinc-400 mt-2 font-body","children":"The page you are looking for does not exist."}],["$","a",null,{"href":"/","className":"mt-6 px-4 py-2 bg-white text-black font-semibold rounded-lg","children":"Return Home"}]]}],null,["$","$L6",null,{"children":["$L7",["$","$L8",null,{"promise":"$@9"}]]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],[["$","$La",null,{"children":"$Lb"}],null],["$","$Lc",null,{"children":["$","div",null,{"hidden":true,"children":["$","$d",null,{"fallback":null,"children":"$Le"}]}]}]]}],false]],"m":"$undefined","G":["$f",[]],"s":false,"S":true}
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+7:null
+10:I[622,[],"IconMark"]
+9:{"metadata":[["$","title","0",{"children":"Imran - Frontend Developer & Graphic Designer"}],["$","meta","1",{"name":"description","content":"Portfolio of Imran - Frontend Developer & Graphic Designer. Turning ideas into responsive, high-performance interfaces."}],["$","link","2",{"rel":"icon","href":"/favicon.svg"}],["$","$L10","3",{}]],"error":null,"digest":"$undefined"}
+e:"$9:metadata"
