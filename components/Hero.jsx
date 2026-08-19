@@ -46,7 +46,7 @@ export function Hero() {
        
 
         {/* Main Grid Graphic Container with Spaced Out Elements & Popped Out Stickers */}
-        <div className="relative w-full h-[420px] sm:h-[500px] md:h-[600px]">
+        <div className="relative w-full h-[320px] sm:h-[400px] md:h-[480px]">
 
           {/* White Graphic Box with Top-Right Arch Curve matching reference */}
           <div className="absolute inset-0 bg-white bg-grid-pattern rounded-[2rem] sm:rounded-[2.5rem] rounded-tr-[100px] sm:rounded-tr-[160px] md:rounded-tr-[220px] border-4 border-black text-black overflow-hidden shadow-2xl">
@@ -55,7 +55,7 @@ export function Hero() {
               <img
                 src="/hero-thumb.png"
                 alt="Imran - UI-UX & Frontend Developer"
-                className="h-[340px] sm:h-[440px] md:h-[540px] object-contain object-bottom drop-shadow-[0_20px_25px_rgba(0,0,0,0.35)] select-none"
+                className="h-[270px] sm:h-[350px] md:h-[430px] object-contain object-bottom drop-shadow-[0_20px_25px_rgba(0,0,0,0.35)] select-none"
               />
             </div>
           </div>
@@ -106,7 +106,7 @@ export function Hero() {
 
           {/* Sticker 4: USER EXPERIENCE DESIGN (Top-Center Pink Sticker) */}
           <motion.div
-            className="absolute top-3 sm:top-6 left-[46%] sm:left-[35%] md:left-[38%] -translate-x-1/2 sm:translate-x-0 z-30 bg-[#ff3b77] border-2 sm:border-3 border-black text-white rounded-lg sm:rounded-xl px-2 sm:px-4 py-1 sm:py-2.5 neo-shadow-sm cursor-pointer select-none -rotate-6"
+            className="absolute top-3 sm:top-6 left-[50%] sm:left-[35%] md:left-[50%] -translate-x-1/2 sm:translate-x-0 z-30 bg-[#ff3b77] border-2 sm:border-3 border-black text-white rounded-lg sm:rounded-xl px-2 sm:px-4 py-1 sm:py-2.5 neo-shadow-sm cursor-pointer select-none -rotate-6"
             whileHover={{ scale: 1.08, rotate: 3 }}
             transition={{ type: 'spring', stiffness: 300 }}
           >
