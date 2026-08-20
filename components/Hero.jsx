@@ -87,33 +87,33 @@ export function Hero() {
           {/* Eyebrow badge line */}
           <motion.div
             variants={fadeUpVariants}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900/90 border border-white/10 font-mono text-xs sm:text-sm font-bold tracking-wider uppercase backdrop-blur-md"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#a78bfa]/10 border border-[#a78bfa]/30 font-jakarta text-xs sm:text-sm font-medium tracking-wider uppercase backdrop-blur-md"
           >
-            <span className="w-2 h-2 rounded-full bg-[#fde047] animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[#a78bfa] animate-pulse" />
             <span className="text-[#a78bfa]">UI/UX</span>
-            <span className="text-zinc-500">·</span>
-            <span className="text-[#fde047]">FRONTEND DEVELOPER</span>
+            <span className="text-[#a78bfa]/50">·</span>
+            <span className="text-[#a78bfa]">FRONTEND DEVELOPER</span>
           </motion.div>
 
           {/* Main Headline - Viewport Spanning & Typography Effects */}
           <div ref={headlineRef} className="select-none w-full">
-            <h1 className="font-display leading-[1.05] tracking-tight text-left">
-              {/* Line 1: Elegant Muted Typography */}
-              <span className="typo-line block text-zinc-400 font-normal text-2xl sm:text-4xl md:text-5xl lg:text-[3.6rem] xl:text-[4.2rem] 2xl:text-[4.8rem] mb-1 sm:mb-2 transition-colors duration-300 hover:text-zinc-300">
+            <h1 className="leading-[1.05] tracking-tight text-left">
+              {/* Line 1: Grey Description Typography */}
+              <span className="typo-line block font-jakarta text-zinc-400 font-normal text-2xl sm:text-4xl md:text-5xl lg:text-[3.6rem] xl:text-[4.2rem] 2xl:text-[4.8rem] mb-1 sm:mb-2 transition-colors duration-300 hover:text-zinc-300">
                 Ideas deserve better than ordinary websites.
               </span>
-              {/* Line 2: Bold High-Contrast Typography with Modern Green Highlight */}
-              <span className="typo-line block text-white font-semibold text-3xl sm:text-5xl md:text-6xl lg:text-[4.6rem] xl:text-[5.4rem] 2xl:text-[6.2rem] mb-2">
+              {/* Line 2: Bold White Title Typography with Lavender Highlight */}
+              <span className="typo-line block text-white font-bold text-3xl sm:text-5xl md:text-6xl lg:text-[4.6rem] xl:text-[5.4rem] 2xl:text-[6.2rem] mb-2">
                 I turn complex problems into{" "}
                 <motion.span
                   whileHover={{ scale: 1.05, y: -2 }}
                   transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                  className="relative inline-flex items-center px-3.5 sm:px-5 py-0.5 sm:py-1 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 backdrop-blur-md shadow-[0_0_25px_rgba(16,185,129,0.25)] text-emerald-400 font-extrabold cursor-pointer group transition-all duration-300 hover:border-emerald-400 hover:shadow-[0_0_35px_rgba(16,185,129,0.45)] mx-1"
+                  className="relative inline-flex items-center px-3.5 sm:px-5 py-0.5 sm:py-1 rounded-2xl bg-[#a78bfa]/15 border border-[#a78bfa]/40 backdrop-blur-md shadow-[0_0_25px_rgba(167,139,250,0.3)] font-jakarta font-medium text-[#a78bfa] cursor-pointer group transition-all duration-300 hover:border-[#a78bfa] hover:shadow-[0_0_35px_rgba(167,139,250,0.5)] mx-1"
                 >
-                  <span className="bg-gradient-to-r from-emerald-300 via-green-400 to-teal-300 bg-clip-text text-transparent group-hover:brightness-125">
+                  <span className="text-[#a78bfa] font-medium">
                     intuitive
                   </span>
-                  <span className="absolute -bottom-1 left-2 right-2 h-[3px] bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-500 rounded-full opacity-80 group-hover:opacity-100 transition-opacity" />
+                  <span className="absolute -bottom-1 left-2 right-2 h-[3px] bg-[#a78bfa] rounded-full opacity-80 group-hover:opacity-100 transition-opacity" />
                 </motion.span>{" "}
                 experiences.
               </span>
@@ -124,7 +124,7 @@ export function Hero() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 sm:gap-6 w-full pt-1 mb-4">
             <motion.p
               variants={fadeUpVariants}
-              className="font-body text-zinc-300 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed text-left max-w-xl"
+              className="font-jakarta text-zinc-400 font-normal text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed text-left max-w-xl"
             >
               Through thoughtful design and modern development. Designed with purpose. Built to perform.
             </motion.p>
@@ -134,9 +134,9 @@ export function Hero() {
               <a
                 href="#contact"
                 onClick={scrollToContact}
-                className="group relative inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-emerald-400 text-black font-display font-extrabold text-xs sm:text-sm uppercase tracking-wider hover:bg-emerald-300 transition-all duration-300 shadow-[0_0_25px_rgba(52,211,153,0.35)] hover:shadow-[0_0_35px_rgba(52,211,153,0.55)] hover:scale-105 active:scale-95 cursor-pointer border-2 border-emerald-300 overflow-hidden"
+                className="group relative inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-[#a78bfa] text-black font-jakarta font-bold text-xs sm:text-sm uppercase tracking-wider hover:bg-[#b89eff] transition-all duration-300 shadow-[0_0_25px_rgba(167,139,250,0.35)] hover:shadow-[0_0_35px_rgba(167,139,250,0.55)] hover:scale-105 active:scale-95 cursor-pointer border-2 border-[#b89eff] overflow-hidden"
               >
-                <span className="relative z-10">GET IN TOUCH</span>
+                <span className="relative z-10 font-bold">GET IN TOUCH</span>
                 <span className="relative z-10 w-6 h-6 rounded-full bg-black text-white flex items-center justify-center text-xs group-hover:translate-x-1 transition-transform">
                   →
                 </span>
