@@ -112,7 +112,7 @@ const CurvedLoop = ({
 
   return (
     <div
-      className="w-full flex items-center justify-center py-4"
+      className="w-full flex items-center justify-center py-0"
       style={{
         visibility: ready ? 'visible' : 'hidden',
         cursor: cursorStyle,
@@ -125,7 +125,7 @@ const CurvedLoop = ({
       onPointerCancel={endDrag}
     >
       <svg
-        className="select-none w-full overflow-visible block aspect-[100/12] text-[2rem] md:text-[2.5rem] font-semibold uppercase leading-none"
+        className="select-none w-full overflow-visible block aspect-[100/12] text-[2rem] md:text-[2.5rem] font-semibold leading-none"
         viewBox="0 0 1440 120"
         style={{
           willChange: 'transform',

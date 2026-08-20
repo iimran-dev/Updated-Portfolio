@@ -136,14 +136,14 @@ export function WorkFlow() {
         </div>
 
         {/* Marquee Loop at Section Bottom */}
-        <div className="pt-4 sm:pt-8">
+        <div className="overflow-hidden">
           <CurvedLoop
-            marqueeText="✦ PROBLEM SOLVER • DESIGN WITH PURPOSE • BUILD FOR IMPACT • CODE &amp; CRAFT ✦ PROBLEM SOLVER • DESIGN WITH PURPOSE • BUILD FOR IMPACT • CODE &amp; CRAFT ✦"
-            speed={2}
+            marqueeText="UI/UX Design & Development            High-Fidelity Figma Prototypes            Modern, Responsive Web Experiences            From Design Concepts to Functional Products            React, Next.js & Full-Stack Projects            Clean Interfaces Built for Real-World Use            Bridging Design, Development & Product Thinking            UI Systems Designed for Consistency and Scalability            "
+            speed={1.8}
             curveAmount={0}
             direction="right"
             interactive
-            className="fill-current text-zinc-400"
+            className="fill-current text-zinc-500 font-display font-medium text-xs sm:text-sm tracking-widest"
           />
         </div>
 
