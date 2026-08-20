@@ -75,15 +75,15 @@ export function Hero() {
   };
 
   return (
-    <section id="top" ref={heroRef} className="w-full bg-[#0a0a0a] text-white pt-6 pb-12 px-4 sm:px-8 overflow-hidden">
+    <section id="top" ref={heroRef} className="w-full bg-[#0a0a0a] text-white pt-10 sm:pt-16 pb-16 sm:pb-24 px-4 sm:px-8 overflow-hidden">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="max-w-7xl mx-auto flex flex-col gap-6 sm:gap-8"
+        className="max-w-7xl mx-auto flex flex-col gap-10 sm:gap-14"
       >
         {/* Full-Width Viewport Headline Header */}
-        <div className="flex flex-col items-start gap-4 sm:gap-6 w-full">
+        <div className="flex flex-col items-start gap-6 sm:gap-8 w-full">
           {/* Eyebrow badge line */}
           <motion.div
             variants={fadeUpVariants}
@@ -99,11 +99,11 @@ export function Hero() {
           <div ref={headlineRef} className="select-none w-full">
             <h1 className="leading-[1.05] tracking-tight text-left">
               {/* Line 1: Grey Description Typography */}
-              <span className="typo-line block font-jakarta text-zinc-400 font-normal text-2xl sm:text-4xl md:text-5xl lg:text-[3.6rem] xl:text-[4.2rem] 2xl:text-[4.8rem] mb-1 sm:mb-2 transition-colors duration-300 hover:text-zinc-300">
+              <span className="typo-line block font-jakarta text-zinc-400 font-normal text-2xl sm:text-4xl md:text-5xl lg:text-[3.6rem] xl:text-[4.2rem] 2xl:text-[4.8rem] mb-2 sm:mb-3 transition-colors duration-300 hover:text-zinc-300">
                 Ideas deserve better than ordinary websites.
               </span>
               {/* Line 2: Bold White Title Typography with Lavender Highlight */}
-              <span className="typo-line block text-white font-bold text-3xl sm:text-5xl md:text-6xl lg:text-[4.6rem] xl:text-[5.4rem] 2xl:text-[6.2rem] mb-2">
+              <span className="typo-line block text-white font-bold text-3xl sm:text-5xl md:text-6xl lg:text-[4.6rem] xl:text-[5.4rem] 2xl:text-[6.2rem] mb-3 sm:mb-4">
                 I turn complex problems into{" "}
                 <motion.span
                   whileHover={{ scale: 1.05, y: -2 }}
@@ -121,7 +121,7 @@ export function Hero() {
           </div>
 
           {/* Subtitle Description & Get in Touch Button Row */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 sm:gap-6 w-full pt-1 mb-4">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 sm:gap-8 w-full pt-2 mb-6 sm:mb-8">
             <motion.p
               variants={fadeUpVariants}
               className="font-jakarta text-zinc-400 font-normal text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed text-left max-w-xl"
@@ -148,7 +148,7 @@ export function Hero() {
         {/* Main Grid Graphic Container with Modern Architectural Outer Shape & Spaced Out Stickers */}
         <motion.div
           variants={fadeUpVariants}
-          className="relative w-full h-[320px] sm:h-[400px] md:h-[480px]"
+          className="relative w-full h-[350px] sm:h-[430px] md:h-[500px]"
         >
           {/* Outer Ambient Backdrop Glow */}
           <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 via-purple-500/10 to-amber-500/20 rounded-[2.8rem] sm:rounded-[3.8rem] blur-xl opacity-50 pointer-events-none" />
