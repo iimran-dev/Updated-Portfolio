@@ -1,7 +1,9 @@
 'use client';
 
+import { useRef } from "react";
 import { motion } from "motion/react";
 import { useLenis } from "lenis/react";
+import { gsap, useGSAP } from "@/lib/gsap";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -15,13 +17,13 @@ const containerVariants = {
 };
 
 const fadeUpVariants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 28 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.7,
-      ease: [0.215, 0.61, 0.355, 1],
+      duration: 0.8,
+      ease: [0.16, 1, 0.3, 1],
     },
   },
 };
@@ -40,6 +42,28 @@ const popScaleVariants = {
 
 export function Hero() {
   const lenis = useLenis();
+  const heroRef = useRef(null);
+  const headlineRef = useRef(null);
+
+  // Smooth Kinetic Typography Entrance Animation using GSAP
+  useGSAP(() => {
+    if (headlineRef.current) {
+      const lines = headlineRef.current.querySelectorAll(".typo-line");
+      gsap.fromTo(
+        lines,
+        { opacity: 0, y: 35, skewY: 1.5 },
+        {
+          opacity: 1,
+          y: 0,
+          skewY: 0,
+          duration: 1.1,
+          stagger: 0.18,
+          ease: "power3.out",
+          delay: 0.1,
+        }
+      );
+    }
+  }, { scope: heroRef });
 
   const scrollToContact = (e) => {
     e.preventDefault();
@@ -51,79 +75,69 @@ export function Hero() {
   };
 
   return (
-    <section id="top" className="w-full bg-[#0a0a0a] text-white pt-6 pb-12 px-4 sm:px-8 overflow-hidden">
-      {/* SVG Filter for word stipple effect */}
-      <svg width="0" height="0" className="absolute pointer-events-none">
-        <defs>
-          <filter id="stipple-filter" x="0%" y="0%" width="100%" height="100%">
-            <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="3" result="noise" />
-            <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 15 -5" result="stipple" />
-            <feComposite in="SourceGraphic" in2="stipple" operator="in" />
-          </filter>
-        </defs>
-      </svg>
-
+    <section id="top" ref={heroRef} className="w-full bg-[#0a0a0a] text-white pt-6 pb-12 px-4 sm:px-8 overflow-hidden">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
         className="max-w-7xl mx-auto flex flex-col gap-6 sm:gap-8"
       >
-        {/* Eyebrow & Headline Header with Side-by-Side Subtitle */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 sm:gap-8 w-full">
-          {/* Left Column: Eyebrow + Main Headline */}
-          <div className="flex flex-col items-start gap-3 sm:gap-4 max-w-3xl flex-1">
-            {/* Eyebrow badge line */}
-            <motion.div
-              variants={fadeUpVariants}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900/90 border border-white/10 font-mono text-xs sm:text-sm font-bold tracking-wider uppercase backdrop-blur-md"
-            >
-              <span className="w-2 h-2 rounded-full bg-[#fde047] animate-pulse" />
-              <span className="text-[#a78bfa]">UI/UX</span>
-              <span className="text-zinc-500">·</span>
-              <span className="text-[#fde047]">FRONTEND DEVELOPER</span>
-            </motion.div>
+        {/* Full-Width Viewport Headline Header */}
+        <div className="flex flex-col items-start gap-4 sm:gap-6 w-full">
+          {/* Eyebrow badge line */}
+          <motion.div
+            variants={fadeUpVariants}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900/90 border border-white/10 font-mono text-xs sm:text-sm font-bold tracking-wider uppercase backdrop-blur-md"
+          >
+            <span className="w-2 h-2 rounded-full bg-[#fde047] animate-pulse" />
+            <span className="text-[#a78bfa]">UI/UX</span>
+            <span className="text-zinc-500">·</span>
+            <span className="text-[#fde047]">FRONTEND DEVELOPER</span>
+          </motion.div>
 
-            {/* Main Headline with High-Level Design Hierarchy */}
-            <motion.h1
-              variants={fadeUpVariants}
-              className="font-display leading-[1.08] tracking-tight text-left select-none"
-            >
-              <span className="block text-zinc-400 font-normal text-2xl sm:text-4xl md:text-5xl lg:text-[3.2rem] xl:text-[3.8rem] mb-1">
+          {/* Main Headline - Viewport Spanning & Typography Effects */}
+          <div ref={headlineRef} className="select-none w-full">
+            <h1 className="font-display leading-[1.05] tracking-tight text-left">
+              {/* Line 1: Elegant Muted Typography */}
+              <span className="typo-line block text-zinc-400 font-normal text-2xl sm:text-4xl md:text-5xl lg:text-[3.6rem] xl:text-[4.2rem] 2xl:text-[4.8rem] mb-1 sm:mb-2 transition-colors duration-300 hover:text-zinc-300">
                 Ideas deserve better than ordinary websites.
               </span>
-              <span className="block text-white font-semibold text-3xl sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-[4.6rem]">
+              {/* Line 2: Bold High-Contrast Typography with Modern Green Highlight */}
+              <span className="typo-line block text-white font-semibold text-3xl sm:text-5xl md:text-6xl lg:text-[4.6rem] xl:text-[5.4rem] 2xl:text-[6.2rem] mb-2">
                 I turn complex problems into{" "}
                 <motion.span
-                  whileHover={{ scale: 1.06, rotate: -1 }}
+                  whileHover={{ scale: 1.05, y: -2 }}
                   transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                  className="relative inline-block font-bold text-white filter-[url(#stipple-filter)] cursor-pointer"
+                  className="relative inline-flex items-center px-3.5 sm:px-5 py-0.5 sm:py-1 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 backdrop-blur-md shadow-[0_0_25px_rgba(16,185,129,0.25)] text-emerald-400 font-extrabold cursor-pointer group transition-all duration-300 hover:border-emerald-400 hover:shadow-[0_0_35px_rgba(16,185,129,0.45)] mx-1"
                 >
-                  intuitive
+                  <span className="bg-gradient-to-r from-emerald-300 via-green-400 to-teal-300 bg-clip-text text-transparent group-hover:brightness-125">
+                    intuitive
+                  </span>
+                  <span className="absolute -bottom-1 left-2 right-2 h-[3px] bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-500 rounded-full opacity-80 group-hover:opacity-100 transition-opacity" />
                 </motion.span>{" "}
                 experiences.
               </span>
-            </motion.h1>
+            </h1>
           </div>
 
-          {/* Right Column: Subtitle Description (Right Next to Headline) + Get in Touch Button */}
-          <div className="flex flex-col items-start lg:items-end gap-5 max-w-md shrink-0 self-start lg:self-end">
+          {/* Subtitle Description & Get in Touch Button Row */}
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 sm:gap-6 w-full pt-1 mb-4">
             <motion.p
               variants={fadeUpVariants}
-              className="font-body text-zinc-300 text-xs sm:text-sm md:text-base leading-relaxed text-left lg:text-right"
+              className="font-body text-zinc-300 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed text-left max-w-xl"
             >
               Through thoughtful design and modern development. Designed with purpose. Built to perform.
             </motion.p>
 
             {/* Get in Touch Button */}
-            <motion.div variants={popScaleVariants}>
+            <motion.div variants={popScaleVariants} className="shrink-0 self-start md:self-auto">
               <a
                 href="#contact"
                 onClick={scrollToContact}
-                className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-black font-display font-bold text-xs sm:text-sm uppercase tracking-wider hover:bg-[#ffd600] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 cursor-pointer border-2 border-black"
+                className="group relative inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-emerald-400 text-black font-display font-extrabold text-xs sm:text-sm uppercase tracking-wider hover:bg-emerald-300 transition-all duration-300 shadow-[0_0_25px_rgba(52,211,153,0.35)] hover:shadow-[0_0_35px_rgba(52,211,153,0.55)] hover:scale-105 active:scale-95 cursor-pointer border-2 border-emerald-300 overflow-hidden"
               >
-                <span>GET IN TOUCH</span>
-                <span className="w-5 h-5 rounded-full bg-black text-white flex items-center justify-center text-xs group-hover:translate-x-1 transition-transform">
+                <span className="relative z-10">GET IN TOUCH</span>
+                <span className="relative z-10 w-6 h-6 rounded-full bg-black text-white flex items-center justify-center text-xs group-hover:translate-x-1 transition-transform">
                   →
                 </span>
               </a>
