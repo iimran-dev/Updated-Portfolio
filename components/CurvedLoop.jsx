@@ -125,7 +125,7 @@ const CurvedLoop = ({
       onPointerCancel={endDrag}
     >
       <svg
-        className="select-none w-full overflow-visible block aspect-[100/12] text-[2rem] md:text-[2.5rem] font-semibold leading-none"
+        className="select-none w-full overflow-visible block aspect-[100/14] sm:aspect-[100/10] text-[2.8rem] sm:text-[3.2rem] md:text-[3.5rem] font-semibold leading-none min-h-[40px] sm:min-h-[55px]"
         viewBox="0 0 1440 120"
         style={{
           willChange: 'transform',

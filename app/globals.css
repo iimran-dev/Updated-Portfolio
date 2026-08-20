@@ -10,17 +10,17 @@
   --font-body: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Colors - Light theme */
-  --color-bg-primary: #fafafa;
-  --color-bg-secondary: #ffffff;
-  --color-bg-tertiary: #f5f5f5;
-  --color-bg-card: #ffffff;
-  --color-bg-input: #ffffff;
+  /* Colors - Base Theme */
+  --color-bg-primary: #0a0a0a;
+  --color-bg-secondary: #121212;
+  --color-bg-tertiary: #181818;
+  --color-bg-card: #121212;
+  --color-bg-input: #181818;
 
-  --color-text-primary: #0a0a0a;
-  --color-text-secondary: #404040;
-  --color-text-muted: #a3a3a3;
-  --color-text-inverse: #fafafa;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a1a1aa;
+  --color-text-muted: #71717a;
+  --color-text-inverse: #0a0a0a;
 
   --color-border-primary: #0a0a0a;
   --color-border-secondary: #e5e5e5;
@@ -92,15 +92,7 @@
   --selection-text: #0d0d0d;
 }
 
-/* Base styles with smooth theme transitions */
-* {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-}
-
-*::before,
-*::after {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-}
+/* Base styles */
 
 html {
   scroll-behavior: smooth;

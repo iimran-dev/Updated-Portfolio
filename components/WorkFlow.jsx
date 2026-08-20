@@ -75,7 +75,7 @@ export function WorkFlow() {
   }, { scope: sectionRef });
 
   return (
-    <section id="skills" ref={sectionRef} className="w-full bg-[#0a0a0a] text-white py-16 sm:py-28 px-4 sm:px-8 overflow-hidden">
+    <section id="skills" ref={sectionRef} className="w-full bg-[#0a0a0a] text-white pt-10 sm:pt-16 pb-0 px-4 sm:px-8 overflow-hidden">
 
       {/* Background Ambient Blur */}
       <div className="absolute top-1/3 right-5 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-purple-500/5 rounded-full blur-[130px] pointer-events-none" />
@@ -143,7 +143,7 @@ export function WorkFlow() {
             curveAmount={0}
             direction="right"
             interactive
-            className="fill-current text-zinc-500 font-display font-medium text-xs sm:text-sm tracking-widest"
+            className="fill-current text-zinc-400 font-display font-medium text-sm sm:text-lg md:text-xl tracking-widest"
           />
         </div>
 
