@@ -1,0 +1,21 @@
+import { Nav } from '../components/Nav';
+import { Hero } from '../components/Hero';
+import { About } from '../components/About';
+import { WorkFlow } from '../components/WorkFlow';
+import { Contact } from '../components/Contact';
+import { Footer } from '../components/Footer';
+
+export default function Home() {
+  return (
+    <div className="bg-[#0a0a0a] text-white min-h-screen font-body">
+      <Nav />
+      <main>
+        <Hero />
+        <About />
+        <WorkFlow />
+        <Contact />
+      </main>
+      <Footer />
+    </div>
+  );
+}

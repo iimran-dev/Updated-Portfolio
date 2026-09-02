@@ -1,0 +1,16 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .mono { font-family: 'Space Grotesk', 'DejaVu Sans', Arial, sans-serif; font-weight: 700; }
+  </style>
+
+  <!-- lime accent, peeking from the corner like the hero monogram card -->
+  <circle cx="53" cy="10" r="10" fill="#a3e635" stroke="#0a0a0a" stroke-width="1.6"/>
+
+  <!-- black border shape -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="#0a0a0a"/>
+  <!-- blue fill, inset -->
+  <rect x="5.3" y="5.3" width="53.4" height="53.4" rx="11.5" fill="#3b82f6"/>
+
+  <!-- monogram -->
+  <text x="32" y="43" text-anchor="middle" class="mono" font-size="27" fill="#ffffff">IM</text>
+</svg>
