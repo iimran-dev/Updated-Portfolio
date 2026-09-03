@@ -1,1 +1,11 @@
-{"version":4,"routes":{"/projects/constructer-ai":{},"/projects/reach-users":{},"/projects/outsystems-ui-kit":{}},"dynamicRoutes":{"/projects/[id]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/projects/[id]","routeRegex":"^\\/projects\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"51401b5720732fc5b4f3f31efe58f566","previewModeSigningKey":"57945c319f181a7ac86d30651ce7e3c157f737c379dfc55091aeea94533d7724","previewModeEncryptionKey":"e3a9e86195f3e4d423ab06a7bbae92f6d6d7f953c8d9d2501c1fa9c3e29831fa"}}
+{
+  "version": 4,
+  "routes": {},
+  "dynamicRoutes": {},
+  "notFoundRoutes": [],
+  "preview": {
+    "previewModeId": "1444c309b124f8814b1841f01cbb7ee3",
+    "previewModeSigningKey": "49e83d8e3b702b7b135aae320a6e57d1d1207bd9b5f4b3e324bd966aaa81fe43",
+    "previewModeEncryptionKey": "98e1cfa177342a62c3eb09fa5b404ce1d0318f39b49d3fc7185bc9f29ca504c1"
+  }
+}
