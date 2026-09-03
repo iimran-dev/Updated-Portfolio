@@ -39,21 +39,15 @@ export function WorkFlow() {
     const cards = cardsRef.current.filter(Boolean);
     const totalCards = cards.length;
 
-    // Set initial states: Card 01 visible, Cards 02/03/04 completely hidden below
+    // Set initial states: Card 01 visible at yPercent 0, Cards 02/03/04 positioned below at yPercent 120
+    // ALL CARDS MAINTAIN 100% SOLID OPACITY (opacity: 1) AT ALL TIMES
     cards.forEach((card, index) => {
-      if (index > 0) {
-        gsap.set(card, {
-          yPercent: 120,
-          autoAlpha: 0,
-          scale: 0.98,
-        });
-      } else {
-        gsap.set(card, {
-          yPercent: 0,
-          autoAlpha: 1,
-          scale: 1,
-        });
-      }
+      gsap.set(card, {
+        yPercent: index === 0 ? 0 : 120,
+        opacity: 1,
+        autoAlpha: 1,
+        scale: 1,
+      });
     });
 
     // Create a pinned timeline where the cards container is fixed while scrolling
@@ -73,26 +67,26 @@ export function WorkFlow() {
 
       const prevCard = cards[index - 1];
 
-      // Step 1: Scale down and dim the previous card underneath
+      // Step 1: Slightly scale down and shift the previous card underneath while preserving solid opacity
       tl.to(
         prevCard,
         {
-          scale: 0.93,
-          opacity: 0.35,
-          y: -25,
+          scale: 0.94,
+          y: -20,
+          opacity: 1,
           duration: 1,
           ease: "power2.inOut",
         },
         `step-${index}`
       );
 
-      // Step 2: Animate current card sliding cleanly from bottom to stack on top
+      // Step 2: Slide current card up with 100% SOLID OPACITY throughout the entire transition
       tl.to(
         card,
         {
           yPercent: 0,
-          autoAlpha: 1,
           scale: 1,
+          opacity: 1,
           duration: 1,
           ease: "power2.out",
         },
@@ -123,7 +117,7 @@ export function WorkFlow() {
         </div>
 
         {/* GSAP Pinned Card Stacking Area */}
-        <div className="w-full pt-4 pb-12">
+        <div className="w-full pt-4 pb-12 overflow-hidden">
           <div
             ref={cardsContainerRef}
             className="relative w-full h-[450px] sm:h-[420px] md:h-[400px] lg:h-[380px]"
@@ -137,8 +131,11 @@ export function WorkFlow() {
                   zIndex: (index + 1) * 10,
                 }}
               >
-                {/* Modern Card Frame */}
-                <div className="w-full h-full bg-[#121212] border border-white/10 rounded-2xl sm:rounded-[2.4rem] lg:rounded-[2.8rem] p-6 sm:p-10 lg:p-12 shadow-[0_30px_70px_rgba(0,0,0,0.95)] flex flex-col justify-between items-start">
+                {/* Modern Card Frame with 100% Solid Opaque Background */}
+                <div
+                  className="w-full h-full border border-white/10 rounded-2xl sm:rounded-[2.4rem] lg:rounded-[2.8rem] p-6 sm:p-10 lg:p-12 shadow-[0_30px_70px_rgba(0,0,0,0.95)] flex flex-col justify-between items-start"
+                  style={{ backgroundColor: '#121212', opacity: 1 }}
+                >
 
                   {/* Card Top Index Line */}
                   <div className="flex items-center justify-between w-full">

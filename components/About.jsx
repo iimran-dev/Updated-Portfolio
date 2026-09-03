@@ -60,7 +60,7 @@ export function About() {
                   {/* Auto-playing Preview Video */}
                   <video
                     src={project.videoUrl}
-                    poster={project.poster}
+                    poster={project.poster || undefined}
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-[1.03]"
                     autoPlay
                     loop
