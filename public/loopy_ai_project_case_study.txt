@@ -1,0 +1,78 @@
+LOOPY AI — PROJECT CASE STUDY CONTENT
+
+Use the following content for the project case-study section. Keep the
+same information hierarchy and card structure as the provided reference
+design.
+
+1. PROJECT OVERVIEW & STRATEGY
+
+Loopy AI is an AI-powered workspace built for developers, creators, and
+professionals to brainstorm, code, analyze information, and build
+faster.
+
+The product strategy focuses on reducing the friction between ideas and
+execution through a fast, secure, conversational AI experience. It
+combines real-time Gemini AI capabilities with contextual conversations
+to create a focused and productive workspace.
+
+2. KEY DELIVERABLES & IMPACT
+
+-   Real-time AI conversational workspace
+-   Multi-turn contextual memory for coherent conversations
+-   AI-assisted coding and technical problem solving
+-   Data analysis, brainstorming, and research workflows
+-   Secure server-side AI architecture
+-   User authentication and personalized workspace sessions
+-   Fast, responsive interface optimized for productivity
+
+3. PROJECT CASE STUDY
+
+Loopy AI was designed as a focused AI productivity environment rather
+than a conventional chatbot.
+
+The experience combines a minimal interface, contextual conversations,
+rapid AI responses, and a secure application architecture. The project
+demonstrates how generative AI can be integrated into a practical
+workspace, turning coding, analysis, research, brainstorming, and
+everyday problem solving into natural conversational workflows.
+
+CTA: EXPLORE LIVE PRODUCT ↗
+
+4. TECHNOLOGIES & FRAMEWORKS
+
+-   Next.js
+-   React
+-   TypeScript
+-   Tailwind CSS
+-   Google Gemini AI
+-   Next.js App Router
+-   Server-side API endpoints
+-   Authentication
+-   Vercel
+
+5. UI CONTENT DIRECTION
+
+Match the uploaded reference image’s information architecture:
+
+TOP PROJECT META: - CLIENT: Loopy AI - TIMELINE: 2026 - ROLE: Product
+Strategist & Lead Designer - STATUS: SHIPPED & LIVE
+
+MAIN LEFT COLUMN: Card 1: PROJECT OVERVIEW & STRATEGY Use the overview
+paragraph above.
+
+Card 2: KEY DELIVERABLES & IMPACT Use the deliverables list above with
+check icons.
+
+MAIN RIGHT COLUMN: Card 1: TECHNOLOGIES & FRAMEWORKS Display the
+technologies as compact pill/chip elements.
+
+Card 2: PROJECT CASE STUDY Use the case-study description above and a
+prominent CTA button: EXPLORE LIVE PRODUCT ↗
+
+DESIGN REQUIREMENT
+
+Do not add unnecessary sections or excessive text. Preserve the clean,
+premium, dark portfolio-card presentation of the reference image. Keep
+headings prominent, body copy concise, and technology items as compact
+pills. Maintain strong spacing, rounded cards, subtle borders, and a
+minimal professional visual hierarchy.
