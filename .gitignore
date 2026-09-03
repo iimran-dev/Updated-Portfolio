@@ -1,8 +1,9 @@
+# Next.js build output
+.next/
+out/
+
 # Dependencies
 node_modules/
-
-# Build output
-dist/
 
 # Environment files
 .env
