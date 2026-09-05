@@ -39,14 +39,14 @@ export function Nav() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full pt-3 sm:pt-4 px-3 sm:px-8 pointer-events-none">
+    <header className="sticky top-0 z-50 w-full pt-3 sm:pt-4 px-6 sm:px-12 md:px-16 lg:px-24 xl:px-32 pointer-events-none">
       
       {/* Butter-Smooth GPU Hardware-Accelerated Floating Capsule Navbar */}
       <div
         className={`pointer-events-auto mx-auto flex items-center justify-between transform-gpu transition-all duration-500 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] ${
           scrolled
-            ? "max-w-4xl sm:max-w-5xl rounded-full py-2.5 px-6 sm:px-8 bg-[#121212]/90 backdrop-blur-2xl border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.95)]"
-            : "w-full max-w-7xl rounded-2xl py-4 sm:py-5 px-6 sm:px-10 bg-[#0a0a0a]/80 backdrop-blur-md border border-white/10"
+            ? "max-w-3xl sm:max-w-4xl rounded-full py-2 px-5 sm:px-7 bg-[#121212]/90 backdrop-blur-2xl border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.95)]"
+            : "w-full max-w-6xl rounded-2xl py-3.5 sm:py-4 px-5 sm:px-8 bg-[#0a0a0a]/80 backdrop-blur-md border border-white/10"
         }`}
       >
         {/* Left Side: Brand Logo */}
@@ -57,14 +57,14 @@ export function Nav() {
               e.preventDefault();
               scrollTo("#top");
             }}
-            className="font-display font-bold text-xl sm:text-2xl text-white tracking-tight hover:text-[#a78bfa] transition-colors cursor-pointer"
+            className="font-display font-bold text-lg sm:text-xl text-white tracking-tight hover:text-[#a78bfa] transition-colors cursor-pointer"
           >
             Imran<span className="text-[#a78bfa]">.</span>
           </button>
         </div>
 
         {/* Center: Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-8 font-jakarta text-sm sm:text-base font-medium">
+        <nav className="hidden md:flex items-center gap-7 font-jakarta text-xs sm:text-sm font-medium">
           {NAV_LINKS.map((l) => (
             <button
               key={l.href}
@@ -89,10 +89,10 @@ export function Nav() {
               e.preventDefault();
               scrollTo("#contact");
             }}
-            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-black font-jakarta font-bold text-xs sm:text-sm uppercase tracking-wider hover:bg-[#a78bfa] transition-colors duration-300 shadow-md cursor-pointer group"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black font-jakarta font-bold text-xs uppercase tracking-wider hover:bg-[#a78bfa] transition-colors duration-300 shadow-md cursor-pointer group"
           >
             <span>Let's talk</span>
-            <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+            <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
           </button>
         </div>
 

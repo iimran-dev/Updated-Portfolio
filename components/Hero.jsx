@@ -75,19 +75,19 @@ export function Hero() {
   };
 
   return (
-    <section id="top" ref={heroRef} className="w-full bg-[#0a0a0a] text-white pt-10 sm:pt-16 pb-16 sm:pb-24 px-4 sm:px-8 overflow-hidden">
+    <section id="top" ref={heroRef} className="w-full bg-[#0a0a0a] text-white pt-10 sm:pt-16 pb-16 sm:pb-24 px-6 sm:px-12 md:px-16 lg:px-24 xl:px-32 overflow-hidden">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="max-w-7xl mx-auto flex flex-col gap-10 sm:gap-14"
+        className="max-w-6xl mx-auto flex flex-col gap-8 sm:gap-11"
       >
         {/* Full-Width Viewport Headline Header */}
-        <div className="flex flex-col items-start gap-6 sm:gap-8 w-full">
+        <div className="flex flex-col items-start gap-5 sm:gap-6 w-full">
           {/* Eyebrow badge line */}
           <motion.div
             variants={fadeUpVariants}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#a78bfa]/10 border border-[#a78bfa]/30 font-jakarta text-xs sm:text-sm font-medium tracking-wider uppercase backdrop-blur-md"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#a78bfa]/10 border border-[#a78bfa]/30 font-jakarta text-xs font-medium tracking-wider uppercase backdrop-blur-md"
           >
             <span className="w-2 h-2 rounded-full bg-[#a78bfa] animate-pulse" />
             <span className="text-[#a78bfa]">UI/UX</span>
@@ -97,23 +97,23 @@ export function Hero() {
 
           {/* Main Headline - Viewport Spanning & Typography Effects */}
           <div ref={headlineRef} className="select-none w-full">
-            <h1 className="leading-[1.05] tracking-tight text-left">
+            <h1 className="leading-[1.08] tracking-tight text-left">
               {/* Line 1: Grey Description Typography */}
-              <span className="typo-line block font-jakarta text-zinc-400 font-normal text-2xl sm:text-4xl md:text-5xl lg:text-[3.6rem] xl:text-[4.2rem] 2xl:text-[4.8rem] mb-2 sm:mb-3 transition-colors duration-300 hover:text-zinc-300">
+              <span className="typo-line block font-jakarta text-zinc-400 font-normal text-xl sm:text-3xl md:text-4xl lg:text-[2.8rem] xl:text-[3.2rem] mb-2 sm:mb-3 transition-colors duration-300 hover:text-zinc-300">
                 Ideas deserve better than ordinary websites.
               </span>
               {/* Line 2: Bold White Title Typography with Lavender Highlight */}
-              <span className="typo-line block text-white font-bold text-3xl sm:text-5xl md:text-6xl lg:text-[4.6rem] xl:text-[5.4rem] 2xl:text-[6.2rem] mb-3 sm:mb-4">
+              <span className="typo-line block text-white font-bold text-2xl sm:text-4xl md:text-5xl lg:text-[3.8rem] xl:text-[4.4rem] mb-3 sm:mb-4">
                 I turn complex problems into{" "}
                 <motion.span
                   whileHover={{ scale: 1.05, y: -2 }}
                   transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                  className="relative inline-flex items-center px-3.5 sm:px-5 py-0.5 sm:py-1 rounded-2xl bg-[#a78bfa]/15 border border-[#a78bfa]/40 backdrop-blur-md shadow-[0_0_25px_rgba(167,139,250,0.3)] font-jakarta font-medium text-[#a78bfa] cursor-pointer group transition-all duration-300 hover:border-[#a78bfa] hover:shadow-[0_0_35px_rgba(167,139,250,0.5)] mx-1"
+                  className="relative inline-flex items-center px-3 sm:px-4 py-0.5 rounded-2xl bg-[#a78bfa]/15 border border-[#a78bfa]/40 backdrop-blur-md shadow-[0_0_25px_rgba(167,139,250,0.3)] font-jakarta font-medium text-[#a78bfa] cursor-pointer group transition-all duration-300 hover:border-[#a78bfa] hover:shadow-[0_0_35px_rgba(167,139,250,0.5)] mx-1"
                 >
                   <span className="text-[#a78bfa] font-medium">
                     intuitive
                   </span>
-                  <span className="absolute -bottom-1 left-2 right-2 h-[3px] bg-[#a78bfa] rounded-full opacity-80 group-hover:opacity-100 transition-opacity" />
+                  <span className="absolute -bottom-1 left-2 right-2 h-[2.5px] bg-[#a78bfa] rounded-full opacity-80 group-hover:opacity-100 transition-opacity" />
                 </motion.span>{" "}
                 experiences.
               </span>
@@ -121,10 +121,10 @@ export function Hero() {
           </div>
 
           {/* Subtitle Description & Get in Touch Button Row */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 sm:gap-8 w-full pt-2 mb-6 sm:mb-8">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-5 sm:gap-6 w-full pt-1 mb-4 sm:mb-6">
             <motion.p
               variants={fadeUpVariants}
-              className="font-jakarta text-zinc-400 font-normal text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed text-left max-w-xl"
+              className="font-jakarta text-zinc-400 font-normal text-xs sm:text-sm md:text-base leading-relaxed text-left max-w-lg"
             >
               Through thoughtful design and modern development. Designed with purpose. Built to perform.
             </motion.p>
@@ -134,10 +134,10 @@ export function Hero() {
               <a
                 href="#contact"
                 onClick={scrollToContact}
-                className="group relative inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-[#a78bfa] text-black font-jakarta font-bold text-xs sm:text-sm uppercase tracking-wider hover:bg-[#b89eff] transition-all duration-300 shadow-[0_0_25px_rgba(167,139,250,0.35)] hover:shadow-[0_0_35px_rgba(167,139,250,0.55)] hover:scale-105 active:scale-95 cursor-pointer border-2 border-[#b89eff] overflow-hidden"
+                className="group relative inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#a78bfa] text-black font-jakarta font-bold text-xs uppercase tracking-wider hover:bg-[#b89eff] transition-all duration-300 shadow-[0_0_25px_rgba(167,139,250,0.35)] hover:shadow-[0_0_35px_rgba(167,139,250,0.55)] hover:scale-105 active:scale-95 cursor-pointer border-2 border-[#b89eff] overflow-hidden"
               >
                 <span className="relative z-10 font-bold">GET IN TOUCH</span>
-                <span className="relative z-10 w-6 h-6 rounded-full bg-black text-white flex items-center justify-center text-xs group-hover:translate-x-1 transition-transform">
+                <span className="relative z-10 w-5 h-5 rounded-full bg-black text-white flex items-center justify-center text-[11px] group-hover:translate-x-1 transition-transform">
                   →
                 </span>
               </a>
@@ -148,13 +148,13 @@ export function Hero() {
         {/* Main Grid Graphic Container with Modern Architectural Outer Shape & Spaced Out Stickers */}
         <motion.div
           variants={fadeUpVariants}
-          className="relative w-full h-[350px] sm:h-[430px] md:h-[500px]"
+          className="relative w-full h-[300px] sm:h-[370px] md:h-[430px]"
         >
           {/* Outer Ambient Backdrop Glow */}
-          <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 via-purple-500/10 to-amber-500/20 rounded-[2.8rem] sm:rounded-[3.8rem] blur-xl opacity-50 pointer-events-none" />
+          <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 via-purple-500/10 to-amber-500/20 rounded-[2.5rem] sm:rounded-[3.2rem] blur-xl opacity-50 pointer-events-none" />
 
           {/* White Graphic Box with Modern Architectural Dual-Curve Shape */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white via-[#f9f9fb] to-[#f1f1f5] bg-grid-pattern rounded-[2.2rem] sm:rounded-[3.2rem] lg:rounded-[3.8rem] rounded-tr-[70px] sm:rounded-tr-[120px] lg:rounded-tr-[150px] rounded-bl-[40px] sm:rounded-bl-[70px] lg:rounded-bl-[90px] border-3 border-black text-black overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.45)] transition-all duration-300">
+          <div className="absolute inset-0 bg-gradient-to-b from-white via-[#f9f9fb] to-[#f1f1f5] bg-grid-pattern rounded-[2rem] sm:rounded-[2.8rem] lg:rounded-[3.2rem] rounded-tr-[60px] sm:rounded-tr-[100px] lg:rounded-tr-[125px] rounded-bl-[35px] sm:rounded-bl-[60px] lg:rounded-bl-[75px] border-3 border-black text-black overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.45)] transition-all duration-300">
             {/* Soft Ambient Inner Highlight */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.8),transparent_70%)] pointer-events-none" />
 
@@ -163,7 +163,7 @@ export function Hero() {
               <img
                 src="/hero-thumb.png"
                 alt="Imran - UI-UX & Frontend Developer"
-                className="h-[270px] sm:h-[350px] md:h-[430px] object-contain object-bottom drop-shadow-[0_20px_25px_rgba(0,0,0,0.3)] select-none"
+                className="h-[230px] sm:h-[300px] md:h-[370px] object-contain object-bottom drop-shadow-[0_20px_25px_rgba(0,0,0,0.3)] select-none"
               />
             </div>
           </div>

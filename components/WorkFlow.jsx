@@ -96,31 +96,31 @@ export function WorkFlow() {
   }, { scope: sectionRef });
 
   return (
-    <section id="skills" ref={sectionRef} className="w-full bg-[#0a0a0a] text-white pt-10 sm:pt-16 pb-16 px-4 sm:px-8 overflow-hidden">
+    <section id="skills" ref={sectionRef} className="w-full bg-[#0a0a0a] text-white pt-10 sm:pt-16 pb-16 px-6 sm:px-12 md:px-16 lg:px-24 xl:px-32 overflow-hidden">
 
       {/* Background Ambient Blur */}
       <div className="absolute top-1/3 right-5 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-[#a78bfa]/5 rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto flex flex-col gap-10 sm:gap-14 relative z-10">
+      <div className="max-w-6xl mx-auto flex flex-col gap-8 sm:gap-12 relative z-10">
 
         {/* Section Header */}
-        <div className="flex flex-col items-start gap-2.5 sm:gap-3 border-b border-white/10 pb-6 sm:pb-8">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#a78bfa]/10 border border-[#a78bfa]/30 text-xs sm:text-sm font-medium tracking-wider uppercase backdrop-blur-md">
+        <div className="flex flex-col items-start gap-2.5 sm:gap-3 border-b border-white/10 pb-5 sm:pb-7">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#a78bfa]/10 border border-[#a78bfa]/30 text-xs font-medium tracking-wider uppercase backdrop-blur-md">
             <span className="w-2 h-2 rounded-full bg-[#a78bfa] animate-pulse" />
             <span className="text-[#a78bfa]">MY PROCESS</span>
             <span className="text-[#a78bfa]/50">·</span>
             <span className="text-[#a78bfa]">PRINCIPLES</span>
           </div>
-          <h2 className="font-bold text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-[1.08]">
+          <h2 className="font-bold text-2xl sm:text-4xl md:text-5xl text-white tracking-tight leading-[1.08]">
             How I work
           </h2>
         </div>
 
         {/* GSAP Pinned Card Stacking Area */}
-        <div className="w-full pt-4 pb-12 overflow-hidden">
+        <div className="w-full pt-2 pb-8 overflow-hidden">
           <div
             ref={cardsContainerRef}
-            className="relative w-full h-[450px] sm:h-[420px] md:h-[400px] lg:h-[380px]"
+            className="relative w-full h-[380px] sm:h-[350px] md:h-[320px]"
           >
             {PRINCIPLES.map((item, index) => (
               <div
@@ -133,26 +133,26 @@ export function WorkFlow() {
               >
                 {/* Modern Card Frame with 100% Solid Opaque Background */}
                 <div
-                  className="w-full h-full border border-white/10 rounded-2xl sm:rounded-[2.4rem] lg:rounded-[2.8rem] p-6 sm:p-10 lg:p-12 shadow-[0_30px_70px_rgba(0,0,0,0.95)] flex flex-col justify-between items-start"
+                  className="w-full h-full border border-white/10 rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 shadow-[0_30px_70px_rgba(0,0,0,0.95)] flex flex-col justify-between items-start"
                   style={{ backgroundColor: '#121212', opacity: 1 }}
                 >
 
                   {/* Card Top Index Line */}
                   <div className="flex items-center justify-between w-full">
-                    <span className="text-sm sm:text-base font-light text-[#a78bfa] tracking-wider select-none">
+                    <span className="text-xs sm:text-sm font-light text-[#a78bfa] tracking-wider select-none">
                       {item.number}
                     </span>
-                    <span className="text-xs sm:text-sm font-medium text-zinc-500 uppercase tracking-widest">
+                    <span className="text-xs font-medium text-zinc-500 uppercase tracking-widest">
                       {`0${index + 1} / 04`}
                     </span>
                   </div>
 
                   {/* Main Content Area */}
-                  <div className="flex flex-col gap-3 sm:gap-5 max-w-5xl my-auto">
-                    <h3 className="font-bold text-2xl sm:text-4xl md:text-5xl lg:text-[3.2rem] text-white tracking-tight leading-[1.08]">
+                  <div className="flex flex-col gap-2.5 sm:gap-4 max-w-4xl my-auto">
+                    <h3 className="font-bold text-xl sm:text-3xl md:text-[2.2rem] text-white tracking-tight leading-[1.08]">
                       {item.title}
                     </h3>
-                    <p className="font-light text-zinc-300 text-base sm:text-xl md:text-2xl lg:text-[1.45rem] leading-relaxed max-w-4xl">
+                    <p className="font-light text-zinc-300 text-sm sm:text-base md:text-lg leading-relaxed max-w-3xl">
                       {item.description}
                     </p>
                   </div>

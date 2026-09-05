@@ -14,7 +14,7 @@ export default async function ProjectDetailPage({ params }) {
   const project = projects.find((p) => p.id === projectId) || projects[0];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white py-8 sm:py-16 px-4 sm:px-8 lg:px-12 relative overflow-hidden font-sans">
+    <div className="min-h-screen bg-[#0a0a0a] text-white py-8 sm:py-16 px-6 sm:px-12 md:px-16 lg:px-24 xl:px-32 relative overflow-hidden font-sans">
       {/* Background Ambient Backdrop Glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[90vw] max-w-[900px] h-[350px] sm:h-[500px] rounded-full blur-[120px] sm:blur-[150px] opacity-15 pointer-events-none"
@@ -45,12 +45,12 @@ export default async function ProjectDetailPage({ params }) {
         </div>
 
         {/* Project Header Banner */}
-        <div className="flex flex-col gap-3 sm:gap-4 border-b border-white/10 pb-6 sm:pb-10">
-          <h1 className="font-bold text-3xl sm:text-5xl md:text-6xl text-white tracking-tight leading-[1.06] break-words">
+        <div className="flex flex-col gap-2.5 sm:gap-3 border-b border-white/10 pb-5 sm:pb-8">
+          <h1 className="font-bold text-2xl sm:text-4xl md:text-5xl text-white tracking-tight leading-[1.08] break-words">
             {project.title}
           </h1>
 
-          <p className="font-light text-zinc-300 text-base sm:text-2xl max-w-3xl leading-relaxed">
+          <p className="font-light text-zinc-300 text-sm sm:text-xl max-w-2xl leading-relaxed">
             {project.tagline} <span className="text-zinc-500 font-light">—</span>{" "}
             <span style={{ color: project.accentColor }} className="font-medium">
               {project.subtitle}
