@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Send, CheckCircle2, Loader2, Mail, ArrowUpRight } from "lucide-react";
-import { supabase } from "../lib/supabaseClient";
 
 function GithubIcon({ size = 20 }) {
   return (
@@ -26,20 +25,32 @@ function LinkedinIcon({ size = 20 }) {
 export function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const onChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
   const onSubmit = async (e) => {
     e.preventDefault();
     setStatus("loading");
+    setErrorMessage("");
     try {
-      const { error } = await supabase.from("messages").insert([form]);
-      if (error) throw error;
-      await new Promise((r) => setTimeout(r, 700));
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to send message.");
+      }
+
       setStatus("success");
       setForm({ name: "", email: "", message: "" });
     } catch (err) {
       console.error(err);
+      setErrorMessage(err.message || "Something went wrong. Please try again or email directly to info.imran.ma@gmail.com.");
       setStatus("error");
     }
   };
@@ -175,7 +186,7 @@ export function Contact() {
 
           {status === "error" && (
             <p className="font-jakarta text-xs text-rose-400 text-center">
-              Something went wrong. Please try again or email directly to info.imran.ma@gmail.com.
+              {errorMessage || "Something went wrong. Please try again or email directly to info.imran.ma@gmail.com."}
             </p>
           )}
         </form>

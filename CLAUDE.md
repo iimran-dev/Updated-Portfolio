@@ -48,7 +48,6 @@ npm run lint         # Run Next.js ESLint
 │   ├── CurvedLoop.jsx       # Curved text loop animation
 │   └── ui/                  # Reusable UI primitives (Button, Badge)
 ├── lib/
-│   ├── supabaseClient.js    # Supabase client setup
 │   └── utils.js             # cn() utility (clsx + tailwind-merge)
 └── public/                  # Static assets
 ```
