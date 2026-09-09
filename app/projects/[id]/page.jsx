@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects } from "@/lib/projects";
@@ -67,13 +68,13 @@ export default async function ProjectDetailPage({ params }) {
           </div>
 
           <div className="relative aspect-video w-full bg-[#FAFAF8]">
-            <video
-              src={project.videoUrl}
-              className="w-full h-full object-cover"
-              autoPlay
-              loop
-              muted
-              playsInline
+            <Image
+              src={project.coverImage}
+              alt={project.title}
+              fill
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              className="object-cover"
+              priority
             />
           </div>
         </div>

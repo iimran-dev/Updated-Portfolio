@@ -1,7 +1,7 @@
 'use client';
 
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { motion } from "motion/react";
 
 export function About() {
   return (
@@ -9,19 +9,31 @@ export function About() {
       <div className="max-w-[1280px] mx-auto px-6 sm:px-8">
         
         {/* Section Header */}
-        <div className="pb-8 border-b border-[#DDDDD8] mb-16 sm:mb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, margin: "-60px" }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="pb-8 border-b border-[#DDDDD8] mb-16 sm:mb-20"
+        >
           <span className="eyebrow block mb-2">Background &amp; Philosophy</span>
           <h2 className="editorial-h2 text-[#111111]">
             About Me
           </h2>
-        </div>
+        </motion.div>
 
         {/* Editorial Layout: Large Rectangular Image + Professional Narrative */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           {/* Left: Large Rectangular Editorial Portrait */}
-          <div className="lg:col-span-5">
-            <div className="relative w-full aspect-[4/5] rounded-md border border-[#DDDDD8] bg-[#FFFFFF] overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-60px" }}
+            transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5"
+          >
+            <div className="relative w-full aspect-[4/5] rounded-md border border-[#DDDDD8] bg-[#FFFFFF] overflow-hidden shadow-xs">
               <Image
                 src="/hero-thumb.png"
                 alt="Imran — Product Designer & Developer"
@@ -39,13 +51,19 @@ export function About() {
             <p className="text-xs font-mono text-[#858585] mt-3 tracking-wide">
               Obsessed with typography, zero-latency interactions, and design systems.
             </p>
-          </div>
+          </motion.div>
 
           {/* Right: Narrative Story, Current Focus & Disciplines */}
           <div className="lg:col-span-7 flex flex-col gap-10">
             
             {/* Short Introduction */}
-            <div className="space-y-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, margin: "-50px" }}
+              transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+              className="space-y-4"
+            >
               <h3 className="text-2xl sm:text-3xl font-bold text-[#111111] leading-tight tracking-tight">
                 Engineering interfaces that feel as good as they look.
               </h3>
@@ -53,10 +71,16 @@ export function About() {
                 I am an independent product designer and frontend engineer specializing in building high-performance web software. 
                 I bridge the gap between creative visual direction and production-grade engineering, ensuring what gets designed is exactly what ships to users.
               </p>
-            </div>
+            </motion.div>
 
             {/* Professional Story */}
-            <div className="pt-8 border-t border-[#DDDDD8] space-y-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, margin: "-50px" }}
+              transition={{ duration: 0.65, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="pt-8 border-t border-[#DDDDD8] space-y-4"
+            >
               <span className="eyebrow block text-[#111111]">
                 Professional Trajectory
               </span>
@@ -64,10 +88,16 @@ export function About() {
                 Over the past several years, I have architected and deployed modern web applications, AI productivity tools, and modular design systems. 
                 My focus is always on simplifying complex domain logic into effortless interfaces — removing cognitive load for end-users while building maintainable, scalable foundations for engineering teams.
               </p>
-            </div>
+            </motion.div>
 
             {/* Current Focus & Disciplines */}
-            <div className="pt-8 border-t border-[#DDDDD8] grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, margin: "-50px" }}
+              transition={{ duration: 0.65, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="pt-8 border-t border-[#DDDDD8] grid grid-cols-1 sm:grid-cols-2 gap-8"
+            >
               <div>
                 <span className="eyebrow block mb-2 text-[#111111]">
                   Current Focus
@@ -100,7 +130,7 @@ export function About() {
                   </li>
                 </ul>
               </div>
-            </div>
+            </motion.div>
 
           </div>
 

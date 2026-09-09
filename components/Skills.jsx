@@ -1,5 +1,7 @@
 'use client';
 
+import { motion } from "motion/react";
+
 const SKILL_GROUPS = [
   {
     category: "DEVELOPMENT",
@@ -51,18 +53,30 @@ export function Skills() {
       <div className="max-w-[1280px] mx-auto px-6 sm:px-8">
         
         {/* Section Header */}
-        <div className="pb-8 border-b border-[#DDDDD8] mb-16 sm:mb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, margin: "-60px" }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="pb-8 border-b border-[#DDDDD8] mb-16 sm:mb-20"
+        >
           <span className="eyebrow block mb-2">Technical Proficiency</span>
           <h2 className="editorial-h2 text-[#111111]">
             Skills &amp; Capabilities
           </h2>
-        </div>
+        </motion.div>
 
-        {/* 3 Text-Group Columns (Visually Restrained, No Progress Bars) */}
+        {/* 3 Text-Group Columns */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14">
-          {SKILL_GROUPS.map((group) => (
-            <div key={group.category} className="flex flex-col gap-5">
-              
+          {SKILL_GROUPS.map((group, idx) => (
+            <motion.div
+              key={group.category}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, margin: "-40px" }}
+              transition={{ duration: 0.65, delay: idx * 0.12, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col gap-5"
+            >
               <div className="pb-4 border-b border-[#DDDDD8]">
                 <h3 className="text-xs font-mono font-bold tracking-widest text-[#111111] uppercase">
                   {group.category}
@@ -82,8 +96,7 @@ export function Skills() {
                   </li>
                 ))}
               </ul>
-
-            </div>
+            </motion.div>
           ))}
         </div>
 

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from "react";
+import { motion } from "motion/react";
 import { ArrowRight, Check, Loader2, Mail } from "lucide-react";
 
 export function FinalCTA() {
@@ -39,13 +40,19 @@ export function FinalCTA() {
   };
 
   return (
-    <section id="contact" className="w-full bg-[#111111] text-[#F7F7F5] py-28 sm:py-36">
+    <section id="contact" className="w-full bg-[#111111] text-[#F7F7F5] py-28 sm:py-36 overflow-hidden">
       <div className="max-w-[1280px] mx-auto px-6 sm:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           {/* Left Column: Conversion Headline & Information */}
-          <div className="lg:col-span-6 flex flex-col justify-between h-full gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-60px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 flex flex-col justify-between h-full gap-8"
+          >
             <div className="space-y-6">
               <span className="text-xs font-mono tracking-widest uppercase text-[#888888] block">
                 Next Steps
@@ -88,10 +95,16 @@ export function FinalCTA() {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Clean Editorial Form */}
-          <div className="lg:col-span-6 bg-[#181818] p-8 sm:p-10 rounded-md border border-[#282828]">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-60px" }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 bg-[#181818] p-8 sm:p-10 rounded-md border border-[#282828]"
+          >
             <h3 className="text-lg font-bold text-[#FFFFFF] mb-6 tracking-tight">
               Start a Conversation
             </h3>
@@ -167,7 +180,7 @@ export function FinalCTA() {
                 </p>
               )}
             </form>
-          </div>
+          </motion.div>
 
         </div>
 

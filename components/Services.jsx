@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 
 const SERVICES = [
@@ -36,7 +37,13 @@ export function Services() {
       <div className="max-w-[1280px] mx-auto px-6 sm:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between pb-8 border-b border-[#DDDDD8] mb-12 sm:mb-16 gap-4">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, margin: "-60px" }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col sm:flex-row sm:items-end justify-between pb-8 border-b border-[#DDDDD8] mb-12 sm:mb-16 gap-4"
+        >
           <div>
             <span className="eyebrow block mb-2">Capabilities</span>
             <h2 className="editorial-h2 text-[#111111]">
@@ -46,14 +53,18 @@ export function Services() {
           <p className="text-sm sm:text-base text-[#555555] max-w-md font-normal leading-relaxed">
             Partnering with founders, product leaders, and engineering teams across flexible consulting and execution engagements.
           </p>
-        </div>
+        </motion.div>
 
         {/* Editorial Rows */}
         <div className="flex flex-col divide-y divide-[#DDDDD8]">
-          {SERVICES.map((service) => (
-            <div
+          {SERVICES.map((service, idx) => (
+            <motion.div
               key={service.number}
-              className="py-8 sm:py-12 grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center transition-colors duration-200 hover:bg-[#FFFFFF]/60 px-4 -mx-4 rounded-sm group cursor-default"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, margin: "-40px" }}
+              transition={{ duration: 0.55, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              className="py-8 sm:py-12 grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center transition-colors duration-200 hover:bg-[#FFFFFF]/80 px-4 -mx-4 rounded-sm group cursor-default"
             >
               <div className="md:col-span-1">
                 <span className="text-xs font-mono font-semibold text-[#858585] group-hover:text-[#111111] transition-colors">
@@ -62,7 +73,7 @@ export function Services() {
               </div>
 
               <div className="md:col-span-4">
-                <h3 className="text-xl sm:text-2xl font-bold text-[#111111] tracking-tight group-hover:translate-x-1 transition-transform">
+                <h3 className="text-xl sm:text-2xl font-bold text-[#111111] tracking-tight group-hover:translate-x-1 transition-transform duration-200">
                   {service.title}
                 </h3>
               </div>
@@ -76,10 +87,10 @@ export function Services() {
               <div className="hidden md:flex md:col-span-1 justify-end">
                 <ArrowUpRight 
                   size={18} 
-                  className="text-[#858585] group-hover:text-[#111111] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" 
+                  className="text-[#858585] group-hover:text-[#111111] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" 
                 />
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 

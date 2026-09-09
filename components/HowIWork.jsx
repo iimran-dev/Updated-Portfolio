@@ -1,5 +1,7 @@
 'use client';
 
+import { motion } from "motion/react";
+
 const STEPS = [
   {
     number: "01",
@@ -33,8 +35,14 @@ export function HowIWork() {
     <section id="methodology" className="w-full py-24 sm:py-32 border-t border-[#DDDDD8] bg-[#F7F7F5]">
       <div className="max-w-[1280px] mx-auto px-6 sm:px-8">
         
-        {/* Section Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 sm:mb-24 pb-8 border-b border-[#DDDDD8]">
+        {/* Section Header with Motion Reveal */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, margin: "-60px" }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 sm:mb-24 pb-8 border-b border-[#DDDDD8]"
+        >
           <div className="lg:col-span-5">
             <span className="eyebrow block mb-2">Methodology</span>
             <h2 className="editorial-h2 text-[#111111]">
@@ -47,13 +55,17 @@ export function HowIWork() {
               ship rapidly, and maintain uncompromised craft from day one.
             </p>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Numbered Steps List (Typography & Whitespace Driven) */}
+        {/* Numbered Steps List */}
         <div className="flex flex-col divide-y divide-[#DDDDD8]">
-          {STEPS.map((step) => (
-            <div
+          {STEPS.map((step, idx) => (
+            <motion.div
               key={step.number}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
               className="py-10 sm:py-14 grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-10 items-baseline group"
             >
               <div className="md:col-span-2">
@@ -63,7 +75,7 @@ export function HowIWork() {
               </div>
 
               <div className="md:col-span-4">
-                <h3 className="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight">
+                <h3 className="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight group-hover:translate-x-1 transition-transform duration-200">
                   {step.title}
                 </h3>
               </div>
@@ -73,7 +85,7 @@ export function HowIWork() {
                   {step.description}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
