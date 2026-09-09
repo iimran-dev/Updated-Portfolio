@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://imran-portfolio.vercel.app/sitemap.xml

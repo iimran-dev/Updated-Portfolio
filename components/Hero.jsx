@@ -1,288 +1,162 @@
 'use client';
 
-import { useRef } from "react";
-import { motion } from "motion/react";
+import Image from "next/image";
 import { useLenis } from "lenis/react";
-import { gsap, useGSAP } from "@/lib/gsap";
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.05,
-    },
-  },
-};
-
-const fadeUpVariants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
-};
-
-const popScaleVariants = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut",
-    },
-  },
-};
+import { ArrowRight, ArrowDown } from "lucide-react";
 
 export function Hero() {
   const lenis = useLenis();
-  const heroRef = useRef(null);
-  const headlineRef = useRef(null);
 
-  // Smooth Kinetic Typography Entrance Animation using GSAP
-  useGSAP(() => {
-    if (headlineRef.current) {
-      const lines = headlineRef.current.querySelectorAll(".typo-line");
-      gsap.fromTo(
-        lines,
-        { opacity: 0, y: 35, skewY: 1.5 },
-        {
-          opacity: 1,
-          y: 0,
-          skewY: 0,
-          duration: 1.1,
-          stagger: 0.18,
-          ease: "power3.out",
-          delay: 0.1,
-        }
-      );
-    }
-  }, { scope: heroRef });
-
-  const scrollToContact = (e) => {
+  const scrollToSection = (e, target) => {
     e.preventDefault();
-    lenis?.scrollTo('#contact', {
-      offset: -80,
-      duration: 2,
-      easing: (t) => 1 - Math.pow(1 - t, 5),
+    lenis?.scrollTo(target, {
+      offset: -40,
+      duration: 1.2,
+      easing: (t) => 1 - Math.pow(1 - t, 4),
     });
   };
 
   return (
-    <section id="top" ref={heroRef} className="w-full bg-[#0a0a0a] text-white pt-10 sm:pt-16 pb-16 sm:pb-24 px-6 sm:px-12 md:px-16 lg:px-24 xl:px-32 overflow-hidden">
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="max-w-6xl mx-auto flex flex-col gap-8 sm:gap-11"
-      >
-        {/* Full-Width Viewport Headline Header */}
-        <div className="flex flex-col items-start gap-5 sm:gap-6 w-full">
-          {/* Eyebrow badge line */}
-          <motion.div
-            variants={fadeUpVariants}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#a78bfa]/10 border border-[#a78bfa]/30 font-jakarta text-xs font-medium tracking-wider uppercase backdrop-blur-md"
-          >
-            <span className="w-2 h-2 rounded-full bg-[#a78bfa] animate-pulse" />
-            <span className="text-[#a78bfa]">UI/UX</span>
-            <span className="text-[#a78bfa]/50">·</span>
-            <span className="text-[#a78bfa]">FRONTEND DEVELOPER</span>
-          </motion.div>
+    <section id="top" className="w-full pt-10 sm:pt-16 pb-20 sm:pb-28">
+      <div className="max-w-[1280px] mx-auto px-6 sm:px-8">
+        
+        {/* Eyebrow Descriptor */}
+        <div className="mb-6 sm:mb-8">
+          <p className="eyebrow flex items-center gap-2 text-[#858585]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#111111]" />
+            <span>Product Partner</span>
+            <span className="text-[#BFBFB8]">·</span>
+            <span>Design Systems &amp; Frontend Engineering</span>
+          </p>
+        </div>
 
-          {/* Main Headline - Viewport Spanning & Typography Effects */}
-          <div ref={headlineRef} className="select-none w-full">
-            <h1 className="leading-[1.08] tracking-tight text-left">
-              {/* Line 1: Grey Description Typography */}
-              <span className="typo-line block font-jakarta text-zinc-400 font-normal text-xl sm:text-3xl md:text-4xl lg:text-[2.8rem] xl:text-[3.2rem] mb-2 sm:mb-3 transition-colors duration-300 hover:text-zinc-300">
-                Ideas deserve better than ordinary websites.
-              </span>
-              {/* Line 2: Bold White Title Typography with Lavender Highlight */}
-              <span className="typo-line block text-white font-bold text-2xl sm:text-4xl md:text-5xl lg:text-[3.8rem] xl:text-[4.4rem] mb-3 sm:mb-4">
-                I turn complex problems into{" "}
-                <motion.span
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                  className="relative inline-flex items-center px-3 sm:px-4 py-0.5 rounded-2xl bg-[#a78bfa]/15 border border-[#a78bfa]/40 backdrop-blur-md shadow-[0_0_25px_rgba(167,139,250,0.3)] font-jakarta font-medium text-[#a78bfa] cursor-pointer group transition-all duration-300 hover:border-[#a78bfa] hover:shadow-[0_0_35px_rgba(167,139,250,0.5)] mx-1"
-                >
-                  <span className="text-[#a78bfa] font-medium">
-                    intuitive
-                  </span>
-                  <span className="absolute -bottom-1 left-2 right-2 h-[2.5px] bg-[#a78bfa] rounded-full opacity-80 group-hover:opacity-100 transition-opacity" />
-                </motion.span>{" "}
-                experiences.
-              </span>
-            </h1>
+        {/* Large Editorial Headline */}
+        <div className="max-w-5xl mb-8 sm:mb-12">
+          <h1 className="display-headline text-[#111111] font-bold">
+            I shape digital products through strategic clarity and engineering precision.
+          </h1>
+        </div>
+
+        {/* Supporting Statement & Actions (Asymmetric Split) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start pb-12 sm:pb-16 border-b border-[#DDDDD8]">
+          <div className="lg:col-span-7">
+            <p className="text-lg sm:text-xl md:text-2xl font-normal text-[#555555] leading-relaxed max-w-2xl">
+              From early product ambiguity to production-ready software — unifying user research, 
+              editorial UX, and performant Next.js code into seamless digital experiences.
+            </p>
           </div>
 
-          {/* Subtitle Description & Get in Touch Button Row */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-5 sm:gap-6 w-full pt-1 mb-4 sm:mb-6">
-            <motion.p
-              variants={fadeUpVariants}
-              className="font-jakarta text-zinc-400 font-normal text-xs sm:text-sm md:text-base leading-relaxed text-left max-w-lg"
+          <div className="lg:col-span-5 flex flex-wrap sm:flex-nowrap items-center gap-4 lg:justify-end">
+            <a
+              href="#work"
+              onClick={(e) => scrollToSection(e, "#work")}
+              className="btn-primary w-full sm:w-auto"
             >
-              Through thoughtful design and modern development. Designed with purpose. Built to perform.
-            </motion.p>
+              <span>View Selected Work</span>
+              <ArrowRight size={15} />
+            </a>
 
-            {/* Get in Touch Button */}
-            <motion.div variants={popScaleVariants} className="shrink-0 self-start md:self-auto">
-              <a
-                href="#contact"
-                onClick={scrollToContact}
-                className="group relative inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#a78bfa] text-black font-jakarta font-bold text-xs uppercase tracking-wider hover:bg-[#b89eff] transition-all duration-300 shadow-[0_0_25px_rgba(167,139,250,0.35)] hover:shadow-[0_0_35px_rgba(167,139,250,0.55)] hover:scale-105 active:scale-95 cursor-pointer border-2 border-[#b89eff] overflow-hidden"
-              >
-                <span className="relative z-10 font-bold">GET IN TOUCH</span>
-                <span className="relative z-10 w-5 h-5 rounded-full bg-black text-white flex items-center justify-center text-[11px] group-hover:translate-x-1 transition-transform">
-                  →
-                </span>
-              </a>
-            </motion.div>
+            <a
+              href="#contact"
+              onClick={(e) => scrollToSection(e, "#contact")}
+              className="btn-secondary w-full sm:w-auto text-center"
+            >
+              <span>Start a Conversation</span>
+            </a>
           </div>
         </div>
 
-        {/* Main Grid Graphic Container with Modern Architectural Outer Shape & Spaced Out Stickers */}
-        <motion.div
-          variants={fadeUpVariants}
-          className="relative w-full h-[300px] sm:h-[370px] md:h-[430px]"
-        >
-          {/* Outer Ambient Backdrop Glow */}
-          <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/20 via-purple-500/10 to-amber-500/20 rounded-[2.5rem] sm:rounded-[3.2rem] blur-xl opacity-50 pointer-events-none" />
-
-          {/* White Graphic Box with Modern Architectural Dual-Curve Shape */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white via-[#f9f9fb] to-[#f1f1f5] bg-grid-pattern rounded-[2rem] sm:rounded-[2.8rem] lg:rounded-[3.2rem] rounded-tr-[60px] sm:rounded-tr-[100px] lg:rounded-tr-[125px] rounded-bl-[35px] sm:rounded-bl-[60px] lg:rounded-bl-[75px] border-3 border-black text-black overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.45)] transition-all duration-300">
-            {/* Soft Ambient Inner Highlight */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.8),transparent_70%)] pointer-events-none" />
-
-            {/* Main Subject Photo (hero-thumb.png) - Dominant centered hero subject */}
-            <div className="absolute bottom-0 left-1/2 lg:left-[35%] -translate-x-1/2 h-full z-20 flex items-end pointer-events-none">
-              <img
-                src="/hero-thumb.png"
-                alt="Imran - UI-UX & Frontend Developer"
-                className="h-[230px] sm:h-[300px] md:h-[370px] object-contain object-bottom drop-shadow-[0_20px_25px_rgba(0,0,0,0.3)] select-none"
-              />
-            </div>
-          </div>
-
-
-          {/* Sticker 1: DESIGN STRATEGY (Top-Left Circular Cyan Badge) */}
-          <motion.div
-            className="absolute top-3 sm:top-6 left-2 sm:left-6 md:left-8 z-30 bg-[#4cd2ca] border-2 sm:border-3 border-black text-black rounded-full w-16 h-16 sm:w-28 sm:h-28 md:w-32 md:h-32 p-1 sm:p-2.5 flex flex-col items-center justify-center text-center neo-shadow-sm cursor-pointer select-none -rotate-6"
-            whileHover={{ scale: 1.08, rotate: -3 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-          >
-            <div className="flex gap-0.5 mb-0.5 text-black">
-              <div className="w-2 h-2 sm:w-3.5 sm:h-3.5 rounded-full border border-black sm:border-2 bg-black" />
-              <div className="w-2 h-2 sm:w-3.5 sm:h-3.5 rounded-full border border-black sm:border-2 bg-transparent -ml-1 sm:-ml-1.5" />
-            </div>
-            <span className="font-display font-black text-[7px] sm:text-[10px] md:text-xs uppercase tracking-tight leading-none mb-0.5">
-              DESIGN<br />STRATEGY
-            </span>
-            <span className="font-mono text-[5.5px] sm:text-[8px] leading-tight uppercase opacity-90 hidden sm:block">
-              ALIGNING<br />YOUR → BUSINESS<br />&amp; USER NEEDS
-            </span>
-          </motion.div>
-
-          {/* Sticker 2: E-COMM. WWW. EXPERIENCES (Mid-Left Yellow Pill Badge) */}
-          <motion.div
-            className="absolute top-[40%] sm:top-[40%] left-2 sm:left-6 md:left-8 z-30 bg-[#ffd600] border-2 sm:border-3 border-black text-black rounded-lg sm:rounded-xl px-2 sm:px-3.5 py-1 sm:py-2 neo-shadow-sm cursor-pointer select-none -rotate-6"
-            whileHover={{ scale: 1.08, rotate: -2 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-          >
-            <div className="flex items-center gap-0.5 sm:gap-1 font-black text-[7px] sm:text-xs uppercase">
-              <span>E-COMM.</span>
-              <span className="bg-black text-white px-1 sm:px-1.5 py-0.5 rounded text-[6px] sm:text-[9px] font-medium">WWW.DEV</span>
-            </div>
-            <div className="font-black text-[7px] sm:text-xs uppercase tracking-tight flex items-center gap-0.5">
-              <span>EXPERIENCES</span>
-            </div>
-          </motion.div>
-
-          {/* Sticker 3: MOTION & INTERACTION DESIGN (Bottom-Left Orange Badge) */}
-          <motion.div
-            className="absolute bottom-3 sm:bottom-6 left-2 sm:left-6 md:left-10 z-30 bg-[#ff6b00] border-2 sm:border-3 border-black text-white rounded-lg sm:rounded-xl p-1.5 sm:p-3.5 max-w-[100px] sm:max-w-[170px] md:max-w-[190px] neo-shadow-sm cursor-pointer select-none -rotate-3"
-            whileHover={{ scale: 1.08, rotate: 0 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-          >
-            <div className="font-black text-[8px] sm:text-xs md:text-sm uppercase leading-tight tracking-tight">
-              MOTION &amp;<br />INTERACTION<br />DESIGN
-            </div>
-          </motion.div>
-
-          {/* Sticker 4: USER EXPERIENCE DESIGN (Top-Center Pink Sticker) */}
-          <motion.div
-            className="absolute top-3 sm:top-6 left-[50%] sm:left-[35%] md:left-[50%] -translate-x-1/2 sm:translate-x-0 z-30 bg-[#ff3b77] border-2 sm:border-3 border-black text-white rounded-lg sm:rounded-xl px-2 sm:px-4 py-1 sm:py-2.5 neo-shadow-sm cursor-pointer select-none -rotate-6"
-            whileHover={{ scale: 1.08, rotate: 3 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-          >
-            <div className="font-black text-[7.5px] sm:text-xs md:text-sm uppercase leading-tight tracking-tight text-center">
-              USER<br />EXPERIENCE<br />DESIGN
-            </div>
-          </motion.div>
-
-          {/* Sticker 5: BRANDING & VISUAL COMMUNICATION (Top-Right Purple Sticker) */}
-          <motion.div
-            className="absolute top-3 sm:top-6 right-8 sm:right-16 md:right-24 z-30 bg-[#8b5cf6] border-2 sm:border-3 border-black text-white rounded-lg sm:rounded-xl px-2 sm:px-4 py-1 sm:py-2.5 neo-shadow-sm cursor-pointer select-none rotate-3"
-            whileHover={{ scale: 1.08, rotate: -2 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-          >
-            <div className="font-black text-[7.5px] sm:text-xs md:text-sm uppercase leading-tight tracking-tight">
-              BRANDING &amp;<br />
-              VISUAL<br />
-              SYSTEMS
-            </div>
-          </motion.div>
-
-          {/* Sticker 6: BRANDING & IDENTITY (Mid-Right Teal Angled Badge) */}
-          <motion.div
-            className="absolute top-[34%] sm:top-[32%] right-[-10px] sm:right-[-20px] md:right-[-28px] z-30 bg-[#38d9a9] border-2 sm:border-3 border-black text-black rounded-lg sm:rounded-xl px-2.5 sm:px-5 py-1.5 sm:py-3 neo-shadow-sm cursor-pointer select-none rotate-12"
-            whileHover={{ scale: 1.08, rotate: 6 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-          >
-            <div className="font-black text-[7.5px] sm:text-xs md:text-sm uppercase leading-tight flex flex-col">
-              <span>BRANDING &amp;</span>
-              <span>IDENTITY</span>
-              <span className="font-medium text-[6px] sm:text-[9px] text-right mt-0.5">2026 EDITION</span>
-            </div>
-          </motion.div>
-
-          {/* Sticker 7: DIGITAL MARKETING (Lower-Mid Right Orange Badge) */}
-          <motion.div
-            className="absolute top-[64%] sm:top-[60%] right-[14%] sm:right-[20%] md:right-[22%] z-30 bg-[#ff9f43] border-2 sm:border-3 border-black text-black rounded-lg sm:rounded-xl px-1.5 sm:px-3.5 py-0.5 sm:py-2 neo-shadow-sm cursor-pointer select-none -rotate-6 flex flex-col"
-            whileHover={{ scale: 1.08, rotate: 2 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-          >
-            <div className="flex items-center gap-0.5 sm:gap-1 font-black text-[6.5px] sm:text-xs uppercase">
-              <span>DIGITAL</span>
-              <span className="bg-black text-white px-1 sm:px-1.5 py-0.5 rounded text-[5.5px] sm:text-[8px] font-bold">SCALE</span>
-            </div>
-            <div className="font-black text-[7px] sm:text-xs uppercase tracking-tight">
-              STRATEGY
-            </div>
-          </motion.div>
-
-          {/* Sticker 8: USABILITY TESTING Circular Stamp (Bottom-Right Green Stamp) */}
-          <motion.div
-            className="absolute bottom-[-16px] sm:bottom-[-24px] right-[10%] sm:right-[15%] md:right-[18%] z-30 bg-[#9be53c] border-2 sm:border-3 border-black text-black rounded-full w-16 h-16 sm:w-28 sm:h-28 md:w-32 md:h-32 p-1 sm:p-2 flex items-center justify-center neo-shadow-sm cursor-pointer select-none -rotate-6"
-            whileHover={{ scale: 1.1, rotate: 15 }}
-            transition={{ type: 'spring', stiffness: 200 }}
-          >
-            <div className="relative w-full h-full flex flex-col items-center justify-center text-center">
-              <div className="w-4 h-4 sm:w-8 sm:h-8 rounded-full border sm:border-2 border-black flex items-center justify-center bg-black text-white mb-0.5">
-                <span className="text-[8px] sm:text-xs font-bold font-sans">UX</span>
+        {/* Hero Visual Presentation featuring Imran */}
+        <div className="mt-12 sm:mt-16">
+          <div className="relative w-full rounded-md border border-[#DDDDD8] bg-[#FFFFFF] overflow-hidden shadow-xs">
+            
+            {/* Editorial Top Bar Indicator */}
+            <div className="flex items-center justify-between px-5 sm:px-8 py-3.5 border-b border-[#DDDDD8] bg-[#FAFAF8] text-xs font-mono text-[#858585]">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#111111]" />
+                <span className="uppercase tracking-wider font-semibold text-[#111111]">
+                  Imran — Product Designer &amp; Developer
+                </span>
               </div>
-              <span className="font-bold text-[6px] sm:text-[8px] uppercase tracking-tight leading-none px-0.5">
-                USER TESTING
+              <span className="hidden sm:inline-block tracking-wider">
+                AVAILABLE FOR SELECT PROJECTS · 2026
               </span>
             </div>
-          </motion.div>
-        </motion.div>
-      </motion.div>
+
+            {/* Asymmetric Hero Showcase Body */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[380px] sm:min-h-[460px] md:min-h-[500px]">
+              
+              {/* Left Column: Editorial Philosophy & Credentials */}
+              <div className="lg:col-span-5 p-6 sm:p-10 md:p-12 flex flex-col justify-between order-2 lg:order-1 border-t lg:border-t-0 lg:border-r border-[#DDDDD8]">
+                <div className="space-y-6">
+                  <div>
+                    <span className="eyebrow block mb-2">Core Focus</span>
+                    <h3 className="text-xl sm:text-2xl font-bold text-[#111111] leading-snug">
+                      Bridging high-level product strategy with obsessive frontend execution.
+                    </h3>
+                  </div>
+
+                  <p className="text-sm sm:text-base text-[#555555] leading-relaxed">
+                    Rather than separating design from technical implementation, I work across the entire product lifecycle: 
+                    crystallizing requirements, establishing design systems, and writing maintainable code.
+                  </p>
+                </div>
+
+                <div className="pt-8 border-t border-[#DDDDD8] grid grid-cols-2 gap-4">
+                  <div>
+                    <span className="text-[11px] font-mono uppercase tracking-widest text-[#858585] block mb-1">
+                      Disciplines
+                    </span>
+                    <p className="text-xs font-medium text-[#111111]">
+                      Product UX · Frontend Architecture
+                    </p>
+                  </div>
+                  <div>
+                    <span className="text-[11px] font-mono uppercase tracking-widest text-[#858585] block mb-1">
+                      Location &amp; Delivery
+                    </span>
+                    <p className="text-xs font-medium text-[#111111]">
+                      Remote Worldwide
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: Hero Portrait of Imran */}
+              <div className="lg:col-span-7 relative bg-[#F7F7F5] flex items-end justify-center p-6 sm:p-8 order-1 lg:order-2 overflow-hidden min-h-[320px] sm:min-h-[400px]">
+                {/* Subtle Paper Texture/Grid */}
+                <div 
+                  className="absolute inset-0 opacity-40 pointer-events-none"
+                  style={{
+                    backgroundImage: `linear-gradient(to right, #E5E5DF 1px, transparent 1px), linear-gradient(to bottom, #E5E5DF 1px, transparent 1px)`,
+                    backgroundSize: '40px 40px'
+                  }}
+                />
+
+                {/* Imran's Portrait Image */}
+                <div className="relative z-10 w-full max-w-[420px] h-[320px] sm:h-[400px] md:h-[460px] flex items-end justify-center">
+                  <Image
+                    src="/hero-thumb.png"
+                    alt="Imran — Product Designer & Frontend Developer"
+                    width={1024}
+                    height={1536}
+                    priority
+                    className="h-full w-auto object-contain object-bottom filter contrast-[1.02] drop-shadow-sm select-none"
+                  />
+                </div>
+
+                {/* Subtle Floating Editorial Caption */}
+                <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 z-20 bg-[#FFFFFF]/90 backdrop-blur-xs border border-[#DDDDD8] px-3.5 py-2 rounded-[4px] text-[11px] font-mono text-[#555555]">
+                  <span className="text-[#111111] font-medium">Imran</span> · Designing for Humans
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
     </section>
   );
 }
-

@@ -1,432 +1,211 @@
-@import url('https://cdn.jsdelivr.net/gh/mortezaom/google-sans-cdn@master/fonts.css');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
 @import "tailwindcss";
-@import "tw-animate-css";
-
-@theme {
-  --font-sans: 'Google Sans', 'Product Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-display: 'Google Sans', 'Product Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-body: 'Google Sans', 'Product Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-jakarta: 'Google Sans', 'Product Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-}
 
 :root {
-  /* Global Font Families - Google Sans Primary Stack */
-  --font-sans: 'Google Sans', 'Product Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-display: 'Google Sans', 'Product Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-body: 'Google Sans', 'Product Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-jakarta: 'Google Sans', 'Product Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  /* Editorial Neutral Color System */
+  --background: #F7F7F5;
+  --surface: #FFFFFF;
+  --surface-subtle: #F0F0EC;
+  --text-primary: #111111;
+  --text-secondary: #555555;
+  --text-muted: #858585;
+  --border: #DDDDD8;
+  --border-strong: #BFBFB8;
+  --accent: #111111;
+  --accent-foreground: #FFFFFF;
 
-  /* Colors - Base Theme */
-  --color-bg-primary: #0a0a0a;
-  --color-bg-secondary: #121212;
-  --color-bg-tertiary: #181818;
-  --color-bg-card: #121212;
-  --color-bg-input: #181818;
-
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #a1a1aa;
-  --color-text-muted: #71717a;
-  --color-text-inverse: #0a0a0a;
-
-  --color-border-primary: #0a0a0a;
-  --color-border-secondary: #e5e5e5;
-  --color-border-input: #ffffff;
-
-  --color-accent-primary: #2563eb;
-  --color-accent-secondary: #65a30d;
-  --color-accent-tertiary: #ea580c;
-  --color-accent-warm: #ca8a04;
-
-  --color-rose-light: #ffe4e6;
-  --color-lime-light: #ecfccb;
-  --color-blue-light: #dbeafe;
-  --color-amber-light: #fef3c7;
-
-  /* Neo-shadow colors */
-  --shadow-color: #0a0a0a;
-  --shadow-hover-color: #0a0a0a;
-
-  /* Focus ring */
-  --focus-ring: #65a30d;
-
-  /* Selection */
-  --selection-bg: #65a30d;
-  --selection-text: #fafafa;
+  /* Typography Font Stacks */
+  --font-sans: var(--font-jakarta, 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
 }
 
-/* Base Body Font */
-html, body {
-  font-family: var(--font-sans);
-  font-weight: 400;
+/* Dark section theme (Inverted Final CTA) */
+.dark-section {
+  --background: #111111;
+  --surface: #181818;
+  --surface-subtle: #222222;
+  --text-primary: #F7F7F5;
+  --text-secondary: #AAAAAA;
+  --text-muted: #777777;
+  --border: #282828;
+  --border-strong: #3F3F3F;
+  --accent: #FFFFFF;
+  --accent-foreground: #111111;
 }
-
-/* Font Family Utility Wrappers */
-.font-sans,
-.font-jakarta,
-.font-display,
-.font-body {
-  font-family: var(--font-sans);
-}
-.font-mono {
-  font-family: var(--font-mono);
-}
-
-/* Google Sans Weight Purpose Hierarchy Utilities */
-/* 100 - Thin: Decorative background accents, delicate graphics */
-.font-google-thin,
-.font-thin {
-  font-family: var(--font-sans);
-  font-weight: 100;
-}
-
-/* 300 - Light: Captions, metadata, step numbers, timestamps, footnote text */
-.font-google-light,
-.font-light {
-  font-family: var(--font-sans);
-  font-weight: 300;
-}
-
-/* 400 - Regular: Body copy, paragraph text, descriptions, default readable prose */
-.font-google-regular,
-.font-normal,
-.font-regular {
-  font-family: var(--font-sans);
-  font-weight: 400;
-}
-
-/* 500 - Medium: Navigation items, interactive badges, pill tags, subheadings, labels */
-.font-google-medium,
-.font-medium {
-  font-family: var(--font-sans);
-  font-weight: 500;
-}
-
-/* 700 - Bold: Section headings (H2/H3), project titles, major CTA buttons */
-.font-google-bold,
-.font-semibold,
-.font-bold {
-  font-family: var(--font-sans);
-  font-weight: 700;
-}
-
-/* 900 - Black: Main Hero headlines, high-impact display numbers (FPS/Resolution), sticker titles */
-.font-google-black,
-.font-black {
-  font-family: var(--font-sans);
-  font-weight: 900;
-}
-
-.dark {
-  /* Colors - Dark theme */
-  --color-bg-primary: #0d0d0d;
-  --color-bg-secondary: #161616;
-  --color-bg-tertiary: #1f1f1f;
-  --color-bg-card: #1a1a1a;
-  --color-bg-input: #1a1a1a;
-
-  --color-text-primary: #fafafa;
-  --color-text-secondary: #d4d4d4;
-  --color-text-muted: #888888;
-  --color-text-inverse: #0d0d0d;
-
-  --color-border-primary: #fafafa;
-  --color-border-secondary: #333333;
-  --color-border-input: #1a1a1a;
-
-  --color-accent-primary: #60a5fa;
-  --color-accent-secondary: #bef264;
-  --color-accent-tertiary: #fb923c;
-  --color-accent-warm: #fde047;
-
-  --color-rose-light: #4c1d1d;
-  --color-lime-light: #365314;
-  --color-blue-light: #1e3a5f;
-  --color-amber-light: #453508;
-
-  /* Neo-shadow colors for dark */
-  --shadow-color: #fafafa;
-  --shadow-hover-color: #fafafa;
-
-  /* Focus ring */
-  --focus-ring: #bef264;
-
-  /* Selection */
-  --selection-bg: #bef264;
-  --selection-text: #0d0d0d;
-}
-
-/* Base styles */
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
 }
 
+body {
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Editorial selection */
+::selection {
+  background-color: var(--text-primary);
+  color: var(--background);
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
+}
+
+/* Editorial Headline Typography */
+.display-headline {
+  font-size: clamp(2.75rem, 7vw, 5.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+}
+
+.editorial-h1 {
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+.editorial-h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+}
+
+.editorial-h3 {
+  font-size: clamp(1.25rem, 2.2vw, 1.875rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.eyebrow {
+  font-size: 0.8125rem;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* Subtle hairline borders */
+.border-subtle {
+  border-color: var(--border);
+}
+
+/* Minimalist Button System */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+  padding: 0.875rem 1.75rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: 44px;
+  cursor: pointer;
+  border: 1px solid var(--accent);
+}
+
+.btn-primary:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.875rem 1.25rem;
+  border-radius: 4px;
+  min-height: 44px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  border-color: var(--text-primary);
+  background-color: var(--surface);
+}
+
+.link-editorial {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2px;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.link-editorial:hover {
+  border-color: var(--text-primary);
+}
+
+/* Editorial Project Image / Card Styling */
+.editorial-frame {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.editorial-frame:hover {
+  border-color: var(--border-strong);
+}
+
+/* Subtle Entrance Animation */
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-entrance {
+  animation: fadeInSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
-    transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
-  }
-  html {
-    scroll-behavior: auto;
-  }
-}
-
-/* Smooth theme transition on root element */
-:root {
-  transition: color-scheme 0.3s ease;
-}
-
-/* Selection styles */
-::selection {
-  background-color: var(--selection-bg);
-  color: var(--selection-text);
-}
-
-/* Focus styles */
-:focus-visible {
-  outline: 2px solid var(--focus-ring);
-  outline-offset: 2px;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-bg-secondary);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-border-secondary);
-  border-radius: 4px;
-  border: 2px solid var(--color-bg-secondary);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-text-muted);
-}
-
-/* Neo-shadow utilities */
-.neo-shadow {
-  box-shadow: 6px 6px 0 0 var(--shadow-color);
-  transition: box-shadow 0.15s ease, transform 0.15s ease;
-}
-
-.neo-shadow:hover {
-  box-shadow: 2px 2px 0 0 var(--shadow-hover-color);
-  transform: translate(4px, 4px);
-}
-
-.neo-shadow-sm {
-  box-shadow: 4px 4px 0 0 var(--shadow-color);
-  transition: box-shadow 0.15s ease, transform 0.15s ease;
-}
-
-.neo-shadow-sm:hover {
-  box-shadow: 1px 1px 0 0 var(--shadow-hover-color);
-  transform: translate(3px, 3px);
-}
-
-.neo-shadow-static {
-  box-shadow: 8px 8px 0 0 var(--shadow-color);
-}
-
-.neo-shadow-lg {
-  box-shadow: 12px 12px 0 0 var(--shadow-color);
-  transition: box-shadow 0.15s ease, transform 0.15s ease;
-}
-
-.neo-shadow-lg:hover {
-  box-shadow: 4px 4px 0 0 var(--shadow-hover-color);
-  transform: translate(8px, 8px);
-}
-
-/* Marker underline animation */
-.marker-underline {
-  background-image: linear-gradient(var(--color-accent-secondary), var(--color-accent-secondary));
-  background-repeat: no-repeat;
-  background-size: 0% 30%;
-  background-position: 0 88%;
-  transition: background-size 0.3s ease;
-}
-
-.marker-underline:hover {
-  background-size: 100% 30%;
-}
-
-/* Card hover lift */
-.card-lift {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card-lift:hover {
-  transform: translateY(-4px);
-}
-
-/* Button press animation */
-.btn-press:active {
-  transform: scale(0.98);
-  transition: transform 0.05s ease;
-}
-
-/* Stagger animation delays */
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; }
-.stagger-5 { animation-delay: 0.5s; }
-.stagger-6 { animation-delay: 0.6s; }
-
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Grid pattern background */
-.bg-grid-pattern {
-  background-color: #ffffff;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.08) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
-  background-size: 36px 36px;
-}
-
-.dark .bg-grid-pattern {
-  background-color: #ffffff;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.08) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
-  background-size: 36px 36px;
-}
-
-/* Reduced motion for theme transitions */
-@media (prefers-reduced-motion: reduce) {
-  .neo-shadow,
-  .neo-shadow-sm,
-  .neo-shadow-lg,
-  .marker-underline,
-  .card-lift,
-  * {
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
-}
-
-/* ============================================
-   Semantic Color Utility Classes (Theme-aware)
-   ============================================ */
-
-/* Backgrounds */
-.bg-bg-primary { background-color: var(--color-bg-primary); }
-.bg-bg-secondary { background-color: var(--color-bg-secondary); }
-.bg-bg-tertiary { background-color: var(--color-bg-tertiary); }
-.bg-bg-card { background-color: var(--color-bg-card); }
-.bg-bg-input { background-color: var(--color-bg-input); }
-
-/* Text Colors */
-.text-text-primary { color: var(--color-text-primary); }
-.text-text-secondary { color: var(--color-text-secondary); }
-.text-text-muted { color: var(--color-text-muted); }
-.text-text-inverse { color: var(--color-text-inverse); }
-
-/* Border Colors */
-.border-border-primary { border-color: var(--color-border-primary); }
-.border-border-secondary { border-color: var(--color-border-secondary); }
-.border-border-input { border-color: var(--color-border-input); }
-
-/* Accent Colors */
-.bg-accent-primary { background-color: var(--color-accent-primary); }
-.bg-accent-secondary { background-color: var(--color-accent-secondary); }
-.bg-accent-tertiary { background-color: var(--color-accent-tertiary); }
-.bg-accent-warm { background-color: var(--color-accent-warm); }
-
-.text-accent-primary { color: var(--color-accent-primary); }
-.text-accent-secondary { color: var(--color-accent-secondary); }
-.text-accent-tertiary { color: var(--color-accent-tertiary); }
-.text-accent-warm { color: var(--color-accent-warm); }
-
-.border-accent-primary { border-color: var(--color-accent-primary); }
-.border-accent-secondary { border-color: var(--color-accent-secondary); }
-.border-accent-tertiary { border-color: var(--color-accent-tertiary); }
-.border-accent-warm { border-color: var(--color-accent-warm); }
-
-/* Accent Light Variants */
-.bg-rose-light { background-color: var(--color-rose-light); }
-.bg-lime-light { background-color: var(--color-lime-light); }
-.bg-blue-light { background-color: var(--color-blue-light); }
-.bg-amber-light { background-color: var(--color-amber-light); }
-
-/* Focus Ring */
-.focus-ring:focus-visible {
-  outline: 2px solid var(--focus-ring);
-  outline-offset: 2px;
-}
-
-/* Selection */
-::selection {
-  background-color: var(--selection-bg);
-  color: var(--selection-text);
-}
-
-/* Neo-shadow colors */
-.neo-shadow {
-  box-shadow: 6px 6px 0 0 var(--shadow-color);
-  transition: box-shadow 0.15s ease, transform 0.15s ease;
-}
-
-.neo-shadow:hover {
-  box-shadow: 2px 2px 0 0 var(--shadow-hover-color);
-  transform: translate(4px, 4px);
-}
-
-.neo-shadow-sm {
-  box-shadow: 4px 4px 0 0 var(--shadow-color);
-  transition: box-shadow 0.15s ease, transform 0.15s ease;
-}
-
-.neo-shadow-sm:hover {
-  box-shadow: 1px 1px 0 0 var(--shadow-hover-color);
-  transform: translate(3px, 3px);
-}
-
-.neo-shadow-static {
-  box-shadow: 8px 8px 0 0 var(--shadow-color);
-}
-
-.neo-shadow-lg {
-  box-shadow: 12px 12px 0 0 var(--shadow-color);
-  transition: box-shadow 0.15s ease, transform 0.15s ease;
-}
-
-.neo-shadow-lg:hover {
-  box-shadow: 4px 4px 0 0 var(--shadow-hover-color);
-  transform: translate(8px, 8px);
-}
-
-/* Hover transitions */
-.hover-bg-accent-secondary:hover {
-  background-color: var(--color-accent-secondary);
-}
-
-.hover-bg-accent-tertiary:hover {
-  background-color: var(--color-accent-tertiary);
-}
-
-.hover-bg-accent-warm:hover {
-  background-color: var(--color-accent-warm);
-}
-
-.hover-text-accent-primary:hover {
-  color: var(--color-accent-primary);
-}
-
-.hover-text-accent-secondary:hover {
-  color: var(--color-accent-secondary);
 }

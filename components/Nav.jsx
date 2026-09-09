@@ -1,13 +1,15 @@
 'use client';
 
 import { useState, useEffect } from "react";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import Link from "next/link";
 import { useLenis } from "lenis/react";
-import { motion, AnimatePresence } from "framer-motion";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 
-const NAV_LINKS = [
-  { label: "Work", href: "#about" },
-  { label: "Process", href: "#skills" },
+const NAV_ITEMS = [
+  { label: "Work", href: "#work" },
+  { label: "Methodology", href: "#methodology" },
+  { label: "Services", href: "#services" },
+  { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -16,158 +18,111 @@ export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const lenis = useLenis();
 
-  const scrollTo = (target) => {
-    if (target === "#top") {
-      lenis?.scrollTo(0, { duration: 1.5 });
-      return;
-    }
-    lenis?.scrollTo(target, {
-      offset: -80,
-      duration: 1.5,
-      easing: (t) => 1 - Math.pow(1 - t, 5),
-    });
-  };
-
-  // Scroll listener for Liquid Glass transformation threshold
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      setScrolled(window.scrollY > 20);
     };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  return (
-    <header className="sticky top-0 z-50 w-full pt-3 sm:pt-4 px-6 sm:px-12 md:px-16 lg:px-24 xl:px-32 pointer-events-none">
-      
-      {/* Butter-Smooth GPU Hardware-Accelerated Floating Capsule Navbar */}
-      <div
-        className={`pointer-events-auto mx-auto flex items-center justify-between transform-gpu transition-all duration-500 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] ${
-          scrolled
-            ? "max-w-3xl sm:max-w-4xl rounded-full py-2 px-5 sm:px-7 bg-[#121212]/90 backdrop-blur-2xl border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.95)]"
-            : "w-full max-w-6xl rounded-2xl py-3.5 sm:py-4 px-5 sm:px-8 bg-[#0a0a0a]/80 backdrop-blur-md border border-white/10"
-        }`}
-      >
-        {/* Left Side: Brand Logo */}
-        <div className="flex items-center gap-4">
-          <button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollTo("#top");
-            }}
-            className="font-display font-bold text-lg sm:text-xl text-white tracking-tight hover:text-[#a78bfa] transition-colors cursor-pointer"
-          >
-            Imran<span className="text-[#a78bfa]">.</span>
-          </button>
-        </div>
+  const handleScrollTo = (e, href) => {
+    e.preventDefault();
+    setOpen(false);
+    if (href === "#top") {
+      lenis?.scrollTo(0, { duration: 1.2 });
+      return;
+    }
+    lenis?.scrollTo(href, {
+      offset: -40,
+      duration: 1.2,
+      easing: (t) => 1 - Math.pow(1 - t, 4),
+    });
+  };
 
-        {/* Center: Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-7 font-jakarta text-xs sm:text-sm font-medium">
-          {NAV_LINKS.map((l) => (
-            <button
-              key={l.href}
-              type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollTo(l.href);
-              }}
-              className="text-zinc-300 hover:text-white transition-colors duration-200 relative group cursor-pointer"
+  return (
+    <header className={`sticky top-0 z-50 w-full transition-colors duration-300 ${
+      scrolled 
+        ? "bg-[#F7F7F5]/90 backdrop-blur-md border-b border-[#DDDDD8]" 
+        : "bg-[#F7F7F5] border-b border-transparent"
+    }`}>
+      <div className="max-w-[1280px] mx-auto px-6 sm:px-8 py-4 sm:py-5 flex items-center justify-between">
+        
+        {/* Left: Wordmark */}
+        <a
+          href="#top"
+          onClick={(e) => handleScrollTo(e, "#top")}
+          className="group flex items-baseline gap-2 text-[#111111] no-underline focus-visible:outline-none"
+        >
+          <span className="text-xl font-bold tracking-tight text-[#111111]">
+            Imran
+          </span>
+          <span className="hidden sm:inline-block text-xs uppercase tracking-widest text-[#858585] font-medium transition-colors group-hover:text-[#111111]">
+            Product &amp; Code
+          </span>
+        </a>
+
+        {/* Right: Typography-Driven Navigation */}
+        <nav className="hidden md:flex items-center gap-8 text-[14px] font-medium text-[#555555]">
+          {NAV_ITEMS.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={(e) => handleScrollTo(e, item.href)}
+              className="text-[#555555] hover:text-[#111111] transition-colors duration-200 no-underline py-1"
             >
-              <span>{l.label}</span>
-              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#a78bfa] group-hover:w-full transition-all duration-300 rounded-full" />
-            </button>
+              {item.label}
+            </a>
           ))}
+          
+          <a
+            href="#contact"
+            onClick={(e) => handleScrollTo(e, "#contact")}
+            className="ml-2 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-[4px] bg-[#111111] text-[#FFFFFF] text-[13px] font-medium hover:opacity-90 transition-opacity"
+          >
+            <span>Get in Touch</span>
+            <ArrowUpRight size={14} />
+          </a>
         </nav>
 
-        {/* Right Side: CTA Button */}
-        <div className="hidden md:flex items-center justify-end">
-          <button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollTo("#contact");
-            }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black font-jakarta font-bold text-xs uppercase tracking-wider hover:bg-[#a78bfa] transition-colors duration-300 shadow-md cursor-pointer group"
-          >
-            <span>Let's talk</span>
-            <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
-          </button>
-        </div>
-
-        {/* Mobile Menu Button - Prevent Default to stop page refresh */}
+        {/* Mobile Hamburger Trigger */}
         <button
           type="button"
-          className="md:hidden p-2.5 rounded-full bg-zinc-900/90 border border-white/10 text-white cursor-pointer active:scale-95 transition-transform"
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            setOpen((o) => !o);
-          }}
-          aria-label={open ? "Close menu" : "Open menu"}
+          onClick={() => setOpen(!open)}
+          aria-label={open ? "Close navigation" : "Open navigation"}
+          className="md:hidden p-2 -mr-2 text-[#111111] focus-visible:outline-none"
         >
-          {open ? <X size={20} /> : <Menu size={20} />}
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
-      {/* Mobile Drawer Overlay */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -10, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -10, scale: 0.97 }}
-            transition={{ duration: 0.2 }}
-            className="pointer-events-auto md:hidden mt-3 max-w-xl mx-auto border border-white/15 bg-[#121212]/95 backdrop-blur-2xl rounded-3xl p-6 flex flex-col gap-5 font-jakarta font-medium text-sm shadow-2xl"
-          >
-            <div className="flex items-center justify-between pb-3 border-b border-white/10">
-              <span className="font-mono text-xs text-zinc-400 uppercase tracking-widest">
-                Navigation
-              </span>
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setOpen(false);
-                }}
-                className="text-zinc-400 hover:text-white text-xs uppercase font-mono cursor-pointer"
+      {/* Clean Mobile Dropdown Menu */}
+      {open && (
+        <div className="md:hidden border-b border-[#DDDDD8] bg-[#F7F7F5] px-6 py-6 transition-all">
+          <nav className="flex flex-col gap-4">
+            {NAV_ITEMS.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={(e) => handleScrollTo(e, item.href)}
+                className="text-lg font-medium text-[#111111] hover:text-[#555555] transition-colors"
               >
-                Close ✕
-              </button>
-            </div>
-
-            {NAV_LINKS.map((l) => (
-              <button
-                key={l.href}
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollTo(l.href);
-                  setOpen(false);
-                }}
-                className="text-left text-zinc-200 text-lg font-semibold hover:text-[#a78bfa] transition-colors cursor-pointer"
-              >
-                {l.label}
-              </button>
+                {item.label}
+              </a>
             ))}
-
-            <button
-              type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollTo("#contact");
-                setOpen(false);
-              }}
-              className="w-full py-4 rounded-full bg-white text-black font-bold text-xs uppercase tracking-wider hover:bg-[#a78bfa] transition-colors duration-300 flex items-center justify-center gap-2 cursor-pointer"
-            >
-              <span>Let's talk</span>
-              <ArrowUpRight size={16} />
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
+            <div className="pt-3 border-t border-[#DDDDD8]">
+              <a
+                href="#contact"
+                onClick={(e) => handleScrollTo(e, "#contact")}
+                className="btn-primary w-full text-center"
+              >
+                <span>Start a Conversation</span>
+                <ArrowUpRight size={15} />
+              </a>
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
