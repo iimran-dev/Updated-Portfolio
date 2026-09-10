@@ -1,35 +1,38 @@
 'use client';
 
-import { useRef } from "react";
 import { motion } from "motion/react";
 import { useLenis } from "lenis/react";
 import { ArrowRight } from "lucide-react";
-import { gsap, useGSAP } from "@/lib/gsap";
+
+const headlineContainerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.04,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const wordVariants = {
+  hidden: {
+    opacity: 0,
+    y: 44,
+    rotateX: 20,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    rotateX: 0,
+    transition: {
+      duration: 0.85,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
 
 export function Hero() {
   const lenis = useLenis();
-  const heroRef = useRef(null);
-  const headlineRef = useRef(null);
-
-  // GSAP kinetic typography entrance animation
-  useGSAP(() => {
-    if (headlineRef.current) {
-      const words = headlineRef.current.querySelectorAll(".kinetic-word");
-      gsap.fromTo(
-        words,
-        { opacity: 0, y: 48, rotateX: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          rotateX: 0,
-          duration: 1.0,
-          stagger: 0.045,
-          ease: "power3.out",
-          delay: 0.15,
-        }
-      );
-    }
-  }, { scope: heroRef });
 
   const scrollToSection = (e, target) => {
     e.preventDefault();
@@ -44,13 +47,14 @@ export function Hero() {
   const words = headlineText.split(" ");
 
   return (
-    <section id="top" ref={heroRef} className="w-full pt-10 sm:pt-16 pb-20 sm:pb-28">
+    <section id="top" className="w-full pt-10 sm:pt-16 pb-20 sm:pb-28">
       <div className="max-w-[1280px] mx-auto px-6 sm:px-8">
         
-        {/* Eyebrow Descriptor with Framer Motion */}
+        {/* Eyebrow Descriptor with Motion */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="mb-6 sm:mb-8"
         >
@@ -62,24 +66,34 @@ export function Hero() {
           </p>
         </motion.div>
 
-        {/* Large Editorial Headline with GSAP Kinetic Reveal */}
-        <div ref={headlineRef} className="max-w-5xl mb-8 sm:mb-12 overflow-hidden">
+        {/* Large Editorial Headline with Kinetic Motion Reveal & Re-trigger */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false }}
+          variants={headlineContainerVariants}
+          className="max-w-5xl mb-8 sm:mb-12 overflow-hidden"
+        >
           <h1 className="display-headline text-[#111111] font-bold flex flex-wrap gap-x-[0.28em] gap-y-[0.08em]">
             {words.map((word, i) => (
               <span key={i} className="inline-block overflow-hidden pb-1">
-                <span className="kinetic-word inline-block">
+                <motion.span
+                  variants={wordVariants}
+                  className="kinetic-word inline-block origin-bottom"
+                >
                   {word}
-                </span>
+                </motion.span>
               </span>
             ))}
           </h1>
-        </div>
+        </motion.div>
 
         {/* Supporting Statement & Actions */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
           className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start pb-12 sm:pb-16 border-b border-[#DDDDD8]"
         >
           <div className="lg:col-span-7">

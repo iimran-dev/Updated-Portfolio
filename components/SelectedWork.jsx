@@ -49,7 +49,7 @@ export function SelectedWork() {
   return (
     <section id="work" className="w-full py-20 sm:py-28 lg:py-36">
       <div className="max-w-[1280px] mx-auto px-6 sm:px-8">
-        
+
         {/* Section Header with Scroll Reveal */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -65,7 +65,7 @@ export function SelectedWork() {
             </h2>
           </div>
           <p className="text-sm sm:text-base text-[#555555] max-w-md font-normal leading-relaxed">
-            A curated selection of shipped digital products, focusing on strategic product design, 
+            A curated selection of shipped digital products, focusing on strategic product design,
             interaction polish, and measurable engineering outcomes.
           </p>
         </motion.div>
