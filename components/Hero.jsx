@@ -8,7 +8,7 @@ const headlineContainerVariants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.04,
+      staggerChildren: 0.045,
       delayChildren: 0.1,
     },
   },
@@ -17,7 +17,7 @@ const headlineContainerVariants = {
 const wordVariants = {
   hidden: {
     opacity: 0,
-    y: 44,
+    y: 48,
     rotateX: 20,
   },
   visible: {
@@ -25,7 +25,7 @@ const wordVariants = {
     y: 0,
     rotateX: 0,
     transition: {
-      duration: 0.85,
+      duration: 0.9,
       ease: [0.16, 1, 0.3, 1],
     },
   },
@@ -47,7 +47,7 @@ export function Hero() {
   const words = headlineText.split(" ");
 
   return (
-    <section id="top" className="w-full pt-10 sm:pt-16 pb-20 sm:pb-28">
+    <section id="top" className="w-full pt-24 sm:pt-32 pb-20 sm:pb-28">
       <div className="max-w-[1280px] mx-auto px-6 sm:px-8">
         
         {/* Eyebrow Descriptor with Motion */}
@@ -72,14 +72,17 @@ export function Hero() {
           whileInView="visible"
           viewport={{ once: false }}
           variants={headlineContainerVariants}
-          className="max-w-5xl mb-8 sm:mb-12 overflow-hidden"
+          className="max-w-5xl mb-8 sm:mb-12"
         >
-          <h1 className="display-headline text-[#111111] font-bold flex flex-wrap gap-x-[0.28em] gap-y-[0.08em]">
+          <h1 className="display-headline text-[#111111] font-bold flex flex-wrap gap-x-[0.28em] gap-y-0 leading-[1.02] sm:leading-[1.0]">
             {words.map((word, i) => (
-              <span key={i} className="inline-block overflow-hidden pb-1">
+              <span
+                key={i}
+                className="inline-block overflow-hidden pt-1 pb-4 -mt-1 -mb-4 [perspective:1000px]"
+              >
                 <motion.span
                   variants={wordVariants}
-                  className="kinetic-word inline-block origin-bottom"
+                  className="kinetic-word inline-block origin-bottom transform-gpu"
                 >
                   {word}
                 </motion.span>

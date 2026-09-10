@@ -1,37 +1,56 @@
 'use client';
 
 import { motion } from "motion/react";
-import { ArrowUpRight } from "lucide-react";
+import { useLenis } from "lenis/react";
+import { Check } from "lucide-react";
 
 const SERVICES = [
   {
     number: "01",
+    tags: ["0 → Production", "Next.js & React", "Speed & SEO"],
     title: "Web & Frontend Engineering",
-    description: "Production-ready Next.js and React applications architected for maximum speed, strict SEO standards, zero layout shifts, and long-term code maintainability.",
+    description:
+      "Production-ready Next.js and React applications architected for maximum speed, strict SEO standards, zero layout shifts, and long-term code maintainability.",
+    checklistHeader: "This is for you if:",
+    points: [
+      "You need a production Next.js or React application built with precision, speed, and clean code",
+      "Your existing frontend suffers from slow load times, poor CWV scores, or difficult maintainability",
+      "You want pixel-perfect implementation of complex UI flows and animations with zero layout shift",
+    ],
+    bgColor: "bg-[#B9A5FE]",
+    buttonBg: "bg-[#111111] hover:bg-[#222222] text-[#FFFFFF]",
+    buttonText: "Book a meeting",
   },
   {
     number: "02",
+    tags: ["Design Systems", "Interactive Prototypes", "User Research"],
     title: "UI/UX & Product Design",
-    description: "End-to-end interface design, interactive prototypes, design systems, and user research. Creating functional, beautiful experiences that turn complex data into intuitive flows.",
-  },
-  {
-    number: "03",
-    title: "AI & Workflow Automation",
-    description: "Integrating LLM intelligence into real-world software: streaming conversational workspaces, prompt engineering pipelines, agent workflows, and contextual memory.",
-  },
-  {
-    number: "04",
-    title: "Design Systems & Architecture",
-    description: "Multi-platform design token systems, accessible component libraries (WCAG 2.1 AA), TypeScript component contracts, and automated visual regression workflows.",
-  },
-  {
-    number: "05",
-    title: "Technical Consulting & Auditing",
-    description: "Performance audits, Core Web Vitals optimization, code-level design alignment, and frontend refactoring for teams preparing to scale.",
+    description:
+      "End-to-end interface design, interactive prototypes, design systems, and user research. Creating functional, beautiful experiences that turn complex data into intuitive flows.",
+    checklistHeader: "This is for you if:",
+    points: [
+      "You have an early product idea or complex feature and need clear, intuitive user journeys",
+      "You need a scalable design system so your product stays consistent as your team grows",
+      "You want high-fidelity interactive prototypes to validate decisions before writing code",
+    ],
+    bgColor: "bg-[#FDE875]",
+    buttonBg: "bg-[#DF9F05] hover:bg-[#D09300] text-[#111111]",
+    buttonText: "Book a meeting",
   },
 ];
 
 export function Services() {
+  const lenis = useLenis();
+
+  const scrollToSection = (e, target) => {
+    e.preventDefault();
+    lenis?.scrollTo(target, {
+      offset: -40,
+      duration: 1.2,
+      easing: (t) => 1 - Math.pow(1 - t, 4),
+    });
+  };
+
   return (
     <section id="services" className="w-full py-24 sm:py-32 border-t border-[#DDDDD8] bg-[#F7F7F5]">
       <div className="max-w-[1280px] mx-auto px-6 sm:px-8">
@@ -55,40 +74,62 @@ export function Services() {
           </p>
         </motion.div>
 
-        {/* Editorial Rows */}
-        <div className="flex flex-col divide-y divide-[#DDDDD8]">
+        {/* Dual Card Showcase (Referencing image.png) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 items-stretch">
           {SERVICES.map((service, idx) => (
             <motion.div
               key={service.number}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, margin: "-40px" }}
-              transition={{ duration: 0.55, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="py-8 sm:py-12 grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-center transition-colors duration-200 hover:bg-[#FFFFFF]/80 px-4 -mx-4 rounded-sm group cursor-default"
+              viewport={{ once: false, margin: "-50px" }}
+              transition={{ duration: 0.65, delay: idx * 0.12, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -4 }}
+              className={`rounded-[28px] sm:rounded-[32px] p-7 sm:p-9 md:p-10 lg:p-12 flex flex-col justify-between h-full border border-black/5 shadow-xs transition-all duration-300 hover:shadow-md ${service.bgColor}`}
             >
-              <div className="md:col-span-1">
-                <span className="text-xs font-mono font-semibold text-[#858585] group-hover:text-[#111111] transition-colors">
-                  {service.number}
-                </span>
-              </div>
-
-              <div className="md:col-span-4">
-                <h3 className="text-xl sm:text-2xl font-bold text-[#111111] tracking-tight group-hover:translate-x-1 transition-transform duration-200">
+              <div>
+                {/* Service Title */}
+                <h3 className="text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#111111] tracking-tight leading-tight mb-3">
                   {service.title}
                 </h3>
-              </div>
 
-              <div className="md:col-span-6">
-                <p className="text-sm sm:text-base text-[#555555] leading-relaxed">
+                {/* Service Description */}
+                <p className="text-sm sm:text-base text-[#111111]/85 leading-relaxed font-normal mb-8">
                   {service.description}
                 </p>
+
+                {/* Subtle Divider Line */}
+                <div className="w-full h-px bg-black/10 my-6 sm:my-8" />
+
+                {/* Checklist Section */}
+                <p className="text-sm sm:text-base font-semibold text-[#111111] mb-5">
+                  {service.checklistHeader}
+                </p>
+
+                <ul className="flex flex-col gap-4 sm:gap-4.5 mb-8 sm:mb-10">
+                  {service.points.map((point, pIdx) => (
+                    <li key={pIdx} className="flex items-start gap-3.5">
+                      <span className="w-5 h-5 rounded-full bg-[#111111] text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                        <Check size={11} strokeWidth={3.5} />
+                      </span>
+                      <span className="text-sm sm:text-[15px] text-[#111111]/90 leading-relaxed font-normal">
+                        {point}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
-              <div className="hidden md:flex md:col-span-1 justify-end">
-                <ArrowUpRight 
-                  size={18} 
-                  className="text-[#858585] group-hover:text-[#111111] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" 
-                />
+              {/* Bottom Action Button */}
+              <div className="mt-auto pt-4">
+                <motion.a
+                  href="#contact"
+                  onClick={(e) => scrollToSection(e, "#contact")}
+                  whileHover={{ y: -2 }}
+                  whileTap={{ y: 0 }}
+                  className={`inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-semibold transition-all duration-200 shadow-xs hover:shadow-md cursor-pointer ${service.buttonBg}`}
+                >
+                  <span>{service.buttonText}</span>
+                </motion.a>
               </div>
             </motion.div>
           ))}
