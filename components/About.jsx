@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 export function About() {
   return (
     <section id="about" className="w-full py-24 sm:py-32 border-t border-[#DDDDD8] bg-[#F7F7F5]">
-      <div className="max-w-[1280px] mx-auto px-6 sm:px-8">
+      <div className="max-w-[1140px] mx-auto px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24">
         
         {/* Section Header */}
         <motion.div

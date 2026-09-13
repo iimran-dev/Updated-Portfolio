@@ -53,7 +53,7 @@ export function Services() {
 
   return (
     <section id="services" className="w-full py-24 sm:py-32 border-t border-[#DDDDD8] bg-[#F7F7F5]">
-      <div className="max-w-[1280px] mx-auto px-6 sm:px-8">
+      <div className="max-w-[1140px] mx-auto px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24">
         
         {/* Section Header */}
         <motion.div
@@ -126,7 +126,7 @@ export function Services() {
                   onClick={(e) => scrollToSection(e, "#contact")}
                   whileHover={{ y: -2 }}
                   whileTap={{ y: 0 }}
-                  className={`inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-semibold transition-all duration-200 shadow-xs hover:shadow-md cursor-pointer ${service.buttonBg}`}
+                  className={`inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-semibold transition-all duration-200 shadow-xs hover:shadow-md cursor-pointer min-h-[48px] ${service.buttonBg}`}
                 >
                   <span>{service.buttonText}</span>
                 </motion.a>

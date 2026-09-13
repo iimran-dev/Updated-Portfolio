@@ -48,7 +48,7 @@ export function Hero() {
 
   return (
     <section id="top" className="w-full pt-24 sm:pt-32 pb-20 sm:pb-28">
-      <div className="max-w-[1280px] mx-auto px-6 sm:px-8">
+      <div className="max-w-[1140px] mx-auto px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24">
         
         {/* Eyebrow Descriptor with Motion */}
         <motion.div

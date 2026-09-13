@@ -21,7 +21,7 @@ export default async function ProjectDetailPage({ params }) {
 
   return (
     <div className="min-h-screen bg-[#F7F7F5] text-[#111111] py-8 sm:py-16">
-      <div className="max-w-[1280px] mx-auto px-6 sm:px-8">
+      <div className="max-w-[1140px] mx-auto px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24">
         
         {/* Navigation / Back Bar */}
         <div className="flex items-center justify-between pb-8 border-b border-[#DDDDD8] mb-12">
@@ -190,10 +190,10 @@ export default async function ProjectDetailPage({ params }) {
               </p>
               <Link
                 href="/#contact"
-                className="inline-flex items-center gap-2 bg-[#FFFFFF] text-[#111111] font-semibold text-xs py-3 px-5 rounded-[4px] hover:bg-[#EBEBE6] transition-colors"
+                className="inline-flex items-center justify-center gap-2 bg-[#FFFFFF] text-[#111111] font-semibold text-sm py-3.5 px-7 rounded-full hover:bg-[#EBEBE6] active:scale-95 transition-all shadow-sm min-h-[48px]"
               >
                 <span>Start a Conversation</span>
-                <ArrowUpRight size={14} />
+                <ArrowUpRight size={15} />
               </Link>
             </div>
 

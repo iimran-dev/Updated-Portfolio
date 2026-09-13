@@ -41,7 +41,7 @@ export function FinalCTA() {
 
   return (
     <section id="contact" className="w-full bg-[#111111] text-[#F7F7F5] py-28 sm:py-36 overflow-hidden">
-      <div className="max-w-[1280px] mx-auto px-6 sm:px-8">
+      <div className="max-w-[1140px] mx-auto px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
@@ -160,7 +160,7 @@ export function FinalCTA() {
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="mt-2 inline-flex items-center justify-center gap-2 bg-[#FFFFFF] text-[#111111] font-semibold text-sm py-3.5 px-6 rounded-[4px] hover:bg-[#EBEBE6] active:scale-[0.99] transition-all cursor-pointer disabled:opacity-50 min-h-[44px]"
+                className="mt-2 inline-flex items-center justify-center gap-2 bg-[#FFFFFF] text-[#111111] font-semibold text-sm py-3.5 px-7 rounded-full hover:bg-[#EBEBE6] active:scale-[0.98] transition-all cursor-pointer disabled:opacity-50 min-h-[48px] shadow-sm hover:shadow-md"
               >
                 {status === "loading" && <Loader2 size={16} className="animate-spin" />}
                 {status === "success" && <Check size={16} />}

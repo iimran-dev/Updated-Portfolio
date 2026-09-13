@@ -14,7 +14,7 @@ export function Footer() {
 
   return (
     <footer className="w-full bg-[#111111] text-[#AAAAAA] border-t border-[#222222] py-14 sm:py-16">
-      <div className="max-w-[1280px] mx-auto px-6 sm:px-8">
+      <div className="max-w-[1140px] mx-auto px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24">
         
         {/* Top Footer Row */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-[#222222] items-start">

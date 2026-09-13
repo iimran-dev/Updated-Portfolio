@@ -48,7 +48,7 @@ export function SelectedWork() {
 
   return (
     <section id="work" className="w-full py-20 sm:py-28 lg:py-36">
-      <div className="max-w-[1280px] mx-auto px-6 sm:px-8">
+      <div className="max-w-[1140px] mx-auto px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24">
 
         {/* Section Header with Scroll Reveal */}
         <motion.div

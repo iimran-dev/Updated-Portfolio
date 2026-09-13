@@ -125,7 +125,7 @@ export default function AboutPage() {
       <main id="main-content" className="pt-24 sm:pt-32 pb-20">
         
         {/* Top Back Bar & Status Indicator */}
-        <div className="max-w-[1280px] mx-auto px-6 sm:px-8 mb-12 sm:mb-16">
+        <div className="max-w-[1140px] mx-auto px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24 mb-12 sm:mb-16">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-[#DDDDD8] gap-4">
             <Link
               href="/"
@@ -146,7 +146,7 @@ export default function AboutPage() {
         </div>
 
         {/* Page Hero Header */}
-        <section className="max-w-[1280px] mx-auto px-6 sm:px-8 mb-20 sm:mb-28">
+        <section className="max-w-[1140px] mx-auto px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24 mb-20 sm:mb-28">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -208,7 +208,7 @@ export default function AboutPage() {
         {/* SECTION 1: ABOUT — Narrative, Editorial Portrait & Philosophy */}
         {/* ========================================================================= */}
         <section id="about" className="w-full py-16 sm:py-24 border-t border-[#DDDDD8]">
-          <div className="max-w-[1280px] mx-auto px-6 sm:px-8">
+          <div className="max-w-[1140px] mx-auto px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24">
             
             {/* Section Header */}
             <motion.div
@@ -406,7 +406,7 @@ export default function AboutPage() {
         {/* SECTION 2: SKILLS & CAPABILITIES — Structured Pillars */}
         {/* ========================================================================= */}
         <section id="skills" className="w-full py-20 sm:py-28 border-t border-[#DDDDD8] bg-[#FFFFFF]">
-          <div className="max-w-[1280px] mx-auto px-6 sm:px-8">
+          <div className="max-w-[1140px] mx-auto px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24">
             
             {/* Section Header */}
             <motion.div
@@ -524,7 +524,7 @@ export default function AboutPage() {
         {/* SECTION 3: CALL TO ACTION BANNER */}
         {/* ========================================================================= */}
         <section className="w-full py-20 sm:py-28 border-t border-[#DDDDD8] bg-[#111111] text-[#FFFFFF]">
-          <div className="max-w-[1280px] mx-auto px-6 sm:px-8">
+          <div className="max-w-[1140px] mx-auto px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24">
             <div className="max-w-3xl space-y-8">
               <span className="text-xs font-mono uppercase tracking-widest text-[#888888] block">
                 Next Steps &amp; Collaboration
@@ -541,7 +541,7 @@ export default function AboutPage() {
               <div className="flex flex-wrap items-center gap-4 pt-4">
                 <Link
                   href="/#contact"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#FFFFFF] text-[#111111] hover:bg-[#EAEAE8] px-7 py-3.5 text-sm font-semibold transition-all duration-200 shadow-md active:scale-95"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#FFFFFF] text-[#111111] hover:bg-[#EAEAE8] px-7 py-3.5 text-sm font-semibold transition-all duration-200 shadow-md active:scale-95 min-h-[48px]"
                 >
                   <span>Start a Conversation</span>
                   <ArrowRight size={15} />
@@ -549,7 +549,7 @@ export default function AboutPage() {
 
                 <Link
                   href="/#work"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-[#444444] text-[#FFFFFF] hover:border-[#888888] px-6 py-3.5 text-sm font-medium transition-all duration-200"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-[#444444] text-[#FFFFFF] hover:border-[#888888] px-7 py-3.5 text-sm font-semibold transition-all duration-200 min-h-[48px]"
                 >
                   <span>View Selected Work</span>
                 </Link>
