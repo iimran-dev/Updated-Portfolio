@@ -66,9 +66,9 @@ export function SelectedWork() {
           </p>
         </motion.div>
 
-        {/* Project Presentations List */}
+        {/* Project Presentations List (2 Featured Projects) */}
         <div className="flex flex-col gap-20 sm:gap-28 lg:gap-32">
-          {projects.map((project, idx) => {
+          {projects.slice(0, 2).map((project, idx) => {
             const isReversed = idx % 2 === 1;
             const numString = `0${idx + 1}`;
 
@@ -141,6 +141,30 @@ export function SelectedWork() {
             );
           })}
         </div>
+
+        {/* View All Work CTA Bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-20 sm:mt-24 pt-10 border-t border-[#DDDDD8] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
+        >
+          <div>
+            <span className="eyebrow block mb-1">Archive &amp; Systems</span>
+            <p className="text-base sm:text-lg font-semibold text-[#111111]">
+              Explore all {projects.length} shipped products, AI tools &amp; design architectures.
+            </p>
+          </div>
+
+          <Link
+            href="/work"
+            className="group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[#111111] text-[#FFFFFF] hover:bg-[#222222] text-xs sm:text-sm font-medium transition-all duration-200 shadow-2xs hover:shadow-xs active:scale-[0.98]"
+          >
+            <span>View All Work ({projects.length})</span>
+            <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </motion.div>
 
       </div>
     </section>

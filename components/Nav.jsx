@@ -8,9 +8,9 @@ import { ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 const NAV_LINKS = [
-  { label: "Work", href: "#work", pageHref: "/#work" },
-  { label: "About", href: "/about", isPage: true },
-  { label: "Services", href: "#services", pageHref: "/#services" },
+  { id: "work", label: "Work", href: "#work", pageHref: "/work" },
+  { id: "about", label: "About", href: "/about", pageHref: "/about", isPage: true },
+  { id: "services", label: "Services", href: "#services", pageHref: "/#services" },
 ];
 
 export function Nav() {
@@ -19,6 +19,7 @@ export function Nav() {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
   const isAboutPage = pathname === "/about";
+  const isWorkPage = pathname === "/work";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -97,32 +98,14 @@ export function Nav() {
         {/* Center Nav Links */}
         <div className="flex items-center gap-4 sm:gap-7">
           {NAV_LINKS.map((link) => {
-            if (link.isPage) {
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={(e) => {
-                    if (isAboutPage) {
-                      e.preventDefault();
-                      lenis?.scrollTo(0, { duration: 1.2 });
-                    }
-                  }}
-                  className={`text-xs sm:text-[13px] transition-colors py-1 focus-visible:outline-none ${
-                    isAboutPage
-                      ? "font-semibold text-[#111111]"
-                      : "font-medium text-[#555555] hover:text-[#111111]"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              );
-            }
+            const isActive =
+              (link.id === "about" && isAboutPage) ||
+              (link.id === "work" && isWorkPage);
 
-            if (isHomePage) {
+            if (isHomePage && link.href.startsWith("#")) {
               return (
                 <a
-                  key={link.href}
+                  key={link.id}
                   href={link.href}
                   onClick={(e) => handleScrollTo(e, link.href)}
                   className="text-xs sm:text-[13px] font-medium text-[#555555] hover:text-[#111111] transition-colors py-1 focus-visible:outline-none"
@@ -134,9 +117,19 @@ export function Nav() {
 
             return (
               <Link
-                key={link.href}
+                key={link.id}
                 href={link.pageHref}
-                className="text-xs sm:text-[13px] font-medium text-[#555555] hover:text-[#111111] transition-colors py-1 focus-visible:outline-none"
+                onClick={(e) => {
+                  if ((isAboutPage && link.id === "about") || (isWorkPage && link.id === "work")) {
+                    e.preventDefault();
+                    lenis?.scrollTo(0, { duration: 1.2 });
+                  }
+                }}
+                className={`text-xs sm:text-[13px] transition-colors py-1 focus-visible:outline-none ${
+                  isActive
+                    ? "font-semibold text-[#111111]"
+                    : "font-medium text-[#555555] hover:text-[#111111]"
+                }`}
               >
                 {link.label}
               </Link>

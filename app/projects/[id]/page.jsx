@@ -25,13 +25,22 @@ export default async function ProjectDetailPage({ params }) {
         
         {/* Navigation / Back Bar */}
         <div className="flex items-center justify-between pb-8 border-b border-[#DDDDD8] mb-12">
-          <Link
-            href="/#work"
-            className="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-[#555555] hover:text-[#111111] uppercase transition-colors"
-          >
-            <ArrowLeft size={14} />
-            <span>Back to Selected Work</span>
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link
+              href="/work"
+              className="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-[#555555] hover:text-[#111111] uppercase transition-colors"
+            >
+              <ArrowLeft size={14} />
+              <span>Back to All Work</span>
+            </Link>
+            <span className="text-[#CCCCCC]">·</span>
+            <Link
+              href="/"
+              className="text-xs font-mono tracking-widest text-[#888888] hover:text-[#111111] uppercase transition-colors"
+            >
+              Home
+            </Link>
+          </div>
 
           <span className="text-xs font-mono uppercase tracking-wider text-[#858585]">
             {project.category}

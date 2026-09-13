@@ -61,11 +61,11 @@ export function Footer() {
               <span className="text-xs font-mono text-[#666666] uppercase tracking-wider">
                 Index
               </span>
-              <Link href="/#work" className="text-[#AAAAAA] hover:text-[#FFFFFF] transition-colors">
-                Selected Work
+              <Link href="/work" className="text-[#AAAAAA] hover:text-[#FFFFFF] transition-colors">
+                All Work &amp; Archive
               </Link>
-              <Link href="/#methodology" className="text-[#AAAAAA] hover:text-[#FFFFFF] transition-colors">
-                Methodology
+              <Link href="/#work" className="text-[#AAAAAA] hover:text-[#FFFFFF] transition-colors">
+                Featured Work
               </Link>
               <Link href="/#services" className="text-[#AAAAAA] hover:text-[#FFFFFF] transition-colors">
                 Services
