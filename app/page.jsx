@@ -4,8 +4,6 @@ import { Credibility } from '../components/Credibility';
 import { SelectedWork } from '../components/SelectedWork';
 import { HowIWork } from '../components/HowIWork';
 import { Services } from '../components/Services';
-import { About } from '../components/About';
-import { Skills } from '../components/Skills';
 import { Testimonials } from '../components/Testimonials';
 import { FinalCTA } from '../components/FinalCTA';
 import { Footer } from '../components/Footer';
@@ -32,13 +30,7 @@ export default function Home() {
         {/* 6. Services (Clean editorial rows) */}
         <Services />
 
-        {/* 7. About (Large rectangular portrait & professional story) */}
-        <About />
-
-        {/* 8. Skills / Experience (Organized text groups) */}
-        <Skills />
-
-        {/* 9. Testimonials (Prominent editorial quote) */}
+        {/* 7. Testimonials (Prominent editorial quote) */}
         <Testimonials />
 
         {/* 10. Final CTA & Inverted Contact Section */}

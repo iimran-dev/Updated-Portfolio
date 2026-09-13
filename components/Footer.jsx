@@ -1,5 +1,6 @@
 'use client';
 
+import Link from "next/link";
 import { useLenis } from "lenis/react";
 import { ArrowUp } from "lucide-react";
 
@@ -60,18 +61,18 @@ export function Footer() {
               <span className="text-xs font-mono text-[#666666] uppercase tracking-wider">
                 Index
               </span>
-              <a href="#work" className="text-[#AAAAAA] hover:text-[#FFFFFF] transition-colors">
+              <Link href="/#work" className="text-[#AAAAAA] hover:text-[#FFFFFF] transition-colors">
                 Selected Work
-              </a>
-              <a href="#methodology" className="text-[#AAAAAA] hover:text-[#FFFFFF] transition-colors">
+              </Link>
+              <Link href="/#methodology" className="text-[#AAAAAA] hover:text-[#FFFFFF] transition-colors">
                 Methodology
-              </a>
-              <a href="#services" className="text-[#AAAAAA] hover:text-[#FFFFFF] transition-colors">
+              </Link>
+              <Link href="/#services" className="text-[#AAAAAA] hover:text-[#FFFFFF] transition-colors">
                 Services
-              </a>
-              <a href="#about" className="text-[#AAAAAA] hover:text-[#FFFFFF] transition-colors">
-                About
-              </a>
+              </Link>
+              <Link href="/about" className="text-[#AAAAAA] hover:text-[#FFFFFF] transition-colors">
+                About &amp; Skills
+              </Link>
             </div>
           </div>
 
