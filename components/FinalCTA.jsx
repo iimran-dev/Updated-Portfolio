@@ -170,7 +170,7 @@ export function FinalCTA() {
                     ? "Inquiry Received — I will respond shortly."
                     : status === "loading"
                     ? "Submitting..."
-                    : "Send Message →"}
+                    : "Send Message"}
                 </span>
               </button>
 

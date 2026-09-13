@@ -123,7 +123,7 @@ export default function AboutPage() {
       <Nav />
 
       <main id="main-content" className="pt-24 sm:pt-32 pb-20">
-        
+
         {/* Top Back Bar & Status Indicator */}
         <div className="max-w-[1140px] mx-auto px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24 mb-12 sm:mb-16">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-[#DDDDD8] gap-4">
@@ -209,7 +209,7 @@ export default function AboutPage() {
         {/* ========================================================================= */}
         <section id="about" className="w-full py-16 sm:py-24 border-t border-[#DDDDD8]">
           <div className="max-w-[1140px] mx-auto px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24">
-            
+
             {/* Section Header */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -226,7 +226,7 @@ export default function AboutPage() {
 
             {/* Editorial 2-Column Split Layout */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-              
+
               {/* Left Column: Portrait & Identity Card */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -300,7 +300,7 @@ export default function AboutPage() {
 
               {/* Right Column: Detailed Narrative & Trajectory */}
               <div className="lg:col-span-7 flex flex-col gap-12">
-                
+
                 {/* Introduction Paragraph */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -407,7 +407,7 @@ export default function AboutPage() {
         {/* ========================================================================= */}
         <section id="skills" className="w-full py-20 sm:py-28 border-t border-[#DDDDD8] bg-[#FFFFFF]">
           <div className="max-w-[1140px] mx-auto px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24">
-            
+
             {/* Section Header */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -529,7 +529,7 @@ export default function AboutPage() {
               <span className="text-xs font-mono uppercase tracking-widest text-[#888888] block">
                 Next Steps &amp; Collaboration
               </span>
-              
+
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight">
                 Ready to engineer your next digital product?
               </h2>
@@ -538,20 +538,21 @@ export default function AboutPage() {
                 Whether you are launching a new product from scratch, scaling an existing design system, or seeking high-performance frontend engineering, I am available for select contract and consulting engagements.
               </p>
 
-              <div className="flex flex-wrap items-center gap-4 pt-4">
+              <div className="flex flex-col items-start md:flex-row md:items-center gap-4 pt-4">
                 <Link
                   href="/#contact"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#FFFFFF] text-[#111111] hover:bg-[#EAEAE8] px-7 py-3.5 text-sm font-semibold transition-all duration-200 shadow-md active:scale-95 min-h-[48px]"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#FFFFFF] text-[#111111] hover:bg-[#EAEAE8] px-7 py-3.5 text-sm font-semibold transition-all duration-200 shadow-md active:scale-95 min-h-[48px] whitespace-nowrap"
                 >
                   <span>Start a Conversation</span>
                   <ArrowRight size={15} />
                 </Link>
 
-                <Link
+                <Link 
                   href="/#work"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-[#444444] text-[#FFFFFF] hover:border-[#888888] px-7 py-3.5 text-sm font-semibold transition-all duration-200 min-h-[48px]"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-[#444444] text-[#FFFFFF] hover:border-[#888888] px-7 py-3.5 text-sm font-semibold transition-all duration-200 min-h-[48px] whitespace-nowrap active:scale-95"
                 >
                   <span>View Selected Work</span>
+                  <ArrowRight size={15} />
                 </Link>
               </div>
             </div>

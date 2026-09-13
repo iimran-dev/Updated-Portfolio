@@ -14,11 +14,6 @@ const STATS = [
     description: "Shipped from concept to deployment",
   },
   {
-    number: "10k+",
-    title: "Users Impacted",
-    description: "Across SaaS and internal tools",
-  },
-  {
     number: "99.9%",
     title: "Performance Focus",
     description: "Zero-lag UI and Core Web Vitals",
@@ -56,14 +51,14 @@ export function Credibility() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, margin: "-60px" }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 lg:gap-12"
         >
           {STATS.map((stat, idx) => (
             <motion.div 
               key={idx}
               variants={itemVariants}
               className={`flex flex-col gap-1.5 ${
-                idx !== 0 ? "lg:border-l lg:border-[#DDDDD8] lg:pl-10" : ""
+                idx !== 0 ? "sm:border-l sm:border-[#DDDDD8] sm:pl-6 lg:pl-10" : ""
               }`}
             >
               <span className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-[#111111]">

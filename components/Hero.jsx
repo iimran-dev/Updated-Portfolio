@@ -43,11 +43,11 @@ export function Hero() {
     });
   };
 
-  const headlineText = "I shape digital products through strategic clarity and engineering precision.";
+  const headlineText = "I build digital products with purpose.";
   const words = headlineText.split(" ");
 
   return (
-    <section id="top" className="w-full pt-24 sm:pt-32 pb-20 sm:pb-28">
+    <section id="top" className="w-full pt-20 sm:pt-28 pb-14 sm:pb-20">
       <div className="max-w-[1140px] mx-auto px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24">
         
         {/* Eyebrow Descriptor with Motion */}
@@ -58,12 +58,9 @@ export function Hero() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="mb-6 sm:mb-8"
         >
-          <p className="eyebrow flex items-center gap-2 text-[#858585]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#111111]" />
-            <span>Product Partner</span>
-            <span className="text-[#BFBFB8]">·</span>
-            <span>Design Systems &amp; Frontend Engineering</span>
-          </p>
+          <div className="inline-flex items-center gap-2 text-xs text-[#111111]">
+            <span>UX &amp; Frontend Engineering</span>
+          </div>
         </motion.div>
 
         {/* Large Editorial Headline with Kinetic Motion Reveal & Re-trigger */}
@@ -72,7 +69,7 @@ export function Hero() {
           whileInView="visible"
           viewport={{ once: false }}
           variants={headlineContainerVariants}
-          className="max-w-5xl mb-8 sm:mb-12"
+          className="max-w-5xl mb-6 sm:mb-8"
         >
           <h1 className="display-headline text-[#111111] font-bold flex flex-wrap gap-x-[0.28em] gap-y-0 leading-[1.02] sm:leading-[1.0]">
             {words.map((word, i) => (
@@ -93,20 +90,17 @@ export function Hero() {
 
         {/* Supporting Statement & Actions */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
-          transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start pb-12 sm:pb-16 border-b border-[#DDDDD8]"
+          transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col gap-6 sm:gap-8"
         >
-          <div className="lg:col-span-7">
-            <p className="text-lg sm:text-xl md:text-2xl font-normal text-[#555555] leading-relaxed max-w-2xl">
-              From early product ambiguity to production-ready software — unifying user research, 
-              editorial UX, and performant Next.js code into seamless digital experiences.
-            </p>
-          </div>
+          <p className="text-base sm:text-lg md:text-xl font-normal text-[#666666] leading-relaxed max-w-2xl">
+            From early ambiguity to production-ready software — strategy, design systems, and frontend engineering in one partnership.
+          </p>
 
-          <div className="lg:col-span-5 flex flex-wrap sm:flex-nowrap items-center gap-4 lg:justify-end">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-1">
             <motion.a
               href="#work"
               onClick={(e) => scrollToSection(e, "#work")}
@@ -123,13 +117,13 @@ export function Hero() {
               onClick={(e) => scrollToSection(e, "#contact")}
               whileHover={{ y: -2 }}
               whileTap={{ y: 0 }}
-              className="btn-secondary w-full sm:w-auto text-center"
+              className="btn-secondary w-full sm:w-auto"
             >
               <span>Start a Conversation</span>
+              <ArrowRight size={15} />
             </motion.a>
           </div>
         </motion.div>
-
       </div>
     </section>
   );
