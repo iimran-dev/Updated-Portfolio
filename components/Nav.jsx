@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLenis } from "lenis/react";
 import { ArrowRight } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 
 const NAV_LINKS = [
   { label: "Work", href: "#work", pageHref: "/#work" },
@@ -21,8 +22,9 @@ export function Nav() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 60);
     };
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -57,16 +59,38 @@ export function Nav() {
           <a
             href="#top"
             onClick={(e) => handleScrollTo(e, "#top")}
-            className="text-xs sm:text-[13px] font-bold tracking-[0.25em] text-[#111111] hover:opacity-75 transition-opacity uppercase select-none focus-visible:outline-none"
+            className="text-xs sm:text-[13px] text-[#111111] hover:opacity-75 transition-opacity select-none focus-visible:outline-none font-bold min-w-[32px] sm:min-w-[70px] inline-flex items-center"
           >
-            Imran.
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.span
+                key={scrolled ? "ima" : "imran"}
+                initial={{ opacity: 0, y: 2 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -2 }}
+                transition={{ duration: 0.18 }}
+                className="inline-block"
+              >
+                {scrolled ? "IMA." : "Imran.M.A"}
+              </motion.span>
+            </AnimatePresence>
           </a>
         ) : (
           <Link
             href="/"
-            className="text-xs sm:text-[13px] font-bold tracking-[0.25em] text-[#111111] hover:opacity-75 transition-opacity uppercase select-none focus-visible:outline-none"
+            className="text-xs sm:text-[13px] font-bold text-[#111111] hover:opacity-75 transition-opacity select-none focus-visible:outline-none min-w-[32px] sm:min-w-[70px] inline-flex items-center"
           >
-            Imran.
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.span
+                key={scrolled ? "ima" : "imran"}
+                initial={{ opacity: 0, y: 2 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -2 }}
+                transition={{ duration: 0.18 }}
+                className="inline-block"
+              >
+                {scrolled ? "IMA" : "Imran.M.A"}
+              </motion.span>
+            </AnimatePresence>
           </Link>
         )}
 

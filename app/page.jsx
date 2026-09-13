@@ -2,7 +2,7 @@ import { Nav } from '../components/Nav';
 import { Hero } from '../components/Hero';
 import { Credibility } from '../components/Credibility';
 import { SelectedWork } from '../components/SelectedWork';
-import { HowIWork } from '../components/HowIWork';
+import { Experiences } from '../components/Experiences';
 import { Services } from '../components/Services';
 import { Testimonials } from '../components/Testimonials';
 import { FinalCTA } from '../components/FinalCTA';
@@ -24,8 +24,8 @@ export default function Home() {
         {/* 4. Selected Work (Alternating editorial presentations) */}
         <SelectedWork />
 
-        {/* 5. How I Work (Numbered methodology 01–05) */}
-        <HowIWork />
+        {/*5. Experiences*/}
+        <Experiences />
 
         {/* 6. Services (Clean editorial rows) */}
         <Services />
