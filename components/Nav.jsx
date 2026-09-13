@@ -48,10 +48,10 @@ export function Nav() {
   return (
     <header className="fixed top-4 sm:top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
       <nav
-        className={`pointer-events-auto w-full max-w-[560px] sm:max-w-[600px] h-12 sm:h-13.5 rounded-full bg-[#FFFFFF]/90 backdrop-blur-md border transition-all duration-300 flex items-center justify-between pl-4 sm:pl-7 pr-1.5 sm:pr-2 ${
+        className={`pointer-events-auto w-full max-w-[560px] sm:max-w-[600px] h-12 sm:h-13.5 rounded-full backdrop-blur-xl backdrop-saturate-150 border transition-all duration-300 flex items-center justify-between pl-4 sm:pl-7 pr-1.5 sm:pr-2 ${
           scrolled
-            ? "border-[#CECED8] shadow-[0_8px_30px_rgba(0,0,0,0.08)]"
-            : "border-[#DDDDD8] shadow-[0_4px_24px_rgba(0,0,0,0.05)]"
+            ? "bg-white/40 border-black/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_12px_36px_rgba(0,0,0,0.08)]"
+            : "bg-white/20 border-black/[0.08] shadow-[inset_0_1px_1px_rgba(255,255,255,0.7),0_6px_24px_rgba(0,0,0,0.04)]"
         }`}
       >
         {/* Monogram Brand Logo */}
@@ -70,7 +70,7 @@ export function Nav() {
                 transition={{ duration: 0.18 }}
                 className="inline-block"
               >
-                {scrolled ? "IMA." : "Imran.M.A"}
+                {scrolled ? "IMA." : "Imran MA."}
               </motion.span>
             </AnimatePresence>
           </a>
@@ -88,7 +88,7 @@ export function Nav() {
                 transition={{ duration: 0.18 }}
                 className="inline-block"
               >
-                {scrolled ? "IMA" : "Imran.M.A"}
+                {scrolled ? "IMA." : "Imran MA."}
               </motion.span>
             </AnimatePresence>
           </Link>
