@@ -13,89 +13,60 @@ export function Footer() {
   };
 
   return (
-    <footer className="w-full bg-[#111111] text-[#AAAAAA] border-t border-[#222222] py-14 sm:py-16">
+    <footer className="w-full bg-[#111111] text-[#777777] border-t border-[#222222] py-8 sm:py-10">
       <div className="max-w-[1140px] mx-auto px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24">
-        
-        {/* Top Footer Row */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-[#222222] items-start">
-          
-          <div className="md:col-span-6 space-y-3">
-            <span className="text-xl font-bold text-[#FFFFFF] tracking-tight block">
-              Imran
-            </span>
-            <p className="text-sm text-[#777777] max-w-sm leading-relaxed">
-              Product Designer &amp; Frontend Engineer shaping intentional, high-performance web software.
-            </p>
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-xs">
+          {/* Brand & Copyright */}
+          <div className="flex items-center gap-3 text-[#777777]">
+            <span className="font-semibold text-[#FFFFFF] tracking-tight text-sm">Imran</span>
+            <span className="text-[#333333]">/</span>
+            <span>&copy; {new Date().getFullYear()}</span>
+            <span className="hidden sm:inline text-[#333333]">·</span>
+            <span className="hidden sm:inline text-[#666666]">Crafted with Next.js</span>
           </div>
 
-          <div className="md:col-span-6 flex flex-wrap gap-8 md:justify-end text-sm">
-            <div className="flex flex-col gap-2.5">
-              <span className="text-xs font-mono text-[#666666] uppercase tracking-wider">
-                Connect
-              </span>
-              <a
-                href="mailto:info.imran.ma@gmail.com"
-                className="text-[#FFFFFF] hover:text-[#AAAAAA] transition-colors"
-              >
-                info.imran.ma@gmail.com
-              </a>
-              <a
-                href="https://github.com/iimran-dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#FFFFFF] hover:text-[#AAAAAA] transition-colors"
-              >
-                GitHub ↗
-              </a>
-              <a
-                href="https://www.linkedin.com/in/imran-m-a-35a89128a/?skipRedirect=true"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#FFFFFF] hover:text-[#AAAAAA] transition-colors"
-              >
-                LinkedIn ↗
-              </a>
-            </div>
-
-            <div className="flex flex-col gap-2.5">
-              <span className="text-xs font-mono text-[#666666] uppercase tracking-wider">
-                Index
-              </span>
-              <Link href="/work" className="text-[#AAAAAA] hover:text-[#FFFFFF] transition-colors">
-                All Work &amp; Archive
-              </Link>
-              <Link href="/#work" className="text-[#AAAAAA] hover:text-[#FFFFFF] transition-colors">
-                Featured Work
-              </Link>
-              <Link href="/services" className="text-[#AAAAAA] hover:text-[#FFFFFF] transition-colors">
-                Services
-              </Link>
-              <Link href="/about" className="text-[#AAAAAA] hover:text-[#FFFFFF] transition-colors">
-                About &amp; Skills
-              </Link>
-            </div>
+          {/* Minimal Navigation & Socials */}
+          <div className="flex items-center gap-5 sm:gap-6 font-mono text-[11px] uppercase tracking-wider">
+            <Link
+              href="/work"
+              className="text-[#888888] hover:text-[#FFFFFF] transition-colors focus:outline-none"
+            >
+              Work
+            </Link>
+            <Link
+              href="/services"
+              className="text-[#888888] hover:text-[#FFFFFF] transition-colors focus:outline-none"
+            >
+              Services
+            </Link>
+            <a
+              href="https://github.com/iimran-dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#888888] hover:text-[#FFFFFF] transition-colors focus:outline-none"
+            >
+              GitHub ↗
+            </a>
+            <a
+              href="https://www.linkedin.com/in/imran-m-a-35a89128a/?skipRedirect=true"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#888888] hover:text-[#FFFFFF] transition-colors focus:outline-none"
+            >
+              LinkedIn ↗
+            </a>
           </div>
 
-        </div>
-
-        {/* Bottom Footer Row */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#666666] gap-4">
-          <div className="flex items-center gap-4">
-            <p>&copy; {new Date().getFullYear()} Imran. All rights reserved.</p>
-            <span>·</span>
-            <span>Designed &amp; Built with Next.js</span>
-          </div>
-
+          {/* Back to top with clean focus state */}
           <button
             type="button"
             onClick={scrollToTop}
-            className="inline-flex items-center gap-1.5 text-[#888888] hover:text-[#FFFFFF] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs text-[#888888] hover:text-[#FFFFFF] transition-colors cursor-pointer focus:outline-none select-none"
           >
             <span>Back to top</span>
-            <ArrowUp size={13} />
+            <ArrowUp size={12} />
           </button>
         </div>
-
       </div>
     </footer>
   );

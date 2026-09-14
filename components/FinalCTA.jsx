@@ -54,10 +54,6 @@ export function FinalCTA() {
             className="lg:col-span-6 flex flex-col justify-between h-full gap-8"
           >
             <div className="space-y-6">
-              <span className="text-xs font-mono tracking-widest uppercase text-[#888888] block">
-                Next Steps
-              </span>
-              
               <p className="text-lg sm:text-xl text-[#AAAAAA]">
                 Not sure what you need?
               </p>
@@ -103,7 +99,7 @@ export function FinalCTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-60px" }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 bg-[#181818] p-8 sm:p-10 rounded-md border border-[#282828]"
+            className="lg:col-span-6 bg-[#161616] p-8 sm:p-10 rounded-xl border border-[#242424]"
           >
             <h3 className="text-lg font-bold text-[#FFFFFF] mb-6 tracking-tight">
               Start a Conversation
@@ -121,7 +117,7 @@ export function FinalCTA() {
                   value={form.name}
                   onChange={handleChange}
                   placeholder="Your name or company"
-                  className="w-full bg-[#111111] border border-[#282828] text-[#F7F7F5] text-sm rounded-[4px] px-4 py-3 placeholder:text-[#555555] focus:outline-none focus:border-[#FFFFFF] transition-colors"
+                  className="w-full bg-[#111111] border border-[#282828] text-[#F7F7F5] text-sm rounded-lg px-4 py-3 placeholder:text-[#555555] focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/20 focus:bg-[#141414] transition-all duration-200"
                 />
               </div>
 
@@ -137,7 +133,7 @@ export function FinalCTA() {
                   value={form.email}
                   onChange={handleChange}
                   placeholder="name@company.com"
-                  className="w-full bg-[#111111] border border-[#282828] text-[#F7F7F5] text-sm rounded-[4px] px-4 py-3 placeholder:text-[#555555] focus:outline-none focus:border-[#FFFFFF] transition-colors"
+                  className="w-full bg-[#111111] border border-[#282828] text-[#F7F7F5] text-sm rounded-lg px-4 py-3 placeholder:text-[#555555] focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/20 focus:bg-[#141414] transition-all duration-200"
                 />
               </div>
 
@@ -153,14 +149,14 @@ export function FinalCTA() {
                   value={form.message}
                   onChange={handleChange}
                   placeholder="Tell me about your product, objectives, and approximate timeline..."
-                  className="w-full bg-[#111111] border border-[#282828] text-[#F7F7F5] text-sm rounded-[4px] px-4 py-3 placeholder:text-[#555555] focus:outline-none focus:border-[#FFFFFF] transition-colors resize-none"
+                  className="w-full bg-[#111111] border border-[#282828] text-[#F7F7F5] text-sm rounded-lg px-4 py-3 placeholder:text-[#555555] focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/20 focus:bg-[#141414] transition-all duration-200 resize-none"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="mt-2 inline-flex items-center justify-center gap-2 bg-[#FFFFFF] text-[#111111] font-semibold text-sm py-3.5 px-7 rounded-full hover:bg-[#EBEBE6] active:scale-[0.98] transition-all cursor-pointer disabled:opacity-50 min-h-[48px] shadow-sm hover:shadow-md"
+                className="mt-2 inline-flex items-center justify-center gap-2 bg-[#FFFFFF] text-[#111111] font-semibold text-sm py-3.5 px-7 rounded-full hover:bg-[#EBEBE6] active:scale-[0.98] transition-all cursor-pointer disabled:opacity-50 min-h-[48px] shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
               >
                 {status === "loading" && <Loader2 size={16} className="animate-spin" />}
                 {status === "success" && <Check size={16} />}

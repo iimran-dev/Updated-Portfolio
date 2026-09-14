@@ -1,5 +1,4 @@
 'use client';
-
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
@@ -31,11 +30,6 @@ export default function WorkPage() {
               <ArrowLeft size={14} />
               <span>Back to Overview</span>
             </Link>
-
-            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#858585]">
-              <span className="inline-block w-2 h-2 rounded-full bg-emerald-500" />
-              <span>{projects.length} Projects</span>
-            </div>
           </motion.div>
 
           {/* Page Header */}
@@ -45,7 +39,6 @@ export default function WorkPage() {
             transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-2xl mb-16 sm:mb-20"
           >
-            <span className="eyebrow block mb-2.5">Portfolio · 2025 — 2026</span>
             <h1 className="editorial-h1 text-[#111111] mb-4">
               All Shipped Work
             </h1>
@@ -93,57 +86,55 @@ export default function WorkPage() {
                   </div>
 
                   {/* Editorial Details (5 Columns) */}
-                  <div className={`lg:col-span-5 flex flex-col gap-4 ${isReversed ? "order-2 lg:order-1" : ""}`}>
-                    {/* Meta: Number, Category, Year */}
-                    <div className="flex items-center gap-2 text-xs font-mono tracking-wider text-[#858585] uppercase">
-                      <span className="font-semibold text-[#111111]">{numString}</span>
-                      <span>·</span>
-                      <span>{project.category}</span>
-                      <span>·</span>
-                      <span className="text-[#999999]">{project.year}</span>
-                    </div>
-
-                    {/* Title */}
-                    <h2 className="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight leading-tight">
-                      <Link
-                        href={`/projects/${project.id}`}
-                        className="hover:opacity-75 transition-opacity"
-                      >
-                        {project.title}
-                      </Link>
-                    </h2>
-
-                    {/* Concise Single-Paragraph Description */}
-                    <p className="text-sm text-[#555555] leading-relaxed">
-                      {project.shortDescription}
-                    </p>
-
-                    {/* Tech Stack Pills */}
-                    <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                      {project.techStack?.slice(0, 4).map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-2.5 py-0.5 rounded-full bg-[#FFFFFF] border border-[#DDDDD8] text-[#555555] text-[11px] font-mono shadow-2xs"
-                        >
-                          {tech}
+                  <div className={`lg:col-span-5 ${isReversed ? "order-2 lg:order-1" : ""}`}>
+                    <div className="flex flex-col gap-3.5 flex-1 min-w-0">
+                      {/* Title Row with Serial Number perfectly aligned to font baseline */}
+                      <div className="flex items-baseline gap-3 sm:gap-3.5">
+                        <span className="font-mono text-xs sm:text-sm font-semibold text-[#888888] tracking-wider shrink-0 select-none">
+                          {numString}
                         </span>
-                      ))}
-                    </div>
+                        <h2 className="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight leading-tight">
+                          <Link
+                            href={`/projects/${project.id}`}
+                            className="hover:opacity-75 transition-opacity"
+                          >
+                            {project.title}
+                          </Link>
+                        </h2>
+                      </div>
 
-                    {/* Case Study Link */}
-                    <div className="pt-2">
-                      <Link
-                        href={`/projects/${project.id}`}
-                        className="link-editorial text-sm group inline-flex items-center gap-2 font-medium text-[#111111]"
-                      >
-                        <span>View Case Study</span>
-                        <ArrowRight
-                          size={14}
-                          className="transition-transform duration-200 group-hover:translate-x-1"
-                        />
-                      </Link>
+                        {/* Concise Single-Paragraph Description */}
+                        <p className="text-sm sm:text-base text-[#555555] leading-relaxed">
+                          {project.shortDescription}
+                        </p>
+
+                        {/* Tech Stack Pills */}
+                        <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                          {project.techStack?.slice(0, 4).map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-2.5 py-0.5 rounded-full bg-[#FFFFFF] border border-[#DDDDD8] text-[#555555] text-[11px] font-mono shadow-2xs"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+
+                        {/* Case Study Link */}
+                        <div className="pt-2">
+                          <Link
+                            href={`/projects/${project.id}`}
+                            className="link-editorial text-sm group inline-flex items-center gap-2 font-medium text-[#111111]"
+                          >
+                            <span>View Case Study</span>
+                            <ArrowRight
+                              size={14}
+                              className="transition-transform duration-200 group-hover:translate-x-1"
+                            />
+                          </Link>
+                        </div>
+                      </div>
                     </div>
-                  </div>
                 </motion.article>
               );
             })}

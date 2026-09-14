@@ -50,7 +50,7 @@ export function Nav() {
   return (
     <header className="fixed top-4 sm:top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
       <nav
-        className={`pointer-events-auto w-full max-w-[560px] sm:max-w-[600px] h-12 sm:h-13.5 rounded-full backdrop-blur-xl backdrop-saturate-150 border transition-all duration-300 flex items-center justify-between pl-4 sm:pl-7 pr-1.5 sm:pr-2 ${
+        className={`pointer-events-auto w-full max-w-[560px] sm:max-w-[600px] h-12 sm:h-13.5 rounded-full backdrop-blur-xl backdrop-saturate-150 border transition-all duration-300 flex items-center justify-between pl-4 sm:pl-7 pr-0 overflow-hidden ${
           scrolled
             ? "bg-white/40 border-black/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_12px_36px_rgba(0,0,0,0.08)]"
             : "bg-white/20 border-black/[0.08] shadow-[inset_0_1px_1px_rgba(255,255,255,0.7),0_6px_24px_rgba(0,0,0,0.04)]"
@@ -126,12 +126,12 @@ export function Nav() {
           })}
         </div>
 
-        {/* Contact Pill CTA Button */}
+        {/* Contact Pill CTA Button - Full Navbar Height */}
         {isHomePage ? (
           <a
             href="#contact"
             onClick={(e) => handleScrollTo(e, "#contact")}
-            className="group inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-[#111111] text-[#FFFFFF] hover:bg-[#222222] px-3.5 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-[13px] font-medium transition-all duration-200 shadow-2xs hover:shadow-xs active:scale-95 focus-visible:outline-none"
+            className="group self-stretch flex items-center gap-1.5 sm:gap-2 rounded-l-full bg-[#111111] text-[#FFFFFF] hover:bg-[#222222] active:bg-[#000000] px-4 sm:px-6 text-xs sm:text-[13px] font-medium transition-colors duration-200 focus-visible:outline-none shrink-0"
           >
             <span>Contact</span>
             <ArrowRight
@@ -143,7 +143,7 @@ export function Nav() {
         ) : (
           <Link
             href="/#contact"
-            className="group inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-[#111111] text-[#FFFFFF] hover:bg-[#222222] px-3.5 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-[13px] font-medium transition-all duration-200 shadow-2xs hover:shadow-xs active:scale-95 focus-visible:outline-none"
+            className="group self-stretch flex items-center gap-1.5 sm:gap-2 rounded-l-full bg-[#111111] text-[#FFFFFF] hover:bg-[#222222] active:bg-[#000000] px-4 sm:px-6 text-xs sm:text-[13px] font-medium transition-colors duration-200 focus-visible:outline-none shrink-0"
           >
             <span>Contact</span>
             <ArrowRight

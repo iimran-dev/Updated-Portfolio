@@ -63,7 +63,6 @@ export function Experiences() {
         const nodeRing = item.querySelector(".exp-node");
         const line = item.querySelector(".exp-line");
         const content = item.querySelector(".exp-content");
-        const tags = item.querySelectorAll(".exp-tag");
 
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -129,23 +128,6 @@ export function Experiences() {
             0.12
           );
         }
-
-        // 5. Tech tags stagger in
-        if (tags.length) {
-          tl.fromTo(
-            tags,
-            { y: 8, autoAlpha: 0 },
-            {
-              y: 0,
-              autoAlpha: 1,
-              duration: 0.35,
-              stagger: 0.035,
-              ease: "power2.out",
-              force3D: true,
-            },
-            0.18
-          );
-        }
       });
     },
     { scope: containerRef }
@@ -180,27 +162,33 @@ export function Experiences() {
                   key={idx}
                   className="exp-item grid grid-cols-[68px_24px_1fr] sm:grid-cols-[100px_32px_1fr] gap-x-3 sm:gap-x-5 items-start"
                 >
-                  {/* Left Rail: Work Mode & Year */}
-                  <div className="exp-left text-right pt-0.5">
-                    <span className="block text-[10px] font-mono uppercase tracking-wider text-[#888888] font-semibold">
+                  {/* Left Rail: Temporal Index (Year) & Work Mode */}
+                  <div className="exp-left text-right">
+                    {/* Year: Perfectly height-locked to the company title row */}
+                    <div className="h-7 sm:h-8 flex items-center justify-end">
+                      <span className="font-mono text-sm sm:text-base font-bold text-[#111111] tracking-tight">
+                        {exp.year}
+                      </span>
+                    </div>
+                    {/* Mode: Secondary metadata sitting neatly underneath */}
+                    <span className="block font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-[#888888] font-medium mt-0.5">
                       {exp.mode}
-                    </span>
-                    <span className="block text-xs sm:text-sm font-mono font-bold text-[#111111] mt-0.5">
-                      {exp.year}
                     </span>
                   </div>
 
                   {/* Center Rail: Line + Node Indicator */}
                   <div className="relative flex flex-col items-center h-full">
-                    {/* Node Circle */}
-                    <div className="exp-node relative z-10 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border-2 border-[#111111] bg-[#FFFFFF] flex items-center justify-center mt-1">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#111111]" />
+                    {/* Node Circle: Centered in the exact same h-7 sm:h-8 box */}
+                    <div className="h-7 sm:h-8 flex items-center justify-center shrink-0">
+                      <div className="exp-node relative z-10 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border-2 border-[#111111] bg-[#FFFFFF] flex items-center justify-center shrink-0 shadow-2xs">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#111111]" />
+                      </div>
                     </div>
 
-                    {/* Connecting Line Track (only between items, never below the last item) */}
+                    {/* Connecting Line Track: Originates from node center and draws downward */}
                     {!isLast && (
                       <div
-                        className="exp-line absolute top-3.5 sm:top-4 -bottom-1.5 left-1/2 -translate-x-1/2 w-[1.5px] bg-[#DDDDD8]"
+                        className="exp-line absolute top-3.5 sm:top-4 bottom-0 left-1/2 -translate-x-1/2 w-[1.5px] bg-[#DDDDD8] z-0"
                         style={{ transformOrigin: "top center" }}
                       />
                     )}
@@ -208,9 +196,9 @@ export function Experiences() {
 
                   {/* Right Content: Details & Narrative */}
                   <div className={`exp-content ${isLast ? "pb-4 sm:pb-6" : "pb-12 sm:pb-16"}`}>
-                    {/* Company Name & Current Badge */}
-                    <div className="flex flex-wrap items-center gap-2 mb-1">
-                      <h3 className="text-lg sm:text-xl font-bold text-[#111111] tracking-tight">
+                    {/* Company Name & Current Badge: Centered in the exact same h-7 sm:h-8 box */}
+                    <div className="h-7 sm:h-8 flex items-center gap-2.5">
+                      <h3 className="text-lg sm:text-xl font-bold text-[#111111] tracking-tight leading-none">
                         {exp.company}
                       </h3>
                       {exp.isCurrent && (
@@ -221,26 +209,14 @@ export function Experiences() {
                     </div>
 
                     {/* Role Title */}
-                    <p className="text-sm sm:text-base font-semibold text-[#333333] mb-2.5">
+                    <p className="text-sm sm:text-base font-semibold text-[#333333] mt-1 mb-2 leading-snug">
                       {exp.role}
                     </p>
 
                     {/* Narrative Description */}
-                    <p className="text-xs sm:text-sm text-[#555555] leading-relaxed max-w-xl mb-3.5">
+                    <p className="text-xs sm:text-sm text-[#555555] leading-relaxed max-w-xl">
                       {exp.description}
                     </p>
-
-                    {/* Subtle Monospace Tech / Skill Pills */}
-                    <div className="flex flex-wrap gap-1.5">
-                      {exp.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="exp-tag px-2.5 py-0.5 rounded-full bg-[#FFFFFF] border border-[#DDDDD8] text-[11px] font-mono text-[#555555] shadow-2xs"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
                   </div>
                 </div>
               );

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -13,8 +14,22 @@
   --accent: #111111;
   --accent-foreground: #FFFFFF;
 
-  /* Typography Font Stacks */
-  --font-sans: var(--font-jakarta, 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  /* Typography Font Stacks & Sizes - Google Sans */
+  --font-family: "Google Sans", sans-serif;
+  --font-sans: var(--font-family);
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  --text-hero: clamp(3.5rem, 7vw, 5rem);
+  --text-h1: clamp(2.75rem, 5vw, 3.5rem);
+  --text-h2: clamp(2rem, 3.5vw, 2.5rem);
+  --text-h3: 1.5rem;
+
+  --text-body-lg: 1.25rem;
+  --text-body: 1rem;
+  --text-small: 0.875rem;
 }
 
 /* Dark section theme (Inverted Final CTA) */
@@ -35,13 +50,13 @@ html {
   scroll-behavior: smooth;
   background-color: var(--background);
   color: var(--text-primary);
-  font-family: var(--font-sans);
+  font-family: var(--font-family);
 }
 
 body {
   background-color: var(--background);
   color: var(--text-primary);
-  font-family: var(--font-sans);
+  font-family: var(--font-family);
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -63,31 +78,31 @@ body {
 
 /* Editorial Headline Typography */
 .display-headline {
-  font-size: clamp(2.75rem, 7vw, 5.5rem);
-  line-height: 1.02;
-  letter-spacing: -0.035em;
-  font-weight: 700;
-}
-
-.editorial-h1 {
-  font-size: clamp(2.25rem, 5vw, 4rem);
-  line-height: 1.06;
+  font-size: var(--text-hero);
+  line-height: 1.04;
   letter-spacing: -0.03em;
   font-weight: 700;
 }
 
-.editorial-h2 {
-  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-  line-height: 1.12;
+.editorial-h1 {
+  font-size: var(--text-h1);
+  line-height: 1.08;
   letter-spacing: -0.025em;
-  font-weight: 600;
+  font-weight: 700;
+}
+
+.editorial-h2 {
+  font-size: var(--text-h2);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: var(--weight-semibold);
 }
 
 .editorial-h3 {
-  font-size: clamp(1.25rem, 2.2vw, 1.875rem);
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  font-weight: 600;
+  font-size: var(--text-h3);
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  font-weight: var(--weight-semibold);
 }
 
 .eyebrow {

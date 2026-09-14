@@ -148,12 +148,11 @@ export function SelectedWork() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, margin: "-60px" }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-20 sm:mt-24 pt-10 border-t border-[#DDDDD8] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
+          className="mt-20 sm:mt-24 pt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
         >
           <div>
-            <span className="eyebrow block mb-1">Archive &amp; Systems</span>
             <p className="text-base sm:text-lg font-semibold text-[#111111]">
-              Explore all {projects.length} shipped products, AI tools &amp; design architectures.
+              Explore all shipped products, AI tools &amp; design architectures.
             </p>
           </div>
 
@@ -161,7 +160,7 @@ export function SelectedWork() {
             href="/work"
             className="group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[#111111] text-[#FFFFFF] hover:bg-[#222222] text-xs sm:text-sm font-medium transition-all duration-200 shadow-2xs hover:shadow-xs active:scale-[0.98]"
           >
-            <span>View All Work ({projects.length})</span>
+            <span>View All Work</span>
             <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>
