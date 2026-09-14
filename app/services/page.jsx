@@ -171,7 +171,7 @@ export default function ServicesPage() {
             transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-2xl mb-14 sm:mb-20"
           >
-            <h1 className="whitespace-nowrap editorial-h1 text-[#111111] mb-4">
+            <h1 className="editorial-h1 text-[#111111] mb-4">
               Services &amp; Methodology
             </h1>
             <p className="text-sm sm:text-base text-[#555555] font-normal leading-relaxed">
@@ -190,7 +190,7 @@ export default function ServicesPage() {
           {/* Universal Sticky Scroll Arch Container (Optimized for Mobile, Tablet & Desktop) */}
           <div className="relative min-h-[140vh] sm:min-h-[260vh]">
             <div className="sticky top-0 h-[100dvh] flex flex-col justify-center px-4 sm:px-10 md:px-14 lg:px-20 xl:px-24 max-w-[1140px] mx-auto overflow-hidden">
-              
+
               {/* Header Bar */}
               <div className="flex items-end justify-between pb-3 sm:pb-4 border-b border-[#DDDDD8] mb-3 sm:mb-6">
                 <div>

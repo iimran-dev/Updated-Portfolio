@@ -1,11 +1,11 @@
 export const metadata = {
-  title: 'About & Skills — Imran | Product Designer & Frontend Engineer',
+  title: 'About — Imran | Frontend Engineer & Creative Technologist',
   description:
-    'Discover Imran’s background, engineering philosophy, and comprehensive technical proficiency in product design, Next.js frontend architecture, and modular design systems.',
+    'A frontend engineer and creative technologist focused on building fast, functional, and thoughtfully designed digital products.',
   openGraph: {
-    title: 'About & Skills — Imran | Product Designer & Frontend Engineer',
+    title: 'About — Imran | Frontend Engineer & Creative Technologist',
     description:
-      'Discover Imran’s background, engineering philosophy, and comprehensive technical proficiency.',
+      'A frontend engineer and creative technologist focused on building fast, functional, and thoughtfully designed digital products.',
     type: 'website',
   },
 };
