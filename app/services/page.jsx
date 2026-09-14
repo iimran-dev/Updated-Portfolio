@@ -106,8 +106,8 @@ export default function ServicesPage() {
   });
 
   const smoothArchProgress = useSpring(archRawProgress, {
-    stiffness: 160,
-    damping: 26,
+    stiffness: 280,
+    damping: 34,
     restDelta: 0.001,
   });
 
@@ -187,12 +187,12 @@ export default function ServicesPage() {
           ref={howIWorkScrollRef}
           className="relative w-full border-t border-[#DDDDD8] bg-[#F7F7F5]"
         >
-          {/* Desktop & Tablet Sticky Scroll Arch Container */}
-          <div className="hidden md:block relative min-h-[280vh]">
-            <div className="sticky top-0 h-screen flex flex-col justify-center px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24 max-w-[1140px] mx-auto overflow-hidden">
+          {/* Universal Sticky Scroll Arch Container (Optimized for Mobile, Tablet & Desktop) */}
+          <div className="relative min-h-[140vh] sm:min-h-[260vh]">
+            <div className="sticky top-0 h-[100dvh] flex flex-col justify-center px-4 sm:px-10 md:px-14 lg:px-20 xl:px-24 max-w-[1140px] mx-auto overflow-hidden">
               
               {/* Header Bar */}
-              <div className="flex items-end justify-between pb-4 border-b border-[#DDDDD8] mb-6">
+              <div className="flex items-end justify-between pb-3 sm:pb-4 border-b border-[#DDDDD8] mb-3 sm:mb-6">
                 <div>
                   <h2 className="editorial-h2 text-[#111111]">How I Work</h2>
                 </div>
@@ -210,7 +210,8 @@ export default function ServicesPage() {
                     d="M 120 340 Q 720 40 1320 340"
                     fill="none"
                     stroke="#DDDDD8"
-                    strokeWidth="1.5"
+                    strokeWidth="2"
+                    className="sm:stroke-[1.5px]"
                   />
 
                   {/* Active Animated Overlay Arc Driven by Vertical Scroll */}
@@ -218,9 +219,10 @@ export default function ServicesPage() {
                     d="M 120 340 Q 720 40 1320 340"
                     fill="none"
                     stroke="#111111"
-                    strokeWidth="2.5"
+                    strokeWidth="3.5"
                     strokeDasharray={ARC_TOTAL_LENGTH}
                     style={{ strokeDashoffset: archStrokeOffset }}
+                    className="sm:stroke-[2.5px]"
                   />
 
                   {/* 5 Milestone Nodes along the Curve */}
@@ -237,11 +239,19 @@ export default function ServicesPage() {
                         tabIndex={0}
                         aria-label={`Step ${step.number}: ${step.title}`}
                       >
+                        {/* Invisible Accessible Touch Hit Target */}
+                        <circle
+                          cx={step.x}
+                          cy={step.y}
+                          r="60"
+                          fill="transparent"
+                        />
+
                         {/* Outer Dot Ring */}
                         <circle
                           cx={step.x}
                           cy={step.y}
-                          r={isActive ? "7.5" : "5.5"}
+                          r={isActive ? "11" : "8"}
                           fill={isPassed ? "#111111" : "#FFFFFF"}
                           stroke="#111111"
                           strokeWidth="2"
@@ -252,7 +262,7 @@ export default function ServicesPage() {
                         <circle
                           cx={step.x}
                           cy={step.y}
-                          r={isActive ? "2.5" : "1.5"}
+                          r={isActive ? "3.5" : "2"}
                           fill={isPassed ? "#FFFFFF" : "#111111"}
                           className="transition-all duration-300"
                         />
@@ -261,27 +271,27 @@ export default function ServicesPage() {
                   })}
                 </svg>
 
-                {/* Active Step Presentation Card Under the Arch (Left-Aligned, Fixed Dimensions, Clean Presentation) */}
-                <div className="relative w-full max-w-[580px] h-[150px] sm:h-[160px] mx-auto text-left -mt-4 sm:-mt-6 mb-6 px-4">
-                  <AnimatePresence mode="popLayout" initial={false}>
+                {/* Active Step Presentation Card Under the Arch — Balanced Spacing & Removed Bottom Void */}
+                <div className="relative w-full max-w-[560px] h-[145px] sm:h-[155px] mx-auto text-left mt-6 sm:-mt-6 px-4">
+                  <AnimatePresence mode="wait" initial={false}>
                     <motion.div
                       key={activeStep.number}
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -8 }}
-                      transition={{ duration: 0.22, ease: "easeOut" }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.12, ease: "linear" }}
                       className="w-full h-full flex flex-col items-start justify-start text-left"
                     >
                       {/* Fixed height title (Left aligned) */}
-                      <div className="h-10 flex items-center justify-start mb-2">
+                      <div className="w-full h-8 sm:h-10 flex items-center justify-start mb-1.5 sm:mb-2">
                         <h3 className="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight text-left">
                           {activeStep.title}
                         </h3>
                       </div>
 
-                      {/* Fixed width & height description container (Left aligned) */}
-                      <div className="w-full h-[84px] sm:h-[92px] flex items-start justify-start text-left">
-                        <p className="text-sm sm:text-base text-[#555555] leading-relaxed text-left">
+                      {/* Fixed height description container — Clean, no excess bottom margin */}
+                      <div className="w-full h-[105px] sm:h-[95px] flex items-start justify-start text-left overflow-hidden">
+                        <p className="text-[13px] sm:text-base text-[#555555] leading-relaxed text-left">
                           {activeStep.description}
                         </p>
                       </div>
@@ -292,34 +302,13 @@ export default function ServicesPage() {
               </div>
             </div>
           </div>
-
-          {/* Mobile Fallback: Accessible, Natural Touch Scroll */}
-          <div className="block md:hidden px-6 py-12">
-            <div className="mb-6">
-              <span className="eyebrow block mb-1">Methodology</span>
-              <h2 className="editorial-h2 text-[#111111]">How I Work</h2>
-            </div>
-            <div className="space-y-4">
-              {STEPS.map((step) => (
-                <div
-                  key={step.number}
-                  className="p-5 rounded-xl bg-[#FFFFFF] border border-[#DDDDD8] shadow-2xs text-left"
-                >
-                  <h3 className="text-lg font-bold text-[#111111] mb-2">{step.title}</h3>
-                  <p className="text-xs sm:text-sm text-[#555555] leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
         </section>
 
 
         {/* ========================================================================= */}
         {/* SECTION 2: SERVICES — 2 SEPARATE CARDS                                    */}
         {/* ========================================================================= */}
-        <section className="relative w-full border-t border-[#DDDDD8] bg-[#F7F7F5] py-20 sm:py-28">
+        <section className="relative w-full border-t border-[#DDDDD8] bg-[#F7F7F5] pt-6 pb-16 sm:py-28">
           <div className="max-w-[1140px] mx-auto px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24">
             {/* Header Bar */}
             <div className="pb-6 border-b border-[#DDDDD8] mb-12 sm:mb-16">
