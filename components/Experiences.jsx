@@ -39,17 +39,21 @@ export function Experiences() {
   useGSAP(
     () => {
       // Header reveal
-      gsap.from(".exp-header", {
-        scrollTrigger: {
-          trigger: ".exp-header",
-          start: "top 85%",
-          toggleActions: "play none none reverse",
-        },
-        opacity: 0,
-        y: 28,
-        duration: 0.8,
-        ease: "power3.out",
-      });
+      gsap.fromTo(
+        ".exp-header",
+        { autoAlpha: 0, y: 24 },
+        {
+          scrollTrigger: {
+            trigger: ".exp-header",
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power3.out",
+        }
+      );
 
       // Individual item reveals one by one as they scroll into view
       const items = gsap.utils.toArray(".exp-item");
@@ -60,73 +64,86 @@ export function Experiences() {
         const line = item.querySelector(".exp-line");
         const content = item.querySelector(".exp-content");
         const tags = item.querySelectorAll(".exp-tag");
-        const midDot = item.querySelector(".exp-mid-dot");
 
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: item,
-            start: "top 80%",
+            start: "top 82%",
             toggleActions: "play none none reverse",
           },
         });
 
-        // 1. Node ring pops into place
+        // 1. Node ring scales & fades into place with crisp precision
         tl.fromTo(
           nodeRing,
-          { scale: 0, opacity: 0 },
-          { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.8)" }
+          { scale: 0.6, autoAlpha: 0 },
+          {
+            scale: 1,
+            autoAlpha: 1,
+            duration: 0.4,
+            ease: "power3.out",
+            force3D: true,
+          },
+          0
         );
 
         // 2. Left rail metadata slides in smoothly
         tl.fromTo(
           leftRail,
-          { x: -14, opacity: 0 },
-          { x: 0, opacity: 1, duration: 0.45, ease: "power2.out" },
-          "-=0.3"
+          { x: -12, autoAlpha: 0 },
+          {
+            x: 0,
+            autoAlpha: 1,
+            duration: 0.45,
+            ease: "power3.out",
+            force3D: true,
+          },
+          0.04
         );
 
-        // 3. Right content details glide up
+        // 3. Right content details glide up gracefully
         tl.fromTo(
           content,
-          { y: 20, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.55, ease: "power2.out" },
-          "-=0.35"
+          { y: 16, autoAlpha: 0 },
+          {
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.5,
+            ease: "power3.out",
+            force3D: true,
+          },
+          0.08
         );
 
-        // 4. Subtle tech pills stagger in
-        if (tags.length) {
-          tl.fromTo(
-            tags,
-            { opacity: 0, y: 8, scale: 0.95 },
-            {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              duration: 0.35,
-              stagger: 0.05,
-              ease: "power2.out",
-            },
-            "-=0.25"
-          );
-        }
-
-        // 5. Connecting line draws down to next item
+        // 4. Connecting line draws down smoothly to the next node
         if (line) {
           tl.fromTo(
             line,
             { scaleY: 0, transformOrigin: "top center" },
-            { scaleY: 1, duration: 0.5, ease: "power1.inOut" },
-            "-=0.3"
+            {
+              scaleY: 1,
+              duration: 0.55,
+              ease: "power2.inOut",
+              force3D: true,
+            },
+            0.12
           );
         }
 
-        // 6. Intermediate progress dot pops in
-        if (midDot) {
+        // 5. Tech tags stagger in
+        if (tags.length) {
           tl.fromTo(
-            midDot,
-            { scale: 0, opacity: 0 },
-            { scale: 1, opacity: 1, duration: 0.25, ease: "back.out(2)" },
-            "-=0.2"
+            tags,
+            { y: 8, autoAlpha: 0 },
+            {
+              y: 0,
+              autoAlpha: 1,
+              duration: 0.35,
+              stagger: 0.035,
+              ease: "power2.out",
+              force3D: true,
+            },
+            0.18
           );
         }
       });
@@ -174,29 +191,23 @@ export function Experiences() {
                   </div>
 
                   {/* Center Rail: Line + Node Indicator */}
-                  <div className="relative flex flex-col items-center h-full min-h-[140px] sm:min-h-[160px]">
+                  <div className="relative flex flex-col items-center h-full">
                     {/* Node Circle */}
                     <div className="exp-node relative z-10 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full border-2 border-[#111111] bg-[#FFFFFF] flex items-center justify-center mt-1">
                       <div className="w-1.5 h-1.5 rounded-full bg-[#111111]" />
                     </div>
 
-                    {/* Intermediate Progress Dot */}
+                    {/* Connecting Line Track (only between items, never below the last item) */}
                     {!isLast && (
-                      <div className="exp-mid-dot w-1 h-1 rounded-full bg-[#888888] my-auto" />
+                      <div
+                        className="exp-line absolute top-3.5 sm:top-4 -bottom-1.5 left-1/2 -translate-x-1/2 w-[1.5px] bg-[#DDDDD8]"
+                        style={{ transformOrigin: "top center" }}
+                      />
                     )}
-
-                    {/* Connecting Line Track & Active Line */}
-                    <div
-                      className={`exp-line absolute top-4 bottom-0 w-[1.5px] ${
-                        isLast
-                          ? "border-l-[1.5px] border-dashed border-[#BBBBB5]"
-                          : "bg-[#DDDDD8]"
-                      }`}
-                    />
                   </div>
 
                   {/* Right Content: Details & Narrative */}
-                  <div className={`exp-content pb-12 sm:pb-16 ${isLast ? "pb-4 sm:pb-6" : ""}`}>
+                  <div className={`exp-content ${isLast ? "pb-4 sm:pb-6" : "pb-12 sm:pb-16"}`}>
                     {/* Company Name & Current Badge */}
                     <div className="flex flex-wrap items-center gap-2 mb-1">
                       <h3 className="text-lg sm:text-xl font-bold text-[#111111] tracking-tight">

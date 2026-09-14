@@ -8,9 +8,9 @@ import { ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 const NAV_LINKS = [
-  { id: "work", label: "Work", href: "#work", pageHref: "/work" },
-  { id: "about", label: "About", href: "/about", pageHref: "/about", isPage: true },
-  { id: "services", label: "Services", href: "#services", pageHref: "/#services" },
+  { id: "work", label: "Work", href: "/work" },
+  { id: "about", label: "About", href: "/about" },
+  { id: "services", label: "Services", href: "/services" },
 ];
 
 export function Nav() {
@@ -18,8 +18,9 @@ export function Nav() {
   const lenis = useLenis();
   const pathname = usePathname();
   const isHomePage = pathname === "/";
-  const isAboutPage = pathname === "/about";
-  const isWorkPage = pathname === "/work";
+  const isAboutPage = pathname === "/about" || pathname.startsWith("/about/");
+  const isWorkPage = pathname === "/work" || pathname.startsWith("/work/") || pathname.startsWith("/projects/");
+  const isServicesPage = pathname === "/services" || pathname.startsWith("/services/");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -100,27 +101,15 @@ export function Nav() {
           {NAV_LINKS.map((link) => {
             const isActive =
               (link.id === "about" && isAboutPage) ||
-              (link.id === "work" && isWorkPage);
-
-            if (isHomePage && link.href.startsWith("#")) {
-              return (
-                <a
-                  key={link.id}
-                  href={link.href}
-                  onClick={(e) => handleScrollTo(e, link.href)}
-                  className="text-xs sm:text-[13px] font-medium text-[#555555] hover:text-[#111111] transition-colors py-1 focus-visible:outline-none"
-                >
-                  {link.label}
-                </a>
-              );
-            }
+              (link.id === "work" && isWorkPage) ||
+              (link.id === "services" && isServicesPage);
 
             return (
               <Link
                 key={link.id}
-                href={link.pageHref}
+                href={link.href}
                 onClick={(e) => {
-                  if ((isAboutPage && link.id === "about") || (isWorkPage && link.id === "work")) {
+                  if (isActive) {
                     e.preventDefault();
                     lenis?.scrollTo(0, { duration: 1.2 });
                   }
