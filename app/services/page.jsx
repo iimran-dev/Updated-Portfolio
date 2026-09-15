@@ -271,8 +271,8 @@ export default function ServicesPage() {
                   })}
                 </svg>
 
-                {/* Active Step Presentation Card Under the Arch — Balanced Spacing & Removed Bottom Void */}
-                <div className="relative w-full max-w-[560px] h-[145px] sm:h-[155px] mx-auto text-left mt-6 sm:-mt-6 px-4">
+                {/* Active Step Presentation Card Under the Arch — Balanced Spacing & Removed Overlap */}
+                <div className="relative w-full max-w-[560px] min-h-[150px] sm:min-h-[160px] mx-auto text-left mt-6 sm:mt-8 md:mt-10 lg:mt-8 px-4">
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.div
                       key={activeStep.number}
@@ -289,8 +289,8 @@ export default function ServicesPage() {
                         </h3>
                       </div>
 
-                      {/* Fixed height description container — Clean, no excess bottom margin */}
-                      <div className="w-full h-[105px] sm:h-[95px] flex items-start justify-start text-left overflow-hidden">
+                      {/* Description container — Clean, responsive height without clipping */}
+                      <div className="w-full min-h-[105px] sm:min-h-[95px] flex items-start justify-start text-left overflow-hidden">
                         <p className="text-[13px] sm:text-base text-[#555555] leading-relaxed text-left">
                           {activeStep.description}
                         </p>
