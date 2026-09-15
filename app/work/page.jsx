@@ -1,4 +1,5 @@
 'use client';
+
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
@@ -7,16 +8,28 @@ import { Footer } from "@/components/Footer";
 import { projects } from "@/lib/projects";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 32 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
+
 export default function WorkPage() {
   return (
-    <div className="bg-[#F7F7F5] text-[#111111] min-h-screen selection:bg-[#111111] selection:text-[#FFFFFF]">
+    <div className="bg-[#F7F7F5] text-[#111111] min-h-screen selection:bg-[#111111] selection:text-[#FFFFFF] font-sans">
       {/* Global Header Navigation */}
       <Nav />
 
       <main id="main-content" className="pt-28 sm:pt-36 lg:pt-40 pb-20 sm:pb-32">
         <div className="max-w-[1140px] mx-auto px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24">
           
-          {/* Top Bar */}
+          {/* Top Breadcrumb Bar */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -25,9 +38,12 @@ export default function WorkPage() {
           >
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-[#555555] hover:text-[#111111] uppercase transition-colors"
+              className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#555555] hover:text-[#111111] transition-colors group"
             >
-              <ArrowLeft size={14} />
+              <ArrowLeft
+                size={14}
+                className="group-hover:-translate-x-1 transition-transform duration-200"
+              />
               <span>Back to Overview</span>
             </Link>
           </motion.div>
@@ -37,18 +53,18 @@ export default function WorkPage() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-2xl mb-16 sm:mb-20"
+            className="max-w-3xl mb-20 sm:mb-28"
           >
             <h1 className="editorial-h1 text-[#111111] mb-4">
               All Shipped Work
             </h1>
-            <p className="text-sm sm:text-base text-[#555555] font-normal leading-relaxed">
-              Digital products, design systems, and frontend architectures engineered with precision and business impact.
+            <p className="text-base sm:text-lg md:text-xl text-[#555555] font-normal leading-relaxed">
+              Case-study-driven digital products, scalable design systems, and modern frontend architectures engineered for measurable business impact.
             </p>
           </motion.header>
 
-          {/* Projects Presentation List */}
-          <div className="flex flex-col gap-16 sm:gap-24 lg:gap-28">
+          {/* Projects Presentation List (Editorial Case Studies) */}
+          <div className="flex flex-col gap-28 sm:gap-36 lg:gap-44">
             {projects.map((project, idx) => {
               const isReversed = idx % 2 === 1;
               const numString = `0${idx + 1}`;
@@ -56,17 +72,17 @@ export default function WorkPage() {
               return (
                 <motion.article
                   key={project.id}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-80px" }}
+                  variants={cardVariants}
+                  className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center"
                 >
                   {/* Media Frame (7 Columns) */}
-                  <div className={`lg:col-span-7 ${isReversed ? "order-1 lg:order-2" : ""}`}>
+                  <div className={`lg:col-span-7 ${isReversed ? "order-1 lg:order-2" : "order-1"}`}>
                     <Link
                       href={`/projects/${project.id}`}
-                      className="group relative block w-full aspect-[16/9] rounded-lg border border-[#DDDDD8] bg-[#FFFFFF] overflow-hidden focus-visible:outline-none shadow-2xs"
+                      className="group relative block w-full aspect-[16/10] rounded-lg border border-[#DDDDD8] bg-[#FFFFFF] overflow-hidden focus-visible:outline-none shadow-xs"
                       aria-label={`View case study: ${project.title}`}
                     >
                       <Image
@@ -78,63 +94,73 @@ export default function WorkPage() {
                         priority={idx === 0}
                       />
 
-                      <div className="absolute bottom-3 right-3 z-20 hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#111111]/90 backdrop-blur-md text-[#FFFFFF] text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                        <span>Case Study</span>
-                        <ArrowUpRight size={13} />
+                      <div className="absolute bottom-4 right-4 z-20 hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#111111]/90 backdrop-blur-md text-[#FFFFFF] text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                        <span>Read Case Study</span>
+                        <ArrowRight size={13} />
                       </div>
                     </Link>
                   </div>
 
                   {/* Editorial Details (5 Columns) */}
-                  <div className={`lg:col-span-5 ${isReversed ? "order-2 lg:order-1" : ""}`}>
-                    <div className="flex flex-col gap-3.5 flex-1 min-w-0">
-                      {/* Title Row with Serial Number perfectly aligned to font baseline */}
-                      <div className="flex items-baseline gap-3 sm:gap-3.5">
-                        <span className="font-mono text-xs sm:text-sm font-semibold text-[#888888] tracking-wider shrink-0 select-none">
-                          {numString}
-                        </span>
-                        <h2 className="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight leading-tight">
-                          <Link
-                            href={`/projects/${project.id}`}
-                            className="hover:opacity-75 transition-opacity"
-                          >
-                            {project.title}
-                          </Link>
-                        </h2>
-                      </div>
+                  <div
+                    className={`lg:col-span-5 flex flex-col gap-5 ${
+                      isReversed ? "order-2 lg:order-1" : "order-2"
+                    }`}
+                  >
+                    {/* Chapter Number */}
+                    <span className="font-mono text-xs sm:text-sm font-semibold text-[#888888] tracking-widest uppercase">
+                      {numString}
+                    </span>
 
-                        {/* Concise Single-Paragraph Description */}
-                        <p className="text-sm sm:text-base text-[#555555] leading-relaxed">
-                          {project.shortDescription}
-                        </p>
+                    {/* Project Title */}
+                    <h2 className="text-3xl sm:text-4xl md:text-[42px] font-bold text-[#111111] tracking-tight leading-[1.1]">
+                      <Link
+                        href={`/projects/${project.id}`}
+                        className="hover:opacity-75 transition-opacity"
+                      >
+                        {project.title}
+                      </Link>
+                    </h2>
 
-                        {/* Tech Stack Pills */}
-                        <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                          {project.techStack?.slice(0, 4).map((tech) => (
-                            <span
-                              key={tech}
-                              className="px-2.5 py-0.5 rounded-full bg-[#FFFFFF] border border-[#DDDDD8] text-[#555555] text-[11px] font-mono shadow-2xs"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
+                    {/* Concise Short Description */}
+                    <p className="text-base sm:text-lg text-[#555555] font-normal leading-relaxed">
+                      {project.shortDescription}
+                    </p>
 
-                        {/* Case Study Link */}
-                        <div className="pt-2">
-                          <Link
-                            href={`/projects/${project.id}`}
-                            className="link-editorial text-sm group inline-flex items-center gap-2 font-medium text-[#111111]"
-                          >
-                            <span>View Case Study</span>
-                            <ArrowRight
-                              size={14}
-                              className="transition-transform duration-200 group-hover:translate-x-1"
-                            />
-                          </Link>
-                        </div>
-                      </div>
+                    {/* Restrained Technology Line */}
+                    <p className="text-xs sm:text-sm font-mono text-[#777777] tracking-wide pt-1">
+                      {project.technologies.slice(0, 4).join(" · ")}
+                    </p>
+
+                    {/* Action Links: View Live ↗ & Read Case Study → */}
+                    <div className="flex items-center gap-6 pt-3 border-t border-[#DDDDD8]">
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#111111] hover:text-[#555555] transition-colors group"
+                        >
+                          <span>View Live</span>
+                          <ArrowUpRight
+                            size={14}
+                            className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                          />
+                        </a>
+                      )}
+
+                      <Link
+                        href={`/projects/${project.id}`}
+                        className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-[#666666] hover:text-[#111111] transition-colors group"
+                      >
+                        <span>Read Case Study</span>
+                        <ArrowRight
+                          size={13}
+                          className="group-hover:translate-x-1 transition-transform"
+                        />
+                      </Link>
                     </div>
+                  </div>
                 </motion.article>
               );
             })}
@@ -146,7 +172,7 @@ export default function WorkPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-24 sm:mt-32 pt-10 border-t border-[#DDDDD8] flex flex-col sm:flex-row sm:items-center justify-between gap-6"
+            className="mt-28 sm:mt-36 pt-10 border-t border-[#DDDDD8] flex flex-col sm:flex-row sm:items-center justify-between gap-6"
           >
             <div>
               <span className="eyebrow block mb-1">Collaboration</span>

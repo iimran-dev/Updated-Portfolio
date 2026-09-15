@@ -4,12 +4,12 @@ import { motion } from "motion/react";
 
 const STATS = [
   {
-    number: "03+",
+    number: "02+",
     title: "Years Building",
     description: "Architecting web apps and design systems",
   },
   {
-    number: "12+",
+    number: "5+",
     title: "Production Projects",
     description: "Shipped from concept to deployment",
   },
