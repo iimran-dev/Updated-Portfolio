@@ -45,7 +45,7 @@ export function SelectedWork() {
 
         {/* Editorial Case Study Chapters */}
         <div className="flex flex-col gap-28 sm:gap-36 lg:gap-44">
-          {projects.map((project, idx) => {
+          {projects.slice(0, 2).map((project, idx) => {
             const isReversed = idx % 2 === 1;
             const numString = `0${idx + 1}`;
 
@@ -104,16 +104,11 @@ export function SelectedWork() {
 
                   {/* Short Description */}
                   <p className="text-base sm:text-lg text-[#555555] font-normal leading-relaxed">
-                    {project.shortDescription}
-                  </p>
-
-                  {/* Restrained Technology Line */}
-                  <p className="text-xs sm:text-sm font-mono text-[#777777] tracking-wide pt-1">
-                    {project.technologies.slice(0, 4).join(" · ")}
+                    {project.homeDescription || project.shortDescription}
                   </p>
 
                   {/* Clear Action Links: View Live ↗ & View Case Study → */}
-                  <div className="flex items-center gap-6 pt-3 border-t border-[#DDDDD8]">
+                  <div className="flex items-center gap-6 pt-4 border-t border-[#DDDDD8]">
                     {project.liveUrl && (
                       <a
                         href={project.liveUrl}
