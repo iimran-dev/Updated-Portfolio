@@ -112,24 +112,9 @@ export default function WorkPage() {
                       {numString}
                     </span>
 
-                    {/* Project Title */}
-                    <h2 className="text-3xl sm:text-4xl md:text-[42px] font-bold text-[#111111] tracking-tight leading-[1.1]">
-                      <Link
-                        href={`/projects/${project.id}`}
-                        className="hover:opacity-75 transition-opacity"
-                      >
-                        {project.title}
-                      </Link>
-                    </h2>
-
                     {/* Concise Short Description */}
                     <p className="text-base sm:text-lg text-[#555555] font-normal leading-relaxed">
                       {project.shortDescription}
-                    </p>
-
-                    {/* Restrained Technology Line */}
-                    <p className="text-xs sm:text-sm font-mono text-[#777777] tracking-wide pt-1">
-                      {project.technologies.slice(0, 4).join(" · ")}
                     </p>
 
                     {/* Action Links: View Live ↗ & Read Case Study → */}
