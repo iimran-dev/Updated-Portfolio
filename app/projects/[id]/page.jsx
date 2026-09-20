@@ -184,7 +184,7 @@ export default async function ProjectDetailPage({ params }) {
               <div className="space-y-8 sm:space-y-12 lg:space-y-16">
                 {project.images.map((image, idx) => (
                   <figure key={idx} className="space-y-2.5 sm:space-y-3">
-                    <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden border border-[#DDDDD8] bg-[#FFFFFF] shadow-xs">
+                    <div className="relative w-full aspect-[16/10] rounded-2xl sm:rounded-3xl overflow-hidden border border-[#DDDDD8] bg-[#FFFFFF] shadow-xs">
                       <Image
                         src={normalizeSrc(image.src)}
                         alt={image.alt}
