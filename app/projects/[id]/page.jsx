@@ -72,9 +72,6 @@ export default async function ProjectDetailPage({ params }) {
 
               {/* Technology Stack & Live Action Row: Preserved Horizontal Bar on Mobile */}
               <div className="flex flex-row items-center justify-between gap-4 pt-3 sm:pt-4 border-t border-[#DDDDD8]">
-                <p className="text-[11px] sm:text-xs font-mono text-[#666666] tracking-wide truncate">
-                  {project.technologies.join(" · ")}
-                </p>
 
                 {project.liveUrl && (
                   <a
@@ -97,7 +94,7 @@ export default async function ProjectDetailPage({ params }) {
           {/* ========================================================================= */}
           {/* 02 — OVERVIEW (Split Layout Preserved on Mobile)                           */}
           {/* ========================================================================= */}
-          <section id="overview" className="border-t border-[#DDDDD8] py-12 sm:py-16 lg:py-20">
+          <section id="overview" className="py-12 sm:py-16 lg:py-20">
             <div className="grid grid-cols-12 gap-4 sm:gap-8 lg:gap-14 items-start">
               
               {/* Left Column: Heading & Metadata (Preserved sticky split anchor) */}
